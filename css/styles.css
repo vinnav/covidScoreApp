@@ -1,0 +1,22 @@
+.container{
+  position: relative;
+}
+
+.col{
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  height: 100%;
+}
+.row{
+  border: 1px solid black;
+  height: 100px;
+}
+
+#age{
+  font-size: 20px;
+  align-self: center;
+}
+
+.title{
+  font-size: 40px;
+}
