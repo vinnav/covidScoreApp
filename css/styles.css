@@ -1,15 +1,19 @@
 .container{
   position: relative;
+
 }
 
 .col{
   border-left: 1px solid black;
   border-right: 1px solid black;
   height: 100%;
+  font-size: 30px;
 }
 .row{
   border: 1px solid black;
   height: 100px;
+  font-size: 30px;
+  padding-left: 10px;
 }
 
 #age{
@@ -19,4 +23,8 @@
 
 .title{
   font-size: 40px;
+}
+
+.result{
+  display: none;
 }

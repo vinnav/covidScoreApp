@@ -1,11 +1,16 @@
 let mortalitySum = 0;
-let mortality = ["3.23%","5.41%", "9.00%", "30.72%", "40.58%", "65.59%", "73.85%", ">73.85%"]
+let mortality = ["3.23%","5.41%", "9.00%", "30.72%", "40.58%", "65.59%", "73.85%", ">73.85%", ">73.85%"]
 
 let submit = document.getElementById("submit");
 submit.addEventListener("click", getMortalityScore);
 
+let result = document.getElementById("result");
+let startpage = document.getElementById("startpage");
+
 function getMortalityScore(){
-    alert("The mortality rate is: " + mortality[mortalitySum]);
+    startpage.style.display = 'none';
+    result.style.display = 'visible';
+    result.innerHTML = "<p id=\"resultText\"> The mortality rate is: " + mortality[mortalitySum] + "</p>";
 }
 
 
@@ -66,10 +71,4 @@ age4.addEventListener("click", age4check);
 function age4check(){
     age4.style.backgroundColor = '#d9534f';
     mortalitySum+=4;
-}
-let age5 = document.getElementById("age5");
-age5.addEventListener("click", age5check);
-function age5check(){
-    age5.style.backgroundColor = '#d9534f';
-    mortalitySum+=5;
 }
