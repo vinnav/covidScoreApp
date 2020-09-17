@@ -18,24 +18,34 @@
 
 .title{
   font-size: 50px;
+  text-align: center;
 }
 
 .result{
   display: none;
 }
 
+#age{
+  padding-top:20px;
+}
+
 #age0{
   font-size:15px;
+  padding-top:35px;
 }
 #age1{
   font-size:15px;
+  padding-top:35px;
 }
 #age2{
   font-size:15px;
+  padding-top:35px;
 }
 #age3{
   font-size:15px;
+  padding-top:35px;
 }
 #age4{
   font-size:15px;
+  padding-top:35px;
 }
