@@ -16,15 +16,26 @@
   padding-left: 10px;
 }
 
-#age{
-  font-size: 20px;
-  align-self: center;
-}
-
 .title{
-  font-size: 40px;
+  font-size: 60px;
 }
 
 .result{
   display: none;
+}
+
+#age0{
+  font-size:20px;
+}
+#age1{
+  font-size:20px;
+}
+#age2{
+  font-size:20px;
+}
+#age3{
+  font-size:20px;
+}
+#age4{
+  font-size:20px;
 }
