@@ -10,7 +10,7 @@ let startpage = document.getElementById("startpage");
 function getMortalityScore(){
     startpage.style.display = 'none';
     result.style.display = 'visible';
-    result.innerHTML = "<p id=\"resultText\"> The mortality rate is: " + mortality[mortalitySum] + "</p>";
+    result.innerHTML = "<p style=\"font-size:70px;\"> The mortality rate is: " + mortality[mortalitySum] + "</p>";
 }
 
 
