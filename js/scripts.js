@@ -1,6 +1,10 @@
+// MAIN VALUES
+// Starting score
 let mortalitySum = 0;
+// Array of mortality scores
 let mortality = ["3.23%","5.41%", "9.00%", "30.72%", "40.58%", "65.59%", "73.85%", ">73.85%", ">73.85%"]
 
+// Sumbit logic
 let submit = document.getElementById("submit");
 submit.addEventListener("click", getMortalityScore);
 
@@ -13,7 +17,7 @@ function getMortalityScore(){
     result.innerHTML = "<p style=\"font-size:70px;\"> The mortality rate is: " + mortality[mortalitySum] + "</p>";
 }
 
-
+// Adding points on pressing buttons
 let resp = document.getElementById("resp");
 resp.addEventListener("click", respcheck);
 function respcheck(){
@@ -21,7 +25,6 @@ function respcheck(){
     mortalitySum++;
     resp.removeEventListener("click", respcheck);
 }
-
 let spo = document.getElementById("spo");
 spo.addEventListener("click", spocheck);
 function spocheck(){
@@ -29,7 +32,6 @@ function spocheck(){
     mortalitySum++;
     spo.removeEventListener("click", spocheck);
 }
-
 let stroke= document.getElementById("stroke");
 stroke.addEventListener("click", strokecheck);
 function strokecheck(){
@@ -37,7 +39,6 @@ function strokecheck(){
     mortalitySum++;
     stroke.removeEventListener("click", strokecheck);
 }
-
 let obesity = document.getElementById("obesity");
 obesity.addEventListener("click", obesitycheck);
 function obesitycheck(){
@@ -45,7 +46,6 @@ function obesitycheck(){
     mortalitySum++;
     obesity.removeEventListener("click", obesitycheck);
 }
-
 let age0 = document.getElementById("age0");
 age0.addEventListener("click", age0check);
 function age0check(){
