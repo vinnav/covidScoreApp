@@ -12,92 +12,201 @@ function getMortalityScore(){
 }
 
 // Adding points on pressing buttons
+// Respiratory rate >24/m
 let yesresp = document.getElementById("yesresp");
 let noresp = document.getElementById("noresp");
 yesresp.addEventListener("click", respcheck);
-noresp.addEventListener("click", respuncheck);
 function respcheck(){
     yesresp.style.backgroundColor = '#117d67';
     yesresp.style.color = 'white';
     mortalitySum++;
     yesresp.removeEventListener("click", respcheck);
+    noresp.addEventListener("click", respuncheck);
     noresp.style.backgroundColor = 'lightgrey';
     noresp.style.color = 'black';
     getMortalityScore()
 }
-let spo = document.getElementById("spo");
-spo.addEventListener("click", spocheck);
+function respuncheck(){
+    noresp.style.backgroundColor = '#117d67';
+    noresp.style.color = 'white';
+    mortalitySum--;
+    noresp.removeEventListener("click", respuncheck);
+    yesresp.addEventListener("click", respcheck);
+    yesresp.style.backgroundColor = 'lightgrey';
+    yesresp.style.color = 'black';
+    getMortalityScore()
+}
+
+// SpO
+let yesspo = document.getElementById("yesspo");
+let nospo = document.getElementById("nospo");
+yesspo.addEventListener("click", spocheck);
 function spocheck(){
-    spo.style.backgroundColor = '#d9534f';
+    yesspo.style.backgroundColor = '#117d67';
+    yesspo.style.color = 'white';
     mortalitySum++;
-    spo.removeEventListener("click", spocheck);
+    yesspo.removeEventListener("click", spocheck);
+    nospo.addEventListener("click", spouncheck);
+    nospo.style.backgroundColor = 'lightgrey';
+    nospo.style.color = 'black';
+    getMortalityScore()
 }
-let stroke= document.getElementById("stroke");
-stroke.addEventListener("click", strokecheck);
+function spouncheck(){
+    nospo.style.backgroundColor = '#117d67';
+    nospo.style.color = 'white';
+    mortalitySum--;
+    nospo.removeEventListener("click", spouncheck);
+    yesspo.addEventListener("click", spocheck);
+    yesspo.style.backgroundColor = 'lightgrey';
+    yesspo.style.color = 'black';
+    getMortalityScore()
+}
+
+// Stroke
+let yesstroke = document.getElementById("yesstroke");
+let nostroke = document.getElementById("nostroke");
+yesstroke.addEventListener("click", strokecheck);
 function strokecheck(){
-    stroke.style.backgroundColor = '#d9534f';
+    yesstroke.style.backgroundColor = '#117d67';
+    yesstroke.style.color = 'white';
     mortalitySum++;
-    stroke.removeEventListener("click", strokecheck);
+    yesstroke.removeEventListener("click", strokecheck);
+    nostroke.addEventListener("click", strokeuncheck);
+    nostroke.style.backgroundColor = 'lightgrey';
+    nostroke.style.color = 'black';
+    getMortalityScore()
 }
-let obesity = document.getElementById("obesity");
-obesity.addEventListener("click", obesitycheck);
+function strokeuncheck(){
+    nostroke.style.backgroundColor = '#117d67';
+    nostroke.style.color = 'white';
+    mortalitySum--;
+    nostroke.removeEventListener("click", strokeuncheck);
+    yesstroke.addEventListener("click", strokecheck);
+    yesstroke.style.backgroundColor = 'lightgrey';
+    yesstroke.style.color = 'black';
+    getMortalityScore()
+}
+
+// Obesity
+let yesobesity = document.getElementById("yesobesity");
+let noobesity = document.getElementById("noobesity");
+yesobesity.addEventListener("click", obesitycheck);
 function obesitycheck(){
-    obesity.style.backgroundColor = '#d9534f';
+    yesobesity.style.backgroundColor = '#117d67';
+    yesobesity.style.color = 'white';
     mortalitySum++;
-    obesity.removeEventListener("click", obesitycheck);
+    yesobesity.removeEventListener("click", obesitycheck);
+    noobesity.addEventListener("click", obesityuncheck);
+    noobesity.style.backgroundColor = 'lightgrey';
+    noobesity.style.color = 'black';
+    getMortalityScore()
 }
-let age0 = document.getElementById("age0");
-age0.addEventListener("click", age0check);
-function age0check(){
-    age0.style.backgroundColor = '#d9534f';
-    mortalitySum++;
-    age0.removeEventListener("click", age0check);
-    age1.removeEventListener("click", age1check);
-    age2.removeEventListener("click", age2check);
-    age3.removeEventListener("click", age3check);
-    age4.removeEventListener("click", age4check);
+function obesityuncheck(){
+    noobesity.style.backgroundColor = '#117d67';
+    noobesity.style.color = 'white';
+    mortalitySum--;
+    noobesity.removeEventListener("click", obesityuncheck);
+    yesobesity.addEventListener("click", obesitycheck);
+    yesobesity.style.backgroundColor = 'lightgrey';
+    yesobesity.style.color = 'black';
+    getMortalityScore()
 }
-let age1 = document.getElementById("age1");
-age1.addEventListener("click", age1check);
-function age1check(){
-    age1.style.backgroundColor = '#d9534f';
+
+// Age
+let ageless50 = document.getElementById("less50");
+let age5059 = document.getElementById("age50-59");
+let age6069 = document.getElementById("age60-69");
+let age7079 = document.getElementById("age70-79");
+let agemore80 = document.getElementById("more80");
+
+ageless50.addEventListener("click", ageless50check);
+function ageless50check(){
+    ageless50.style.backgroundColor = '#117d67';
+    ageless50.style.color = 'white';
+    ageless50.removeEventListener("click", ageless50check);
+    ageless50.addEventListener("click", ageless50uncheck);
+    getMortalityScore()
+}
+function ageless50uncheck(){
+    ageless50.addEventListener("click", ageless50check);
+    ageless50.style.backgroundColor = 'lightgrey';
+    ageless50.style.color = 'black';
+    getMortalityScore()
+}
+
+age5059.addEventListener("click", age5059check);
+function age5059check(){
+    age5059.style.backgroundColor = '#117d67';
+    age5059.style.color = 'white';
     mortalitySum+=1;
-    age0.removeEventListener("click", age0check);
-    age1.removeEventListener("click", age1check);
-    age2.removeEventListener("click", age2check);
-    age3.removeEventListener("click", age3check);
-    age4.removeEventListener("click", age4check);
+    age5059.removeEventListener("click", age5059check);
+    age5059.addEventListener("click", age5059uncheck);
+    getMortalityScore()
 }
-let age2 = document.getElementById("age2");
-age2.addEventListener("click", age2check);
-function age2check(){
-    age2.style.backgroundColor = '#d9534f';
+function age5059uncheck(){
+    mortalitySum-=1;
+    age5059.addEventListener("click", age5059check);
+    age5059.style.backgroundColor = 'lightgrey';
+    age5059.style.color = 'black';
+    getMortalityScore()
+}
+
+age6069.addEventListener("click", age6069check);
+function age6069check(){
+    age6069.style.backgroundColor = '#117d67';
+    age6069.style.color = 'white';
     mortalitySum+=2;
-    age0.removeEventListener("click", age0check);
-    age1.removeEventListener("click", age1check);
-    age2.removeEventListener("click", age2check);
-    age3.removeEventListener("click", age3check);
-    age4.removeEventListener("click", age4check);
+    age6069.removeEventListener("click", age6069check);
+    age6069.addEventListener("click", age6069uncheck);
+    getMortalityScore()
 }
-let age3 = document.getElementById("age3");
-age3.addEventListener("click", age3check);
-function age3check(){
-    age3.style.backgroundColor = '#d9534f';
+function age6069uncheck(){
+    mortalitySum-=2;
+    age6069.addEventListener("click", age6069check);
+    age6069.style.backgroundColor = 'lightgrey';
+    age6069.style.color = 'black';
+    getMortalityScore()
+}
+
+age7079.addEventListener("click", age7079check);
+function age7079check(){
+    age7079.style.backgroundColor = '#117d67';
+    age7079.style.color = 'white';
     mortalitySum+=3;
-    age0.removeEventListener("click", age0check);
-    age1.removeEventListener("click", age1check);
-    age2.removeEventListener("click", age2check);
-    age3.removeEventListener("click", age3check);
-    age4.removeEventListener("click", age4check);
+    age7079.removeEventListener("click", age7079check);
+    age7079.addEventListener("click", age7079uncheck);
+    getMortalityScore()
 }
-let age4 = document.getElementById("age4");
-age4.addEventListener("click", age4check);
-function age4check(){
-    age4.style.backgroundColor = '#d9534f';
+function age7079uncheck(){
+    mortalitySum-=3;
+    age7079.addEventListener("click", age7079check);
+    age7079.style.backgroundColor = 'lightgrey';
+    age7079.style.color = 'black';
+    getMortalityScore()
+}
+
+agemore80.addEventListener("click", agemore80check);
+function agemore80check(){
     mortalitySum+=4;
-    age0.removeEventListener("click", age0check);
-    age1.removeEventListener("click", age1check);
-    age2.removeEventListener("click", age2check);
-    age3.removeEventListener("click", age3check);
-    age4.removeEventListener("click", age4check);
+    agemore80.style.backgroundColor = '#117d67';
+    agemore80.style.color = 'white';
+    console.log("added 4")
+    agemore80.removeEventListener("click", agemore80check);
+    agemore80.addEventListener("click", agemore80uncheck);
+    getMortalityScore()
+}
+function agemore80uncheck(){
+    mortalitySum-=4;
+    console.log("removed 4")
+    agemore80.addEventListener("click", agemore80check);
+    agemore80.style.backgroundColor = 'lightgrey';
+    agemore80.style.color = 'black';
+    getMortalityScore()
+}
+
+let nhsNumber = document.getElementById("nhsnumber");
+nhsNumber.addEventListener('change', nhsNumberSearch);
+
+function nhsNumberSearch(){
+    resultText.innerHTML = "<p style=\"font-size:35px;\"> <br>NHS number not found " + "</p>";
 }

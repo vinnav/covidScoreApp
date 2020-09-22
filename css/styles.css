@@ -18,8 +18,8 @@
   border-top: 1px solid grey;
   height: 40px;
   font-size: 17px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
   padding-top: 20px;
   display: flex;
   flex-direction: row;
@@ -38,10 +38,10 @@
   background: lightgray;
 }
 .values {
-  flex-basis: 55%;
+  flex-basis: 60%;
 }
 .agevalues {
-  flex-basis: 15%;
+  flex-basis: 20%;
 }
 .yesno {
   border: 1px solid grey;
@@ -76,8 +76,8 @@
   flex-basis: 50%;
 }
 #less50{
-  background: #117d67;
-  color: white;
+  background: lightgrey;
+  color: black;
   flex-basis: 20%;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
