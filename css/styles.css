@@ -10,8 +10,8 @@
 }
 .container-grid {
   display: grid;
-  grid-gap: 20px;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 5fr;
+  grid-gap: 15px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 8fr;
 }
 
 .row{

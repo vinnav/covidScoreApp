@@ -8,7 +8,7 @@ let mortality = ["3.23%","5.41%", "9.00%", "30.72%", "40.58%", "65.59%", "73.85%
 let resultText = document.getElementById("resultText");
 
 function getMortalityScore(){
-    resultText.innerHTML = "<p style=\"font-size:35px;\"> The mortality rate is: " + mortality[mortalitySum] + "</p>";
+    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> The mortality rate is: " + mortality[mortalitySum] + "</p>";
 }
 
 // Adding points on pressing buttons
