@@ -1,30 +1,29 @@
-/*
 // MAIN VALUES
 // Starting score
 let mortalitySum = 0;
 // Array of mortality scores
 let mortality = ["3.23%","5.41%", "9.00%", "30.72%", "40.58%", "65.59%", "73.85%", ">73.85%", ">73.85%"]
 
-// Sumbit logic
-let submit = document.getElementById("submit");
-submit.addEventListener("click", getMortalityScore);
-
-let result = document.getElementById("result");
-let startpage = document.getElementById("startpage");
+// Result logic
+let resultText = document.getElementById("resultText");
 
 function getMortalityScore(){
-    startpage.style.display = 'none';
-    result.style.display = 'visible';
-    result.innerHTML = "<p style=\"font-size:70px;\"> The mortality rate is: " + mortality[mortalitySum] + "</p>";
+    resultText.innerHTML = "<p style=\"font-size:35px;\"> The mortality rate is: " + mortality[mortalitySum] + "</p>";
 }
 
 // Adding points on pressing buttons
-let resp = document.getElementById("resp");
-resp.addEventListener("click", respcheck);
+let yesresp = document.getElementById("yesresp");
+let noresp = document.getElementById("noresp");
+yesresp.addEventListener("click", respcheck);
+noresp.addEventListener("click", respuncheck);
 function respcheck(){
-    resp.style.backgroundColor = '#d9534f';
+    yesresp.style.backgroundColor = '#117d67';
+    yesresp.style.color = 'white';
     mortalitySum++;
-    resp.removeEventListener("click", respcheck);
+    yesresp.removeEventListener("click", respcheck);
+    noresp.style.backgroundColor = 'lightgrey';
+    noresp.style.color = 'black';
+    getMortalityScore()
 }
 let spo = document.getElementById("spo");
 spo.addEventListener("click", spocheck);
@@ -102,4 +101,3 @@ function age4check(){
     age3.removeEventListener("click", age3check);
     age4.removeEventListener("click", age4check);
 }
-*/
