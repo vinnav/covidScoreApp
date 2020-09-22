@@ -8,47 +8,99 @@
   </head>
   <body>
 
-    <div class="bg-dark text-white title">8 Points covid score</div>
+    <div class="title">8 Points covid score</div>
 
-    <div class="container-fluid bg-dark text-white" id="result">
+    <div class="container-fluid" id="result">
     </div>
 
-    <div class="container-fluid bg-dark text-white" id="startpage">
-      <div class="row align-items-center">
-        <div class="col" id="age">
+    <div class="container-fluid" id="startpage">
+      <div class="container-grid">
+      <div class="row">
+          <div class="nhsnumbertext">
+            NHS Number
+          </div>
+          <div class="nhsnumberform">
+            <input type="text" size="27" id="nhsnumber">  
+          </div>
+      </div>
+      <div class="row">
+        <div class="agevalues">
           Age
         </div>
-        <div class="col" id="age0">
-          <50
+        <div class="selectAge">
+          <div id="less50">
+            &nbsp&lt;50 0 &nbsp
+          </div>
+          <div id="age50-59">
+            &nbsp50-59 +1&nbsp
+          </div>
+          <div id="age60-69">
+            &nbsp60-69 +2&nbsp
+          </div>
+          <div id="age70-79">
+            &nbsp70-79 +3&nbsp
+          </div>
+          <div id="more80">
+            &nbsp&gt;80 +4&nbsp
+          </div>
         </div>
-        <div class="col" id="age1">
-          50-59
+      </div>
+      <div class="row" id="resp">
+        <div class="values">
+          Respiratory rate >24/m
         </div>
-        <div class="col" id="age2">
-          60-69
+        <div class="yesno">
+          <div id="noresp">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesresp">
+            &nbspYes +1
+          </div>
         </div>
-        <div class="col" id="age3">
-          70-79
+      </div>
+      <div class="row" id="spo">
+        <div class="values">
+          SpO<sub>2</sub> (<=92% on FiO<sub>2</sub>&nbsp; 0.21)
         </div>
-        <div class="col" id="age4">
-          >80
+        <div class="yesno">
+          <div id="nospo">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesspo">
+            &nbspYes +1
+          </div>
         </div>
       </div>
-      <div class="row align-items-center" id="resp">
-        Respiratory rate >24/m
+      <div class="row" id="stroke">
+        <div class="values">
+          Stroke (CVA)
+        </div>
+        <div class="yesno">
+          <div id="nostroke">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesstroke">
+            &nbspYes +1
+          </div>
+        </div>
       </div>
-      <div class="row align-items-center" id="spo">
-        SpO<sub>2</sub> (<=92% on FiO<sub>2</sub>&nbsp; 0.21)
+      <div class="row" id="obesity">
+        <div class="values">
+          Obesity (BMI>30)
+        </div>
+        <div class="yesno">
+          <div id="noobesity">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesobesity">
+            &nbspYes +1
+          </div>
+        </div>
       </div>
-      <div class="row align-items-center" id="stroke">
-        Stroke (CVA)
+      <div class="row result">
+        <h2><strong>&nbspResult:</strong></h2>
       </div>
-      <div class="row align-items-center" id="obesity">
-        Obesity (BMI>30)
-      </div>
-      <div class="row align-items-center" id="submit">
-        Submit
-      </div>
+    </div>
     </div>
   </body>
   <script src="js/scripts.js"></script>

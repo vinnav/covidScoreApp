@@ -1,3 +1,4 @@
+/*
 // MAIN VALUES
 // Starting score
 let mortalitySum = 0;
@@ -101,3 +102,4 @@ function age4check(){
     age3.removeEventListener("click", age3check);
     age4.removeEventListener("click", age4check);
 }
+*/

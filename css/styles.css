@@ -4,22 +4,133 @@
   width: 100vw;
   top:60px;
   left:0;
-  background: pink;
+  background: white;
   cursor: default;
+  display: grid;
+}
+.container-grid {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 5fr;
 }
 
-.col{
-  height: 100%;
-  font-size: 30px;
-  border-right: 1px solid black;
-  padding-top:4vh;
-  font-size:15px;
-}
 .row{
-  border-top: 1px solid black;
-  height: 14vh;
-  font-size: 30px;
-  padding-left: 10px;
+  border-top: 1px solid grey;
+  height: 40px;
+  font-size: 18px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.nhsnumbertext {
+  flex-basis: 30%;
+}
+.nhsnumberform {
+  flex-basis: 50%;
+  width: 100%;
+}
+#nhsnumber {
+  border-radius: 5px;
+  border: 1px solid gray;
+  background: lightgray;
+}
+.values {
+  flex-basis: 65%;
+}
+.agevalues {
+  flex-basis: 10%;
+}
+.yesno {
+  border: 1px solid grey;
+  flex-basis: 30%;
+  display: flex;
+  border-radius: 5px;
+}
+.selectAge {
+  flex-basis: 85%;
+  display: flex;
+  font-size: 15px;
+}
+
+#noresp{
+  background: #117d67;
+  color: white;
+  flex-basis: 50%;
+}
+#nospo{
+  background: #117d67;
+  color: white;
+  flex-basis: 50%;
+}
+#nostroke{
+  background: #117d67;
+  color: white;
+  flex-basis: 50%;
+}
+#noobesity{
+  background: #117d67;
+  color: white;
+  flex-basis: 50%;
+}
+#less50{
+  background: #117d67;
+  color: white;
+  flex-basis: 20%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+#age50-59{
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#age60-69{
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#age70-79{
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#more80{
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#yesresp{
+  background: lightgrey;
+  flex-basis: 50%;
+}
+#yesspo{
+  background: lightgrey;
+  flex-basis: 50%;
+}
+#yesstroke{
+  background: lightgrey;
+  flex-basis: 50%;
+}
+#yesobesity{
+  background: lightgrey;
+  flex-basis: 50%;
 }
 
 .title{
@@ -28,9 +139,9 @@
 }
 
 .result{
-  display: none;
-}
-
-#age{
-  font-size:25px;
+  background: #117d67;
+  height: 70%;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #117d67;
 }
