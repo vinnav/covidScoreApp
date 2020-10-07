@@ -8,7 +8,7 @@ let mortality = ["3.23%","5.41%", "9.00%", "30.72%", "40.58%", "65.59%", "73.85%
 let resultText = document.getElementById("resultText");
 
 function getMortalityScore(){
-    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> The mortality rate is: " + mortality[mortalitySum] + "</p>";
+    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + mortalitySum + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[mortalitySum] + "</p>";
 }
 
 // Adding points on pressing buttons
@@ -131,6 +131,8 @@ function ageless50uncheck(){
     ageless50.addEventListener("click", ageless50check);
     ageless50.style.backgroundColor = 'lightgrey';
     ageless50.style.color = 'black';
+    ageless50.removeEventListener("click", ageless50uncheck);
+    ageless50.addEventListener("click", ageless50check);
     getMortalityScore()
 }
 
@@ -148,6 +150,8 @@ function age5059uncheck(){
     age5059.addEventListener("click", age5059check);
     age5059.style.backgroundColor = 'lightgrey';
     age5059.style.color = 'black';
+    age5059.removeEventListener("click", age5059uncheck);
+    age5059.addEventListener("click", age5059check);
     getMortalityScore()
 }
 
@@ -165,6 +169,8 @@ function age6069uncheck(){
     age6069.addEventListener("click", age6069check);
     age6069.style.backgroundColor = 'lightgrey';
     age6069.style.color = 'black';
+    age6069.removeEventListener("click", age6069uncheck);
+    age6069.addEventListener("click", age6069check);
     getMortalityScore()
 }
 
@@ -179,9 +185,11 @@ function age7079check(){
 }
 function age7079uncheck(){
     mortalitySum-=3;
-    age7079.addEventListener("click", age7079check);
+    //age7079.addEventListener("click", age7079check);
     age7079.style.backgroundColor = 'lightgrey';
     age7079.style.color = 'black';
+    age7079.removeEventListener("click", age7079uncheck);
+    age7079.addEventListener("click", age7079check);
     getMortalityScore()
 }
 
@@ -201,12 +209,17 @@ function agemore80uncheck(){
     agemore80.addEventListener("click", agemore80check);
     agemore80.style.backgroundColor = 'lightgrey';
     agemore80.style.color = 'black';
+    agemore80.removeEventListener("click", agemore80uncheck);
+    agemore80.addEventListener("click", agemore80check);
     getMortalityScore()
 }
+
+// TODO: uncheck previous age button when new one is clicked
+// function uncheckAll(){}
 
 let nhsNumber = document.getElementById("nhsnumber");
 nhsNumber.addEventListener('change', nhsNumberSearch);
 
 function nhsNumberSearch(){
-    resultText.innerHTML = "<p style=\"font-size:35px;\"> <br>NHS number not found " + "</p>";
+    resultText.innerHTML = "<p style=\"font-size:35px;\"> NHS number not found... " + "</p>";
 }

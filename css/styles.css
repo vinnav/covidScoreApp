@@ -3,7 +3,7 @@
   height: 100vh;
   width: 100vw;
   top:60px;
-  left:0;
+  left: 0px;
   background: white;
   cursor: default;
   display: grid;
@@ -25,15 +25,14 @@
   flex-direction: row;
 }
 
-
 .nhsnumbertext {
-  flex-basis: 30%;
+  flex-basis: 20%;
 }
 .nhsnumberform {
-  flex-basis: 55%;
+  flex-basis: 80%;
 }
 #nhsnumber {
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid gray;
   background: lightgray;
 }
@@ -76,6 +75,7 @@
   flex-basis: 50%;
 }
 #less50{
+  padding-left: 10px;
   background: lightgrey;
   color: black;
   flex-basis: 20%;
@@ -86,6 +86,7 @@
   border-bottom: 1px solid grey;
 }
 #age50-59{
+  padding-left: 10px;
   flex-basis: 20%;
   border-right: 1px solid grey;
   border-top: 1px solid grey;
@@ -93,6 +94,7 @@
   background: lightgrey;
 }
 #age60-69{
+  padding-left: 10px;
   flex-basis: 20%;
   border-right: 1px solid grey;
   border-top: 1px solid grey;
@@ -100,6 +102,7 @@
   background: lightgrey;
 }
 #age70-79{
+  padding-left: 10px;
   flex-basis: 20%;
   border-right: 1px solid grey;
   border-top: 1px solid grey;
@@ -107,6 +110,7 @@
   background: lightgrey;
 }
 #more80{
+  padding-left: 10px;
   flex-basis: 20%;
   border-right: 1px solid grey;
   border-top-right-radius: 5px;
@@ -143,4 +147,8 @@
   color: white;
   border-radius: 5px;
   border: 1px solid #117d67;
+}
+
+#resultText {
+  padding-left: 20px;
 }
