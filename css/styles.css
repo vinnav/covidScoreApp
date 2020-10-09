@@ -1,6 +1,6 @@
 .container-fluid{
-  position: fixed;
-  height: 100vh;
+
+  height: 900px;
   width: 100vw;
   top:60px;
   left: 0px;
@@ -11,7 +11,7 @@
 .container-grid {
   display: grid;
   grid-gap: 15px;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 8fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
 }
 
 .row{
@@ -143,10 +143,11 @@
 
 .result{
   background: #117d67;
-  height: 70%;
+  height: 100%;
   color: white;
   border-radius: 5px;
   border: 1px solid #117d67;
+  margin-right: 15px;
 }
 
 #resultText {
