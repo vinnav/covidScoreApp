@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //app.use(express.bodyParser());
 
-app.post('/myaction', function(req, res) {
+app.post('/sendData', function(req, res) {
   res.send('You sent "' + req.body.nameData + ' ' + req.body.surnameData + '" data.');
   (async function () {
   //await openFile();

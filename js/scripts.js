@@ -290,7 +290,7 @@ let submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', submitData);
 
 function submitData(){
-    postData("http://127.0.0.1:8080/myaction", {nhsData: nhsNumber.value,
+    postData("http://127.0.0.1:8080/sendData", {nhsData: nhsNumber.value,
     nameData: name.value, surnameData: surname.value, dobData: dob.value, ageData: ageSum,
     respData: resp, spo2Data: spo, strokeData: stroke,
     obesityData: obesity, scoreData: mortalitySum+ageSum})

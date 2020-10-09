@@ -4,3 +4,4 @@ NHS Number,Name,Surname,DOB,Age,Resp,SpO2,Stroke,Obesity,Score
 31555,name,surname,dob,0,0,1,1,0,2
 2362,[object HTMLInputElement],[object HTMLInputElement],[object HTMLInputElement],2,1,1,1,1,6
 2362,Vin,Nav,1989-01-09,0,0,0,0,0,0
+44,343,1112,0004-04-04,1,1,0,0,0,2
