@@ -17,15 +17,6 @@ let resultText = document.getElementById("resultText");
 function getMortalityScore(){
     resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum) + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum)] + "</p>";
 
-    result = {"NHS": "todo",
-    "name": "todo",
-    "surname": "todo",
-    "dob": "todo",
-    "age": ageSum,
-    "resp": resp,
-    "spo": spo,
-    "stroke": stroke,
-    "obesity": obesity}
 }
 // Adding points on pressing buttons
 // Respiratory rate >24/m
@@ -259,4 +250,20 @@ nhsNumber.addEventListener('change', nhsNumberSearch);
 
 function nhsNumberSearch(){
     resultText.innerHTML = "<p style=\"font-size:35px;\"> NHS number not found... " + "</p>";
+}
+
+function submit(){
+
+    result = {"NHS": "todo",
+    "name": "todo",
+    "surname": "todo",
+    "dob": "todo",
+    "age": ageSum,
+    "resp": resp,
+    "spo": spo,
+    "stroke": stroke,
+    "obesity": obesity}
+
+    fs = require('fs');
+    fs.writeFile('test.txt', result);
 }
