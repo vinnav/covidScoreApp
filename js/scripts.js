@@ -1,7 +1,13 @@
 // MAIN VALUES
-// Starting score
+// Starting scores
 let mortalitySum = 0;
+
 let ageSum = 0;
+let resp = 0;
+let spo = 0;
+let stroke = 0;
+let obesity = 0;
+
 // Array of mortality scores
 let mortality = ["3.23%","5.41%", "9.00%", "30.72%", "40.58%", "65.59%", "73.85%", ">73.85%", ">73.85%"]
 
@@ -10,14 +16,24 @@ let resultText = document.getElementById("resultText");
 
 function getMortalityScore(){
     resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum) + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum)] + "</p>";
-}
 
+    result = {"NHS": "todo",
+    "name": "todo",
+    "surname": "todo",
+    "dob": "todo",
+    "age": ageSum,
+    "resp": resp,
+    "spo": spo,
+    "stroke": stroke,
+    "obesity": obesity}
+}
 // Adding points on pressing buttons
 // Respiratory rate >24/m
 let yesresp = document.getElementById("yesresp");
 let noresp = document.getElementById("noresp");
 yesresp.addEventListener("click", respcheck);
 function respcheck(){
+    resp = 1;
     yesresp.style.backgroundColor = '#117d67';
     yesresp.style.color = 'white';
     mortalitySum++;
@@ -28,6 +44,7 @@ function respcheck(){
     getMortalityScore()
 }
 function respuncheck(){
+    resp = 0;
     noresp.style.backgroundColor = '#117d67';
     noresp.style.color = 'white';
     mortalitySum--;
@@ -43,6 +60,7 @@ let yesspo = document.getElementById("yesspo");
 let nospo = document.getElementById("nospo");
 yesspo.addEventListener("click", spocheck);
 function spocheck(){
+    spo = 1;
     yesspo.style.backgroundColor = '#117d67';
     yesspo.style.color = 'white';
     mortalitySum++;
@@ -53,6 +71,7 @@ function spocheck(){
     getMortalityScore()
 }
 function spouncheck(){
+    spo = 0;
     nospo.style.backgroundColor = '#117d67';
     nospo.style.color = 'white';
     mortalitySum--;
@@ -68,6 +87,7 @@ let yesstroke = document.getElementById("yesstroke");
 let nostroke = document.getElementById("nostroke");
 yesstroke.addEventListener("click", strokecheck);
 function strokecheck(){
+    stroke = 1;
     yesstroke.style.backgroundColor = '#117d67';
     yesstroke.style.color = 'white';
     mortalitySum++;
@@ -78,6 +98,7 @@ function strokecheck(){
     getMortalityScore()
 }
 function strokeuncheck(){
+    stroke = 0;
     nostroke.style.backgroundColor = '#117d67';
     nostroke.style.color = 'white';
     mortalitySum--;
@@ -93,6 +114,7 @@ let yesobesity = document.getElementById("yesobesity");
 let noobesity = document.getElementById("noobesity");
 yesobesity.addEventListener("click", obesitycheck);
 function obesitycheck(){
+    obesity = 1;
     yesobesity.style.backgroundColor = '#117d67';
     yesobesity.style.color = 'white';
     mortalitySum++;
@@ -103,6 +125,7 @@ function obesitycheck(){
     getMortalityScore()
 }
 function obesityuncheck(){
+    obesity = 0;
     noobesity.style.backgroundColor = '#117d67';
     noobesity.style.color = 'white';
     mortalitySum--;
@@ -190,7 +213,6 @@ function age7079check(){
 }
 function age7079uncheck(){
     ageSum = 0;
-    //age7079.addEventListener("click", age7079check);
     age7079.style.backgroundColor = 'lightgrey';
     age7079.style.color = 'black';
     age7079.removeEventListener("click", age7079uncheck);
