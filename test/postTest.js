@@ -11,9 +11,10 @@ async function openFile() {
   }
 }
 
-async function addItem(name, quantity, price) {
+async function addItem(nhsData, nameData, surnameData, dobData, ageData, respData,
+  spo2Data, strokeData, obesityData, scoreData) {
   try {
-    const csvLine = `\n${name},${quantity},${price}`
+    const csvLine = `\n${nhsData},${nameData},${surnameData},${dobData},${ageData},${respData},${spo2Data},${strokeData},${obesityData},${scoreData}`
     await fs.writeFile('data.csv', csvLine, { flag: 'a' });
   } catch (error) {
     console.error(`Got an error trying to write to a file: ${error.message}`);
@@ -27,10 +28,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.bodyParser());
 
 app.post('/myaction', function(req, res) {
-  res.send('You sent the name "' + req.body.name + '".');
+  res.send('You sent "' + req.body.nameData + ' ' + req.body.surnameData + '" data.');
   (async function () {
   //await openFile();
-  await addItem(req.body.name, req.body.email, req.body.message);
+  await addItem(req.body.nhsData, req.body.nameData, req.body.surnameData,
+    req.body.dobData, req.body.ageData, req.body.respData, req.body.spo2Data,
+    req.body.strokeData, req.body.obesityData, req.body.scoreData);
     })();
 });
 

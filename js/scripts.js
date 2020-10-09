@@ -16,16 +16,6 @@ let resultText = document.getElementById("resultText");
 
 function getMortalityScore(){
     resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum) + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum)] + "</p>";
-
-    result = {"NHS": "todo",
-    "name": "todo",
-    "surname": "todo",
-    "dob": "todo",
-    "age": ageSum,
-    "resp": resp,
-    "spo": spo,
-    "stroke": stroke,
-    "obesity": obesity}
 }
 // Adding points on pressing buttons
 // Respiratory rate >24/m
@@ -255,8 +245,53 @@ function allAgeUncheck(){
 // function uncheckAll(){}
 
 let nhsNumber = document.getElementById("nhsnumber");
+let name = document.getElementById("name");
+let surname = document.getElementById("surname");
+let dob = document.getElementById("dob");
 nhsNumber.addEventListener('change', nhsNumberSearch);
 
 function nhsNumberSearch(){
     resultText.innerHTML = "<p style=\"font-size:35px;\"> NHS number not found... " + "</p>";
+}
+
+/**
+ * sends a request to the specified url from a form. this will change the window location.
+ * @param {string} path the path to send the post request to
+ * @param {object} params the paramiters to add to the url
+ * @param {string} [method=post] the method to use on the form
+ */
+
+function postData(path, params, method='post') {
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    const form = document.createElement('form');
+    form.method = method;
+    form.action = path;
+  
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = key;
+        hiddenField.value = params[key];
+  
+        form.appendChild(hiddenField);
+      }
+    }
+  
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+//postData("http://127.0.0.1:8080/myaction", {name: nhsNumber})
+
+let submitButton = document.getElementById("submitButton");
+submitButton.addEventListener('click', submitData);
+
+function submitData(){
+    postData("http://127.0.0.1:8080/myaction", {nhsData: nhsNumber.value,
+    nameData: name.value, surnameData: surname.value, dobData: dob.value, ageData: ageSum,
+    respData: resp, spo2Data: spo, strokeData: stroke,
+    obesityData: obesity, scoreData: mortalitySum+ageSum})
 }

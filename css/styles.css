@@ -31,7 +31,7 @@
 .nhsnumberform {
   flex-basis: 80%;
 }
-#nhsnumber {
+.nhsdata {
   border-radius: 10px;
   border: 1px solid gray;
   background: lightgray;

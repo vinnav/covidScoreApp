@@ -1,1 +1,6 @@
-name,quantity,price
+NHS Number,Name,Surname,DOB,Age,Resp,SpO2,Stroke,Obesity,Score
+
+31555,name,surname,dob,3,1,0,1,0,5
+31555,name,surname,dob,0,0,1,1,0,2
+2362,[object HTMLInputElement],[object HTMLInputElement],[object HTMLInputElement],2,1,1,1,1,6
+2362,Vin,Nav,1989-01-09,0,0,0,0,0,0
