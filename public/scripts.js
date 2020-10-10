@@ -11,43 +11,79 @@ let obesity = 0;
 // Array of mortality scores
 let mortality = ["1.4%","5.3%", "5.9%", "19.7%", "33.3%", "39.7%", "40%", "40.6%", "47.9%", "74.6%", "77.8%", ">77.8%"]
 
-// Result logic
+// Assign DOM elements to variables
 let resultText = document.getElementById("resultText");
+let yesresp = document.getElementById("yesresp");
+let noresp = document.getElementById("noresp");
+let yesspo = document.getElementById("yesspo");
+let nospo = document.getElementById("nospo");
 
+// Display result
 function getMortalityScore(){
     resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum) + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum)] + "</p>";
 }
-// Adding points on pressing buttons
+
+    // Adding score based on chosen predictors
+
 // Respiratory rate >24/m
-let yesresp = document.getElementById("yesresp");
-let noresp = document.getElementById("noresp");
 yesresp.addEventListener("click", respcheck);
+// Respiratory rate >24/m checked
 function respcheck(){
+    // logic
     resp = 1;
+    mortalitySum++;
+    // update result
+    getMortalityScore()
+    // modify yes button style and remove eventListener
+    yesresp.removeEventListener("click", respcheck);
     yesresp.style.backgroundColor = '#117d67';
     yesresp.style.color = 'white';
-    mortalitySum++;
-    yesresp.removeEventListener("click", respcheck);
+    // modify no button style and add eventListener
     noresp.addEventListener("click", respuncheck);
     noresp.style.backgroundColor = 'lightgrey';
     noresp.style.color = 'black';
-    getMortalityScore()
 }
+                /* WIP refactoring buttons behaviour functions
+                var btnY = function() {
+                    btnCheck(resp, yesresp, noresp)
+                }
+
+                yesresp.addEventListener("click", function btnY(){
+                    btnCheck(resp, yesresp, noresp)}, true);
+                function btnCheck(predictor, buttonToUncheck, buttonToCheck){
+                    yesresp.removeEventListener("click", btnY, true);
+                    predictor = 1;
+                    mortalitySum++;
+                    getMortalityScore()
+                    console.log(buttonToCheck)
+                    
+                    buttonToUncheck.style.backgroundColor = '#117d67';
+                    buttonToUncheck.style.color = 'white';
+                        // modify no button style and add eventListener
+                    //buttonToCheck.addEventListener("click", btnUncheck);
+                    buttonToCheck.style.backgroundColor = 'lightgrey';
+                    buttonToCheck.style.color = 'black';
+                }
+                */
 function respuncheck(){
+    // logic
     resp = 0;
+    mortalitySum--;
+    // update result
+    getMortalityScore()
+    // modify no button style and remove eventListener 
+    noresp.removeEventListener("click", respuncheck);
     noresp.style.backgroundColor = '#117d67';
     noresp.style.color = 'white';
-    mortalitySum--;
-    noresp.removeEventListener("click", respuncheck);
+    // modify yes button style and add eventListener
     yesresp.addEventListener("click", respcheck);
     yesresp.style.backgroundColor = 'lightgrey';
     yesresp.style.color = 'black';
-    getMortalityScore()
+
 }
 
 // SpO
-let yesspo = document.getElementById("yesspo");
-let nospo = document.getElementById("nospo");
+
 yesspo.addEventListener("click", spocheck);
 function spocheck(){
     spo = 1;
