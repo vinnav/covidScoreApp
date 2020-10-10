@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="long_score.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+    <div class="title">SOARS Covid Score</div>
+
+    <div class="container-fluid" id="startpage">
+      <div class="container-grid">
+      <div class="row">
+          <div class="nhsnumbertext">
+            NHS Number
+          </div>   
+          <div class="nhsnumberform">
+            <input type="text" size="20" class="nhsdata" id="nhsnumber">  
+          </div>
+      </div>
+      <div class="row">
+        <div class="nhsnumbertext">
+            Name
+        </div>
+        <div class="nhsnumberform">
+          <input type="text" size="20" class="nhsdata" id="name">  
+        </div>
+      </div>
+      <div class="row">
+        <div class="nhsnumbertext">
+          Surname
+        </div>
+        <div class="nhsnumberform">
+          <input type="text" size="20" class="nhsdata" id="surname">  
+        </div>
+      </div>
+      <div class="row">
+        <div class="nhsnumbertext">
+          Date of birth
+        </div>
+        <div class="nhsnumberform">
+          <input type="date" size="20" class="nhsdata" id="dob">  
+        </div>
+      </div>
+      <div class="row">
+        <div class="agevalues">
+          Age
+        </div>
+        <div class="selectAge">
+          <div id="less50">
+            &nbsp&lt;50 0 &nbsp
+          </div>
+          <div id="age50-59">
+            &nbsp50-59 +1&nbsp
+          </div>
+          <div id="age60-69">
+            &nbsp60-69 +2&nbsp
+          </div>
+          <div id="age70-79">
+            &nbsp70-79 +5&nbsp
+          </div>
+          <div id="more80">
+            &nbsp&gt;80 +7&nbsp
+          </div>
+        </div>
+      </div>
+      <div class="row" id="resp">
+        <div class="values">
+          Respiratory rate >24/m
+        </div>
+        <div class="yesno">
+          <div id="noresp">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesresp">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+      <div class="row" id="spo">
+        <div class="values">
+          SpO<sub>2</sub> (≤92% on FiO<sub>2</sub>&nbsp; 0.21)
+        </div>
+        <div class="yesno">
+          <div id="nospo">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesspo">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+      <div class="row" id="stroke">
+        <div class="values">
+          Stroke (CVA)
+        </div>
+        <div class="yesno">
+          <div id="nostroke">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesstroke">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+      <div class="row" id="obesity">
+        <div class="values">
+          Obesity (BMI>30)
+        </div>
+        <div class="yesno">
+          <div id="noobesity">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesobesity">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+      <div class="row" id="obesity">
+        <div class="values">
+          Ever smoker
+        </div>
+        <div class="yesno">
+          <div id="noobesity">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesobesity">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+      <div class="row" id="obesity">
+        <div class="values">
+          Dementia
+        </div>
+        <div class="yesno">
+          <div id="noobesity">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesobesity">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="agevalues">
+          CKD Stage
+        </div>
+        <div class="selectAge">
+          <div id="less50">
+            &nbsp&lt;1 0 &nbsp
+          </div>
+          <div id="age50-59">
+            &nbsp2 +1&nbsp
+          </div>
+          <div id="age60-69">
+            &nbsp3 +2&nbsp
+          </div>
+          <div id="age70-79">
+            &nbsp4 +5&nbsp
+          </div>
+          <div id="more80">
+            &nbsp5 +7&nbsp
+          </div>
+        </div>
+      </div>
+      <div class="row" id="obesity">
+        <div class="values">
+          WCC >11 * 10^9
+        </div>
+        <div class="yesno">
+          <div id="noobesity">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesobesity">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+      <div class="row" id="obesity">
+        <div class="values">
+          Lymphocytes &lt;0.7 * 10^9
+        </div>
+        <div class="yesno">
+          <div id="noobesity">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesobesity">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+      <div class="row" id="obesity">
+        <div class="values">
+          CXR (&gt;4 zones affected)
+        </div>
+        <div class="yesno">
+          <div id="noobesity">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesobesity">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+      <div class="row result">
+        <h2><strong>&nbspResult:</strong></h2>
+        <div id="resultText">
+        </div>
+      </div>
+      <button id="submitButton">Submit Here</button>
+    </div>
+    </div>
+  </body>
+  <script src="long_score.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+

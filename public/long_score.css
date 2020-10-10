@@ -1,0 +1,155 @@
+.container-fluid{
+
+  height: 900px;
+  width: 100vw;
+  top:60px;
+  left: 0px;
+  background: white;
+  cursor: default;
+  display: grid;
+}
+.container-grid {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+}
+
+.row{
+  border-top: 1px solid grey;
+  height: 40px;
+  font-size: 17px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.nhsnumbertext {
+  flex-basis: 20%;
+}
+.nhsnumberform {
+  flex-basis: 80%;
+}
+.nhsdata {
+  border-radius: 10px;
+  border: 1px solid gray;
+  background: lightgray;
+}
+.values {
+  flex-basis: 60%;
+}
+.agevalues {
+  flex-basis: 20%;
+}
+.yesno {
+  border: 1px solid grey;
+  flex-basis: 35%;
+  display: flex;
+  border-radius: 5px;
+}
+.selectAge {
+  flex-basis: 75%;
+  display: flex;
+  font-size: 12px;
+}
+
+#noresp{
+  background: #117d67;
+  color: white;
+  flex-basis: 50%;
+}
+#nospo{
+  background: #117d67;
+  color: white;
+  flex-basis: 50%;
+}
+#nostroke{
+  background: #117d67;
+  color: white;
+  flex-basis: 50%;
+}
+#noobesity{
+  background: #117d67;
+  color: white;
+  flex-basis: 50%;
+}
+#less50{
+  padding-left: 10px;
+  background: lightgrey;
+  color: black;
+  flex-basis: 20%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+#age50-59{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#age60-69{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#age70-79{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#more80{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#yesresp{
+  background: lightgrey;
+  flex-basis: 50%;
+}
+#yesspo{
+  background: lightgrey;
+  flex-basis: 50%;
+}
+#yesstroke{
+  background: lightgrey;
+  flex-basis: 50%;
+}
+#yesobesity{
+  background: lightgrey;
+  flex-basis: 50%;
+}
+
+.title{
+  font-size: 40px;
+  text-align: center;
+}
+
+.result{
+  background: #117d67;
+  height: 100%;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #117d67;
+  margin-right: 15px;
+}
+
+#resultText {
+  padding-left: 20px;
+}
