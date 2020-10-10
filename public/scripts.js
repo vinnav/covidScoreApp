@@ -9,7 +9,7 @@ let stroke = 0;
 let obesity = 0;
 
 // Array of mortality scores
-let mortality = ["3.23%","5.41%", "9.00%", "30.72%", "40.58%", "65.59%", "73.85%", ">73.85%", ">73.85%"]
+let mortality = ["1.4%","5.3%", "5.9%", "19.7%", "33.3%", "39.7%", "40%", "40.6%", "47.9%", "74.6%", "77.8%", ">77.8%"]
 
 // Result logic
 let resultText = document.getElementById("resultText");
@@ -196,7 +196,7 @@ function age7079check(){
     allAgeUncheck();
     age7079.style.backgroundColor = '#117d67';
     age7079.style.color = 'white';
-    ageSum+=3;
+    ageSum+=5;
     age7079.removeEventListener("click", age7079check);
     age7079.addEventListener("click", age7079uncheck);
     getMortalityScore()
@@ -213,7 +213,7 @@ function age7079uncheck(){
 agemore80.addEventListener("click", agemore80check);
 function agemore80check(){
     allAgeUncheck();
-    ageSum+=4;
+    ageSum+=7;
     agemore80.style.backgroundColor = '#117d67';
     agemore80.style.color = 'white';
     console.log("added 4")
