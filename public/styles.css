@@ -1,17 +1,10 @@
-.container-fluid{
-
+.container-grid {
+  margin: 10px;
   height: 900px;
-  width: 100vw;
-  top:60px;
-  left: 0px;
   background: white;
   cursor: default;
   display: grid;
-}
-.container-grid {
-  display: grid;
-  grid-gap: 15px;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-template-rows: 0.6fr 0.6fr 0.6fr 0.6fr 1fr 1fr 1fr 1fr 1fr 2fr;
 }
 
 .row{
@@ -25,10 +18,15 @@
   flex-direction: row;
 }
 
-.nhsnumbertext {
+.title{
+  font-size: 40px;
+  text-align: center;
+}
+
+.patientDataText {
   flex-basis: 20%;
 }
-.nhsnumberform {
+.patientDataForm {
   flex-basis: 80%;
 }
 .nhsdata {
@@ -54,26 +52,12 @@
   font-size: 12px;
 }
 
-#noresp{
+.nobtn {
   background: #117d67;
   color: white;
   flex-basis: 50%;
 }
-#nospo{
-  background: #117d67;
-  color: white;
-  flex-basis: 50%;
-}
-#nostroke{
-  background: #117d67;
-  color: white;
-  flex-basis: 50%;
-}
-#noobesity{
-  background: #117d67;
-  color: white;
-  flex-basis: 50%;
-}
+
 #less50{
   padding-left: 10px;
   background: lightgrey;
@@ -119,27 +103,13 @@
   border-bottom: 1px solid grey;
   background: lightgrey;
 }
-#yesresp{
-  background: lightgrey;
-  flex-basis: 50%;
-}
-#yesspo{
-  background: lightgrey;
-  flex-basis: 50%;
-}
-#yesstroke{
-  background: lightgrey;
-  flex-basis: 50%;
-}
-#yesobesity{
+
+.yesbtn{
   background: lightgrey;
   flex-basis: 50%;
 }
 
-.title{
-  font-size: 40px;
-  text-align: center;
-}
+
 
 .result{
   background: #117d67;
@@ -147,7 +117,6 @@
   color: white;
   border-radius: 5px;
   border: 1px solid #117d67;
-  margin-right: 15px;
 }
 
 #resultText {

@@ -10,37 +10,37 @@
 
     <div class="title">SOARS Covid Score</div>
 
-    <div class="container-fluid" id="startpage">
+
       <div class="container-grid">
       <div class="row">
-          <div class="nhsnumbertext">
+          <div class="patientDataText">
             NHS Number
           </div>   
-          <div class="nhsnumberform">
+          <div class="patientDataForm">
             <input type="text" size="20" class="nhsdata" id="nhsnumber">  
           </div>
       </div>
       <div class="row">
-        <div class="nhsnumbertext">
+        <div class="patientDataText">
             Name
         </div>
-        <div class="nhsnumberform">
+        <div class="patientDataForm">
           <input type="text" size="20" class="nhsdata" id="name">  
         </div>
       </div>
       <div class="row">
-        <div class="nhsnumbertext">
+        <div class="patientDataText">
           Surname
         </div>
-        <div class="nhsnumberform">
+        <div class="patientDataForm">
           <input type="text" size="20" class="nhsdata" id="surname">  
         </div>
       </div>
       <div class="row">
-        <div class="nhsnumbertext">
+        <div class="patientDataText">
           Date of birth
         </div>
-        <div class="nhsnumberform">
+        <div class="patientDataForm">
           <input type="date" size="20" class="nhsdata" id="dob">  
         </div>
       </div>
@@ -71,10 +71,10 @@
           Respiratory rate >24/m
         </div>
         <div class="yesno">
-          <div id="noresp">
+          <div id="noresp" class="nobtn">
             &nbspNo 0 &nbsp
           </div>
-          <div id="yesresp">
+          <div id="yesresp" class="yesbtn">
             &nbspYes +1
           </div>
         </div>
@@ -84,10 +84,10 @@
           SpO<sub>2</sub> (≤92% on FiO<sub>2</sub>&nbsp; 0.21)
         </div>
         <div class="yesno">
-          <div id="nospo">
+          <div id="nospo" class="nobtn">
             &nbspNo 0 &nbsp
           </div>
-          <div id="yesspo">
+          <div id="yesspo" class="yesbtn">
             &nbspYes +1
           </div>
         </div>
@@ -97,10 +97,10 @@
           Stroke (CVA)
         </div>
         <div class="yesno">
-          <div id="nostroke">
+          <div id="nostroke" class="nobtn">
             &nbspNo 0 &nbsp
           </div>
-          <div id="yesstroke">
+          <div id="yesstroke" class="yesbtn">
             &nbspYes +1
           </div>
         </div>
@@ -110,10 +110,10 @@
           Obesity (BMI>30)
         </div>
         <div class="yesno">
-          <div id="noobesity">
+          <div id="noobesity" class="nobtn">
             &nbspNo 0 &nbsp
           </div>
-          <div id="yesobesity">
+          <div id="yesobesity" class="yesbtn">
             &nbspYes +1
           </div>
         </div>
@@ -125,7 +125,7 @@
       </div>
       <button id="submitButton">Submit Here</button>
     </div>
-    </div>
+
   </body>
   <script src="scripts.js"></script>
 </html>
