@@ -3,10 +3,18 @@
 let mortalitySum = 0;
 
 let ageSum = 0;
+let ckdSum = 0;
+
 let resp = 0;
 let spo = 0;
 let stroke = 0;
 let obesity = 0;
+let smoker = 0;
+let dementia = 0;
+let wcc = 0;
+let ckd = 0;
+let lymph = 0;
+let cxr = 0;
 
 // Array of mortality scores
 let mortality = ["1.4%","5.3%", "5.9%", "19.7%", "33.3%", "39.7%", "40%", "40.6%", "47.9%", "74.6%", "77.8%", ">77.8%"]
@@ -15,7 +23,8 @@ let mortality = ["1.4%","5.3%", "5.9%", "19.7%", "33.3%", "39.7%", "40%", "40.6%
 let resultText = document.getElementById("resultText");
 
 function getMortalityScore(){
-    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum) + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum)] + "</p>";
+    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum+ckdSum);
+    //  + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum)] + "</p>"
 }
 // Adding points on pressing buttons
 // Respiratory rate >24/m
@@ -125,6 +134,142 @@ function obesityuncheck(){
     yesobesity.style.color = 'black';
     getMortalityScore()
 }
+
+// Smoker
+let yessmoker = document.getElementById("yessmoker");
+let nosmoker = document.getElementById("nosmoker");
+yessmoker.addEventListener("click", smokercheck);
+function smokercheck(){
+    smoker = 1;
+    yessmoker.style.backgroundColor = '#117d67';
+    yessmoker.style.color = 'white';
+    mortalitySum++;
+    yessmoker.removeEventListener("click", smokercheck);
+    nosmoker.addEventListener("click", smokeruncheck);
+    nosmoker.style.backgroundColor = 'lightgrey';
+    nosmoker.style.color = 'black';
+    getMortalityScore()
+}
+function smokeruncheck(){
+    obesity = 0;
+    nosmoker.style.backgroundColor = '#117d67';
+    nosmoker.style.color = 'white';
+    mortalitySum--;
+    nosmoker.removeEventListener("click", smokeruncheck);
+    yessmoker.addEventListener("click", smokercheck);
+    yessmoker.style.backgroundColor = 'lightgrey';
+    yessmoker.style.color = 'black';
+    getMortalityScore()
+}
+
+// Dementia
+let yesdementia = document.getElementById("yesdementia");
+let nodementia = document.getElementById("nodementia");
+yesdementia.addEventListener("click", dementiacheck);
+function dementiacheck(){
+    smoker = 1;
+    yesdementia.style.backgroundColor = '#117d67';
+    yesdementia.style.color = 'white';
+    mortalitySum++;
+    yesdementia.removeEventListener("click", dementiacheck);
+    nodementia.addEventListener("click", dementiauncheck);
+    nodementia.style.backgroundColor = 'lightgrey';
+    nodementia.style.color = 'black';
+    getMortalityScore()
+}
+function dementiauncheck(){
+    obesity = 0;
+    nodementia.style.backgroundColor = '#117d67';
+    nodementia.style.color = 'white';
+    mortalitySum--;
+    nodementia.removeEventListener("click", dementiauncheck);
+    yesdementia.addEventListener("click", dementiacheck);
+    yesdementia.style.backgroundColor = 'lightgrey';
+    yesdementia.style.color = 'black';
+    getMortalityScore()
+}
+
+// wcc
+let yeswcc = document.getElementById("yeswcc");
+let nowcc = document.getElementById("nowcc");
+yeswcc.addEventListener("click", wcccheck);
+function wcccheck(){
+    smoker = 1;
+    yeswcc.style.backgroundColor = '#117d67';
+    yeswcc.style.color = 'white';
+    mortalitySum++;
+    yeswcc.removeEventListener("click", wcccheck);
+    nowcc.addEventListener("click", wccuncheck);
+    nowcc.style.backgroundColor = 'lightgrey';
+    nowcc.style.color = 'black';
+    getMortalityScore()
+}
+function wccuncheck(){
+    obesity = 0;
+    nowcc.style.backgroundColor = '#117d67';
+    nowcc.style.color = 'white';
+    mortalitySum--;
+    nowcc.removeEventListener("click", wccuncheck);
+    yeswcc.addEventListener("click", wcccheck);
+    yeswcc.style.backgroundColor = 'lightgrey';
+    yeswcc.style.color = 'black';
+    getMortalityScore()
+}
+
+// lymph
+let yeslymph = document.getElementById("yeslymph");
+let nolymph = document.getElementById("nolymph");
+yeslymph.addEventListener("click", lymphcheck);
+function lymphcheck(){
+    smoker = 1;
+    yeslymph.style.backgroundColor = '#117d67';
+    yeslymph.style.color = 'white';
+    mortalitySum++;
+    yeslymph.removeEventListener("click", lymphcheck);
+    nolymph.addEventListener("click", lymphuncheck);
+    nolymph.style.backgroundColor = 'lightgrey';
+    nolymph.style.color = 'black';
+    getMortalityScore()
+}
+function lymphuncheck(){
+    obesity = 0;
+    nolymph.style.backgroundColor = '#117d67';
+    nolymph.style.color = 'white';
+    mortalitySum--;
+    nolymph.removeEventListener("click", lymphuncheck);
+    yeslymph.addEventListener("click", lymphcheck);
+    yeslymph.style.backgroundColor = 'lightgrey';
+    yeslymph.style.color = 'black';
+    getMortalityScore()
+}
+
+// cxr
+let yescxr = document.getElementById("yescxr");
+let nocxr = document.getElementById("nocxr");
+yescxr.addEventListener("click", cxrcheck);
+function cxrcheck(){
+    smoker = 1;
+    yescxr.style.backgroundColor = '#117d67';
+    yescxr.style.color = 'white';
+    mortalitySum++;
+    yescxr.removeEventListener("click", cxrcheck);
+    nocxr.addEventListener("click", cxruncheck);
+    nocxr.style.backgroundColor = 'lightgrey';
+    nocxr.style.color = 'black';
+    getMortalityScore()
+}
+function cxruncheck(){
+    obesity = 0;
+    nocxr.style.backgroundColor = '#117d67';
+    nocxr.style.color = 'white';
+    mortalitySum--;
+    nocxr.removeEventListener("click", cxruncheck);
+    yescxr.addEventListener("click", cxrcheck);
+    yescxr.style.backgroundColor = 'lightgrey';
+    yescxr.style.color = 'black';
+    getMortalityScore()
+}
+
 
 // Age
 let ageless50 = document.getElementById("less50");
@@ -241,6 +386,122 @@ function allAgeUncheck(){
     agemore80uncheck();
 }
 
+// ckd
+let ckd1 = document.getElementById("ckd1");
+let ckd2 = document.getElementById("ckd2");
+let ckd3 = document.getElementById("ckd3");
+let ckd4 = document.getElementById("ckd4");
+let ckd5 = document.getElementById("ckd5");
+
+ckd1.addEventListener("click", ckd1check);
+function ckd1check(){
+    allCkdUncheck();
+    ckd1.style.backgroundColor = '#117d67';
+    ckd1.style.color = 'white';
+    ckdSum+=1;
+    ckd1.removeEventListener("click", ckd1check);
+    ckd1.addEventListener("click", ckd1uncheck);
+    getMortalityScore()
+}
+function ckd1uncheck(){
+    ckd1.addEventListener("click", ckd1check);
+    ckd1.style.backgroundColor = 'lightgrey';
+    ckd1.style.color = 'black';
+    ckdSum = 0;
+    ckd1.removeEventListener("click", ckd1uncheck);
+    ckd1.addEventListener("click", ckd1check);
+    getMortalityScore()
+}
+
+ckd2.addEventListener("click", ckd2check);
+function ckd2check(){
+    allCkdUncheck();
+    ckd2.style.backgroundColor = '#117d67';
+    ckd2.style.color = 'white';
+    ckdSum+=2;
+    ckd2.removeEventListener("click", ckd2check);
+    ckd2.addEventListener("click", ckd2uncheck);
+    getMortalityScore()
+}
+function ckd2uncheck(){
+    ckdSum = 0;
+    ckd2.addEventListener("click", ckd2check);
+    ckd2.style.backgroundColor = 'lightgrey';
+    ckd2.style.color = 'black';
+    ckd2.removeEventListener("click", ckd2uncheck);
+    ckd2.addEventListener("click", ckd2check);
+    getMortalityScore()
+}
+
+ckd3.addEventListener("click", ckd3check);
+function ckd3check(){
+    allCkdUncheck();
+    ckd3.style.backgroundColor = '#117d67';
+    ckd3.style.color = 'white';
+    ckdSum+=3;
+    ckd3.removeEventListener("click", ckd3check);
+    ckd3.addEventListener("click", ckd3uncheck);
+    getMortalityScore()
+}
+function ckd3uncheck(){
+    ckdSum = 0;
+    ckd3.addEventListener("click", ckd3check);
+    ckd3.style.backgroundColor = 'lightgrey';
+    ckd3.style.color = 'black';
+    ckd3.removeEventListener("click", ckd3uncheck);
+    ckd3.addEventListener("click", ckd3check);
+    getMortalityScore()
+}
+
+ckd4.addEventListener("click", ckd4check);
+function ckd4check(){
+    allCkdUncheck();
+    ckd4.style.backgroundColor = '#117d67';
+    ckd4.style.color = 'white';
+    ckdSum+=4;
+    ckd4.removeEventListener("click", ckd4check);
+    ckd4.addEventListener("click", ckd4uncheck);
+    getMortalityScore()
+}
+function ckd4uncheck(){
+    ckdSum = 0;
+    ckd4.style.backgroundColor = 'lightgrey';
+    ckd4.style.color = 'black';
+    ckd4.removeEventListener("click", ckd4uncheck);
+    ckd4.addEventListener("click", ckd4check);
+    getMortalityScore()
+}
+
+ckd5.addEventListener("click", ckd5check);
+function ckd5check(){
+    allCkdUncheck();
+    ckdSum+=5;
+    ckd5.style.backgroundColor = '#117d67';
+    ckd5.style.color = 'white';
+    console.log("added 4")
+    ckd5.removeEventListener("click", ckd5check);
+    ckd5.addEventListener("click", ckd5uncheck);
+    getMortalityScore()
+}
+function ckd5uncheck(){
+    ckdSum = 0;
+    console.log("removed 4")
+    ckd5.addEventListener("click", ckd5check);
+    ckd5.style.backgroundColor = 'lightgrey';
+    ckd5.style.color = 'black';
+    ckd5.removeEventListener("click", ckd5uncheck);
+    ckd5.addEventListener("click", ckd5check);
+    getMortalityScore()
+}
+
+function allCkdUncheck(){
+    ckdSum = 0;
+    ckd1uncheck();
+    ckd2uncheck();
+    ckd3uncheck();
+    ckd4uncheck();
+    ckd5uncheck();
+}
 // TODO: uncheck previous age button when new one is clicked
 // function uncheckAll(){}
 

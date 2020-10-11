@@ -42,7 +42,16 @@
 .agevalues {
   flex-basis: 20%;
 }
-.ckdvalues {
+.comorbidvalues {
+  flex-basis: 20%;
+}
+.rrvalues {
+  flex-basis: 20%;
+}
+.ureavalues {
+  flex-basis: 20%;
+}
+.crpvalues {
   flex-basis: 20%;
 }
 .yesno {
@@ -57,13 +66,37 @@
   font-size: 12px;
 }
 
-.selectckd {
+.selectComorbid {
   flex-basis: 75%;
   display: flex;
   font-size: 12px;
+  justify-content: flex-end;
+}
+.selectrr {
+  flex-basis: 75%;
+  display: flex;
+  font-size: 12px;
+  justify-content: flex-end;
+}
+.selecturea {
+  flex-basis: 75%;
+  display: flex;
+  font-size: 12px;
+  justify-content: flex-end;
+}
+.selectcrp {
+  flex-basis: 75%;
+  display: flex;
+  font-size: 12px;
+  justify-content: flex-end;
 }
 
-#noresp{
+#nospo{
+  background: #117d67;
+  color: white;
+  flex-basis: 50%;
+}
+#femaleSex{
   background: #117d67;
   color: white;
   flex-basis: 50%;
@@ -73,38 +106,7 @@
   color: white;
   flex-basis: 50%;
 }
-#nostroke{
-  background: #117d67;
-  color: white;
-  flex-basis: 50%;
-}
-#noobesity{
-  background: #117d67;
-  color: white;
-  flex-basis: 50%;
-}
-
-#nosmoker{
-  background: #117d67;
-  color: white;
-  flex-basis: 50%;
-}
-#nodementia{
-  background: #117d67;
-  color: white;
-  flex-basis: 50%;
-}
-#nowcc{
-  background: #117d67;
-  color: white;
-  flex-basis: 50%;
-}
-#nolymph{
-  background: #117d67;
-  color: white;
-  flex-basis: 50%;
-}
-#nocxr{
+#nogcs{
   background: #117d67;
   color: white;
   flex-basis: 50%;
@@ -155,7 +157,8 @@
   border-bottom: 1px solid grey;
   background: lightgrey;
 }
-#ckd1{
+
+#comorbid0{
   padding-left: 10px;
   background: lightgrey;
   color: black;
@@ -166,7 +169,7 @@
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
 }
-#ckd2{
+#comorbid1{
   padding-left: 10px;
   flex-basis: 20%;
   border-right: 1px solid grey;
@@ -174,23 +177,7 @@
   border-bottom: 1px solid grey;
   background: lightgrey;
 }
-#ckd3{
-  padding-left: 10px;
-  flex-basis: 20%;
-  border-right: 1px solid grey;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
-  background: lightgrey;
-}
-#ckd4{
-  padding-left: 10px;
-  flex-basis: 20%;
-  border-right: 1px solid grey;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
-  background: lightgrey;
-}
-#ckd5{
+#comorbid2{
   padding-left: 10px;
   flex-basis: 20%;
   border-right: 1px solid grey;
@@ -200,7 +187,97 @@
   border-bottom: 1px solid grey;
   background: lightgrey;
 }
-#yesresp{
+
+#rr20{
+  padding-left: 10px;
+  background: lightgrey;
+  color: black;
+  flex-basis: 20%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+#rr20-29{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#rr30{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+
+#urea7{
+  padding-left: 10px;
+  background: lightgrey;
+  color: black;
+  flex-basis: 20%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+#urea7-14{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#urea14{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#crp50{
+  padding-left: 10px;
+  background: lightgrey;
+  color: black;
+  flex-basis: 20%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+#crp50-99{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+#crp100{
+  padding-left: 10px;
+  flex-basis: 20%;
+  border-right: 1px solid grey;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: lightgrey;
+}
+
+#maleSex{
   background: lightgrey;
   flex-basis: 50%;
 }
@@ -208,34 +285,11 @@
   background: lightgrey;
   flex-basis: 50%;
 }
-#yesstroke{
+#yesgcs{
   background: lightgrey;
   flex-basis: 50%;
 }
-#yesobesity{
-  background: lightgrey;
-  flex-basis: 50%;
-}
-#yessmoker{
-  background: lightgrey;
-  flex-basis: 50%;
-}
-#yesdementia{
-  background: lightgrey;
-  flex-basis: 50%;
-}
-#yeswcc{
-  background: lightgrey;
-  flex-basis: 50%;
-}
-#yeslymph{
-  background: lightgrey;
-  flex-basis: 50%;
-}
-#yescxr{
-  background: lightgrey;
-  flex-basis: 50%;
-}
+
 
 .title{
   font-size: 40px;

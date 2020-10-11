@@ -3,13 +3,13 @@
   <head>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="long_score.css" rel="stylesheet">
+    <link href="isaric.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Covid Long Score</title>
+    <title>ISARIC Score</title>
   </head>
   <body>
 
-    <div class="title">Covid Long Score</div>
+    <div class="title">ISARIC Score</div>
 
     <div class="container-fluid" id="startpage">
       <div class="container-grid">
@@ -54,29 +54,61 @@
             &nbsp&lt;50 0 &nbsp
           </div>
           <div id="age50-59">
-            &nbsp50-59 +1&nbsp
+            &nbsp50-59 +2&nbsp
           </div>
           <div id="age60-69">
-            &nbsp60-69 +2&nbsp
+            &nbsp60-69 +4&nbsp
           </div>
           <div id="age70-79">
-            &nbsp70-79 +5&nbsp
+            &nbsp70-79 +6&nbsp
           </div>
           <div id="more80">
             &nbsp&gt;80 +7&nbsp
           </div>
         </div>
       </div>
-      <div class="row" id="resp">
+      <div class="row" id="sex">
         <div class="values">
-          Respiratory rate >24/m
+          Sex
         </div>
         <div class="yesno">
-          <div id="noresp">
-            &nbspNo 0 &nbsp
+          <div id="femaleSex">
+            &nbspFemale 0 &nbsp
           </div>
-          <div id="yesresp">
-            &nbspYes +1
+          <div id="maleSex">
+            &nbspMale +1
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="comorbidvalues">
+          Comorbidities
+        </div>
+        <div class="selectComorbid">
+          <div id="comorbid0">
+            &nbsp0 &nbsp
+          </div>
+          <div id="comorbid1">
+            &nbsp1 +1&nbsp
+          </div>
+          <div id="comorbid2">
+            &nbsp&gt;2 +2&nbsp
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rrvalues">
+          Respiratory Rate
+        </div>
+        <div class="selectrr">
+          <div id="rr20">
+            &nbsp&lt;20 0 &nbsp
+          </div>
+          <div id="rr20-29">
+            &nbsp20-29 +1&nbsp
+          </div>
+          <div id="rr30">
+            &nbsp&gt;30 +2&nbsp
           </div>
         </div>
       </div>
@@ -89,123 +121,56 @@
             &nbspNo 0 &nbsp
           </div>
           <div id="yesspo">
-            &nbspYes +1
+            &nbspYes +2
           </div>
         </div>
       </div>
-      <div class="row" id="stroke">
+      <div class="row" id="gcs">
         <div class="values">
-          Stroke (CVA)
+          GCS &lt;15
         </div>
         <div class="yesno">
-          <div id="nostroke">
+          <div id="nogcs">
             &nbspNo 0 &nbsp
           </div>
-          <div id="yesstroke">
-            &nbspYes +1
-          </div>
-        </div>
-      </div>
-      <div class="row" id="obesity">
-        <div class="values">
-          Obesity (BMI>30)
-        </div>
-        <div class="yesno">
-          <div id="noobesity">
-            &nbspNo 0 &nbsp
-          </div>
-          <div id="yesobesity">
-            &nbspYes +1
-          </div>
-        </div>
-      </div>
-      <div class="row" id="smoker">
-        <div class="values">
-          Ever smoker
-        </div>
-        <div class="yesno">
-          <div id="nosmoker">
-            &nbspNo 0 &nbsp
-          </div>
-          <div id="yessmoker">
-            &nbspYes +1
-          </div>
-        </div>
-      </div>
-      <div class="row" id="dementia">
-        <div class="values">
-          Dementia
-        </div>
-        <div class="yesno">
-          <div id="nodementia">
-            &nbspNo 0 &nbsp
-          </div>
-          <div id="yesdementia">
-            &nbspYes +1
+          <div id="yesgcs">
+            &nbspYes +2
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="ckdvalues">
-          CKD Stage
+        <div class="ureavalues">
+          Urea
         </div>
-        <div class="selectckd">
-          <div id="ckd1">
-            &nbsp1 +1 &nbsp
+        <div class="selecturea">
+          <div id="urea7">
+            &nbsp&lt;20 0 &nbsp
           </div>
-          <div id="ckd2">
-            &nbsp2 +2&nbsp
+          <div id="urea7-14">
+            &nbsp20-29 +1&nbsp
           </div>
-          <div id="ckd3">
-            &nbsp3 +3&nbsp
-          </div>
-          <div id="ckd4">
-            &nbsp4 +4&nbsp
-          </div>
-          <div id="ckd5">
-            &nbsp5 +5&nbsp
+          <div id="urea14">
+            &nbsp&gt;30 +2&nbsp
           </div>
         </div>
       </div>
-      <div class="row" id="wcc">
-        <div class="values">
-          WCC >11 * 10^9
+      <div class="row">
+        <div class="crpvalues">
+          CRP
         </div>
-        <div class="yesno">
-          <div id="nowcc">
-            &nbspNo 0 &nbsp
+        <div class="selectcrp">
+          <div id="crp50">
+            &nbsp&lt;20 0 &nbsp
           </div>
-          <div id="yeswcc">
-            &nbspYes +1
+          <div id="crp50-99">
+            &nbsp20-29 +1&nbsp
           </div>
-        </div>
-      </div>
-      <div class="row" id="lymph">
-        <div class="values">
-          Lymphocytes &lt;0.7 * 10^9
-        </div>
-        <div class="yesno">
-          <div id="nolymph">
-            &nbspNo 0 &nbsp
-          </div>
-          <div id="yeslymph">
-            &nbspYes +1
+          <div id="crp100">
+            &nbsp&gt;30 +2&nbsp
           </div>
         </div>
       </div>
-      <div class="row" id="cxr">
-        <div class="values">
-          CXR (&gt;4 zones affected)
-        </div>
-        <div class="yesno">
-          <div id="nocxr">
-            &nbspNo 0 &nbsp
-          </div>
-          <div id="yescxr">
-            &nbspYes +1
-          </div>
-        </div>
-      </div>
+      
       <div class="row result">
         <h2><strong>&nbspResult:</strong></h2>
         <div id="resultText">
@@ -215,7 +180,7 @@
     </div>
     </div>
   </body>
-  <script src="long_score.js"></script>
+  <script src="isaric.js"></script>
 </html>
 
 
