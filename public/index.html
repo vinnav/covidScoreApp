@@ -1,141 +1,57 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="styles.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-
-    <div class="title">SOARS Covid Score</div>
-
-
-      <div class="container-grid">
-      <div class="row">
-          <div class="patientDataText">
-            NHS Number
-          </div>   
-          <div class="patientDataForm">
-            <input type="text" size="20" class="nhsdata" id="nhsnumber">  
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>NavTeam Covid scores</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+          NavTeam development 
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">SOARS score</h5>
+                  <p class="card-text">Admission score</p>
+                  <a href="soars.html" class="btn btn-primary">SOARS</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Long score</h5>
+                  <p class="card-text">Inpatient score</p>
+                  <a href="long_score.html" class="btn btn-primary">Long score</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ISARIC score</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="isaric.html" class="btn btn-primary">ISARIC</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Data spreadsheet</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="https://vinnav.github.io/csv-to-html-table/" class="btn btn-info">Spreadsheet</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        
       </div>
-      <div class="row">
-        <div class="patientDataText">
-            Name
-        </div>
-        <div class="patientDataForm">
-          <input type="text" size="20" class="nhsdata" id="name">  
-        </div>
-      </div>
-      <div class="row">
-        <div class="patientDataText">
-          Surname
-        </div>
-        <div class="patientDataForm">
-          <input type="text" size="20" class="nhsdata" id="surname">  
-        </div>
-      </div>
-      <div class="row">
-        <div class="patientDataText">
-          Date of birth
-        </div>
-        <div class="patientDataForm">
-          <input type="date" size="20" class="nhsdata" id="dob">  
-        </div>
-      </div>
-      <div class="row">
-        <div class="agevalues">
-          Age
-        </div>
-        <div class="selectAge">
-          <div id="less50">
-            &nbsp&lt;50 0 &nbsp
-          </div>
-          <div id="age50-59">
-            &nbsp50-59 +1&nbsp
-          </div>
-          <div id="age60-69">
-            &nbsp60-69 +2&nbsp
-          </div>
-          <div id="age70-79">
-            &nbsp70-79 +5&nbsp
-          </div>
-          <div id="more80">
-            &nbsp&gt;80 +7&nbsp
-          </div>
-        </div>
-      </div>
-      <div class="row" id="resp">
-        <div class="values">
-          Respiratory rate >24/m
-        </div>
-        <div class="yesno">
-          <div id="noresp" class="nobtn">
-            &nbspNo 0 &nbsp
-          </div>
-          <div id="yesresp" class="yesbtn">
-            &nbspYes +1
-          </div>
-        </div>
-      </div>
-      <div class="row" id="spo">
-        <div class="values">
-          SpO<sub>2</sub> (≤92% on FiO<sub>2</sub>&nbsp; 0.21)
-        </div>
-        <div class="yesno">
-          <div id="nospo" class="nobtn">
-            &nbspNo 0 &nbsp
-          </div>
-          <div id="yesspo" class="yesbtn">
-            &nbspYes +1
-          </div>
-        </div>
-      </div>
-      <div class="row" id="stroke">
-        <div class="values">
-          Stroke (CVA)
-        </div>
-        <div class="yesno">
-          <div id="nostroke" class="nobtn">
-            &nbspNo 0 &nbsp
-          </div>
-          <div id="yesstroke" class="yesbtn">
-            &nbspYes +1
-          </div>
-        </div>
-      </div>
-      <div class="row" id="obesity">
-        <div class="values">
-          Obesity (BMI>30)
-        </div>
-        <div class="yesno">
-          <div id="noobesity" class="nobtn">
-            &nbspNo 0 &nbsp
-          </div>
-          <div id="yesobesity" class="yesbtn">
-            &nbspYes +1
-          </div>
-        </div>
-      </div>
-      <div class="row result">
-        <h2><strong>&nbspResult:</strong></h2>
-        <div id="resultText">
-        </div>
-      </div>
-      <button id="submitButton">Submit Here</button>
-    </div>
-
-  </body>
-  <script src="scripts.js"></script>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
