@@ -12,14 +12,15 @@ let ureaSum = 0;
 let crpSum = 0;
 
 // Array of mortality scores
-let mortality = ["1.4%","5.3%", "5.9%", "19.7%", "33.3%", "39.7%", "40%", "40.6%", "47.9%", "74.6%", "77.8%", ">77.8%"]
+let mortality = ["<0.3%", "0.3%","0.8%", "2.3%", "4.8%", "7.5%", "7.8%", "11.7%", "14.4%", "19.2%", "22.9%", "26.9%", "32.9%", "40.1%", "44.6%", "51.6%", "59.1%", "66.1%", "75.8%", "77.4%"
+, "82.9%", "87.5%"]
 
 // Result logic
 let resultText = document.getElementById("resultText");
 
 function getMortalityScore(){
-    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum+comorbidSum+rrSum+ureaSum+crpSum);
-    //  + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum)] + "</p>"
+    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum+comorbidSum+rrSum+ureaSum+crpSum) 
+    + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum+comorbidSum+rrSum+ureaSum+crpSum)] + "</p>";
 }
 // Adding points on pressing buttons
 // Sex 
