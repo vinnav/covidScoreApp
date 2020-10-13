@@ -53,7 +53,7 @@
 }
 
 .nobtn {
-  background: #117d67;
+  background: #0066cc;
   color: white;
   flex-basis: 50%;
 }
@@ -112,11 +112,11 @@
 
 
 .result{
-  background: #117d67;
+  background: #0066cc;
   height: 100%;
   color: white;
   border-radius: 5px;
-  border: 1px solid #117d67;
+  border: 1px solid #0066cc;
 }
 
 #resultText {

@@ -11,7 +11,7 @@
 .container-grid {
   display: grid;
   grid-gap: 15px;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1.5fr 1fr 1fr 1fr 2fr;
 }
 
 .row{
