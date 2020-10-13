@@ -11,7 +11,8 @@ extensions = {
 	".png" : "image/png",
 	".gif" : "image/gif",
 	".jpg" : "image/jpeg",
-	".csv" : "text/csv"
+	".csv" : "text/csv",
+	".ico" : "image/x-icon"
 };
  
 //helper function handles file verification
