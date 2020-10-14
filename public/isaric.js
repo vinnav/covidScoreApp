@@ -19,11 +19,11 @@ let mortality = ["<0.3%", "0.3%","0.8%", "2.3%", "4.8%", "7.5%", "7.8%", "11.7%"
 let resultText = document.getElementById("resultText");
 
 function getMortalityScore(){
-    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum+comorbidSum+rrSum+ureaSum+crpSum) 
+    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum+comorbidSum+rrSum+ureaSum+crpSum)
     + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum+comorbidSum+rrSum+ureaSum+crpSum)] + "</p>";
 }
 // Adding points on pressing buttons
-// Sex 
+// Sex
 let maleSex = document.getElementById("maleSex");
 let femaleSex = document.getElementById("femaleSex");
 maleSex.addEventListener("click", maleCheck);
@@ -520,18 +520,18 @@ function postData(path, params, method='post') {
     const form = document.createElement('form');
     form.method = method;
     form.action = path;
-  
+
     for (const key in params) {
       if (params.hasOwnProperty(key)) {
         const hiddenField = document.createElement('input');
         hiddenField.type = 'hidden';
         hiddenField.name = key;
         hiddenField.value = params[key];
-  
+
         form.appendChild(hiddenField);
       }
     }
-  
+
     document.body.appendChild(form);
     form.submit();
   }
@@ -542,8 +542,8 @@ let submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', submitData);
 
 function submitData(){
-    postData("http://15.161.61.239:3000/sendData", {nhsData: nhsNumber.value,
+    postData("http://15.161.6.195:3000/sendDataIsaric", {nhsData: nhsNumber.value,
     nameData: name.value, surnameData: surname.value, dobData: dob.value, ageData: ageSum,
-    respData: resp, spo2Data: spo, strokeData: stroke,
-    obesityData: obesity, scoreData: mortalitySum+ageSum})
+    sexData: sex, comorboditiesData: comorbidSum, respData: rrSum, spo2Data: spo,
+    gcsData: gcs,ureaData: ureaSum, crpData: crpSum, scoreData: mortalitySum+ageSum})
 }
