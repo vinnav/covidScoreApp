@@ -1,0 +1,9 @@
+NHS Number,Name,Surname,DOB,Age,Resp,SpO2,Stroke,Obesity,Score
+
+55134,Rob,Locke,1988-01-01,1,1,1,0,0,3
+12515,Mario,Pierre,,1,1,0,1,0,3
+
+123123,Vincent,De Luc,1998-05-03,0,1,0,0,1,2
+358915,Johan,Must,2020-10-14,1,0,0,0,0,1
+98717395,James,Jameson,1955-01-03,2,1,0,1,0,4
+test1,test,test,2020-10-09,0,0,1,0,0,1
