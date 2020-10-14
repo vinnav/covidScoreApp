@@ -1,0 +1,14 @@
+.card-header{
+  display: flex;
+  height: 60px;
+}
+
+#navItem{
+  margin-left: 15px;
+  color: black;
+}
+
+#navItem:hover{
+  margin-left: 15px;
+  color: #2F3E48;
+}
