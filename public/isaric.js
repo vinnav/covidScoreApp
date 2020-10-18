@@ -22,6 +22,10 @@ function getMortalityScore(){
     resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalitySum+ageSum+comorbidSum+rrSum+ureaSum+crpSum)
     + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[(mortalitySum+ageSum+comorbidSum+rrSum+ureaSum+crpSum)] + "</p>";
 }
+
+
+
+
 // Adding points on pressing buttons
 // Sex
 let maleSex = document.getElementById("maleSex");
@@ -29,7 +33,7 @@ let femaleSex = document.getElementById("femaleSex");
 maleSex.addEventListener("click", maleCheck);
 function maleCheck(){
     sex = 1;
-    maleSex.style.backgroundColor = '#117d67';
+    maleSex.style.backgroundColor = '#0066cc';
     maleSex.style.color = 'white';
     mortalitySum++;
     maleSex.removeEventListener("click", maleCheck);
@@ -40,7 +44,7 @@ function maleCheck(){
 }
 function maleUncheck(){
     sex = 0;
-    femaleSex.style.backgroundColor = '#117d67';
+    femaleSex.style.backgroundColor = '#0066cc';
     femaleSex.style.color = 'white';
     mortalitySum--;
     femaleSex.removeEventListener("click", maleUncheck);
@@ -56,7 +60,7 @@ let nospo = document.getElementById("nospo");
 yesspo.addEventListener("click", spocheck);
 function spocheck(){
     spo = 1;
-    yesspo.style.backgroundColor = '#117d67';
+    yesspo.style.backgroundColor = '#0066cc';
     yesspo.style.color = 'white';
     mortalitySum += 2;
     yesspo.removeEventListener("click", spocheck);
@@ -67,7 +71,7 @@ function spocheck(){
 }
 function spouncheck(){
     spo = 0;
-    nospo.style.backgroundColor = '#117d67';
+    nospo.style.backgroundColor = '#0066cc';
     nospo.style.color = 'white';
     mortalitySum -= 2;
     nospo.removeEventListener("click", spouncheck);
@@ -82,7 +86,7 @@ let nogcs = document.getElementById("nogcs");
 yesgcs.addEventListener("click", gcscheck);
 function gcscheck(){
     gcs = 1;
-    yesgcs.style.backgroundColor = '#117d67';
+    yesgcs.style.backgroundColor = '#0066cc';
     yesgcs.style.color = 'white';
     mortalitySum += 2;
     yesgcs.removeEventListener("click", gcscheck);
@@ -93,7 +97,7 @@ function gcscheck(){
 }
 function gcsuncheck(){
     gcs = 0;
-    nogcs.style.backgroundColor = '#117d67';
+    nogcs.style.backgroundColor = '#0066cc';
     nogcs.style.color = 'white';
     mortalitySum -= 2;
     nospo.removeEventListener("click", gcsuncheck);
@@ -115,7 +119,7 @@ let agemore80 = document.getElementById("more80");
 ageless50.addEventListener("click", ageless50check);
 function ageless50check(){
     allAgeUncheck();
-    ageless50.style.backgroundColor = '#117d67';
+    ageless50.style.backgroundColor = '#0066cc';
     ageless50.style.color = 'white';
     ageless50.removeEventListener("click", ageless50check);
     ageless50.addEventListener("click", ageless50uncheck);
@@ -133,7 +137,7 @@ function ageless50uncheck(){
 age5059.addEventListener("click", age5059check);
 function age5059check(){
     allAgeUncheck();
-    age5059.style.backgroundColor = '#117d67';
+    age5059.style.backgroundColor = '#0066cc';
     age5059.style.color = 'white';
     ageSum+=2;
     age5059.removeEventListener("click", age5059check);
@@ -153,7 +157,7 @@ function age5059uncheck(){
 age6069.addEventListener("click", age6069check);
 function age6069check(){
     allAgeUncheck();
-    age6069.style.backgroundColor = '#117d67';
+    age6069.style.backgroundColor = '#0066cc';
     age6069.style.color = 'white';
     ageSum+=4;
     age6069.removeEventListener("click", age6069check);
@@ -173,7 +177,7 @@ function age6069uncheck(){
 age7079.addEventListener("click", age7079check);
 function age7079check(){
     allAgeUncheck();
-    age7079.style.backgroundColor = '#117d67';
+    age7079.style.backgroundColor = '#0066cc';
     age7079.style.color = 'white';
     ageSum+=6;
     age7079.removeEventListener("click", age7079check);
@@ -193,7 +197,7 @@ agemore80.addEventListener("click", agemore80check);
 function agemore80check(){
     allAgeUncheck();
     ageSum+=7;
-    agemore80.style.backgroundColor = '#117d67';
+    agemore80.style.backgroundColor = '#0066cc';
     agemore80.style.color = 'white';
     console.log("added 4")
     agemore80.removeEventListener("click", agemore80check);
@@ -229,7 +233,7 @@ let rr30 = document.getElementById("rr30");
 rr20.addEventListener("click", rr20check);
 function rr20check(){
     allRrUncheck();
-    rr20.style.backgroundColor = '#117d67';
+    rr20.style.backgroundColor = '#0066cc';
     rr20.style.color = 'white';
     rr20.removeEventListener("click", rr20check);
     rr20.addEventListener("click", rr20uncheck);
@@ -248,7 +252,7 @@ rr2029.addEventListener("click", rr2029check);
 function rr2029check(){
     allRrUncheck();
     rrSum += 1;
-    rr2029.style.backgroundColor = '#117d67';
+    rr2029.style.backgroundColor = '#0066cc';
     rr2029.style.color = 'white';
     rr2029.removeEventListener("click", rr2029check);
     rr2029.addEventListener("click", rr2029uncheck);
@@ -267,7 +271,7 @@ rr30.addEventListener("click", rr30check);
 function rr30check(){
     allRrUncheck();
     rrSum += 2;
-    rr30.style.backgroundColor = '#117d67';
+    rr30.style.backgroundColor = '#0066cc';
     rr30.style.color = 'white';
     rr30.removeEventListener("click", rr30check);
     rr30.addEventListener("click", rr30uncheck);
@@ -298,7 +302,7 @@ let comorbid2 = document.getElementById("comorbid2");
 comorbid0.addEventListener("click", comorbid0check);
 function comorbid0check(){
     allComorbidUncheck();
-    comorbid0.style.backgroundColor = '#117d67';
+    comorbid0.style.backgroundColor = '#0066cc';
     comorbid0.style.color = 'white';
     comorbid0.removeEventListener("click", comorbid0check);
     comorbid0.addEventListener("click", comorbid0uncheck);
@@ -317,7 +321,7 @@ comorbid1.addEventListener("click", comorbid1check);
 function comorbid1check(){
     allComorbidUncheck();
     comorbidSum += 1;
-    comorbid1.style.backgroundColor = '#117d67';
+    comorbid1.style.backgroundColor = '#0066cc';
     comorbid1.style.color = 'white';
     comorbid1.removeEventListener("click", comorbid1check);
     comorbid1.addEventListener("click", comorbid1uncheck);
@@ -336,7 +340,7 @@ comorbid2.addEventListener("click", comorbid2check);
 function comorbid2check(){
     allComorbidUncheck();
     comorbidSum += 2;
-    comorbid2.style.backgroundColor = '#117d67';
+    comorbid2.style.backgroundColor = '#0066cc';
     comorbid2.style.color = 'white';
     comorbid2.removeEventListener("click", comorbid2check);
     comorbid2.addEventListener("click", comorbid2uncheck);
@@ -367,7 +371,7 @@ let crp100 = document.getElementById("crp100");
 crp50.addEventListener("click", crp50check);
 function crp50check(){
     allCrpUncheck();
-    crp50.style.backgroundColor = '#117d67';
+    crp50.style.backgroundColor = '#0066cc';
     crp50.style.color = 'white';
     crp50.removeEventListener("click", crp50check);
     crp50.addEventListener("click", crp50uncheck);
@@ -386,7 +390,7 @@ crp5099.addEventListener("click", crp5099check);
 function crp5099check(){
     allCrpUncheck();
     crpSum += 1;
-    crp5099.style.backgroundColor = '#117d67';
+    crp5099.style.backgroundColor = '#0066cc';
     crp5099.style.color = 'white';
     crp5099.removeEventListener("click", crp5099check);
     crp5099.addEventListener("click", crp5099uncheck);
@@ -405,7 +409,7 @@ crp100.addEventListener("click", crp100check);
 function crp100check(){
     allCrpUncheck();
     crpSum += 2;
-    crp100.style.backgroundColor = '#117d67';
+    crp100.style.backgroundColor = '#0066cc';
     crp100.style.color = 'white';
     crp100.removeEventListener("click", crp100check);
     crp100.addEventListener("click", crp100uncheck);
@@ -436,7 +440,7 @@ let urea14 = document.getElementById("urea14");
 urea7.addEventListener("click", urea7check);
 function urea7check(){
     allUreaUncheck();
-    urea7.style.backgroundColor = '#117d67';
+    urea7.style.backgroundColor = '#0066cc';
     urea7.style.color = 'white';
     urea7.removeEventListener("click", urea7check);
     urea7.addEventListener("click", urea7uncheck);
@@ -455,7 +459,7 @@ urea714.addEventListener("click", urea714check);
 function urea714check(){
     allUreaUncheck();
     ureaSum += 1;
-    urea714.style.backgroundColor = '#117d67';
+    urea714.style.backgroundColor = '#0066cc';
     urea714.style.color = 'white';
     urea714.removeEventListener("click", urea714check);
     urea714.addEventListener("click", urea714uncheck);
@@ -474,7 +478,7 @@ urea14.addEventListener("click", urea14check);
 function urea14check(){
     allUreaUncheck();
     ureaSum += 3;
-    urea14.style.backgroundColor = '#117d67';
+    urea14.style.backgroundColor = '#0066cc';
     urea14.style.color = 'white';
     urea14.removeEventListener("click", urea14check);
     urea14.addEventListener("click", urea14uncheck);
@@ -495,6 +499,12 @@ function allUreaUncheck(){
     urea714uncheck();
     urea14uncheck();
 }
+
+//Starting setup
+rr20check();
+comorbid0check();
+urea7check();
+crp50check();
 
 let nhsNumber = document.getElementById("nhsnumber");
 let name = document.getElementById("name");
