@@ -33,7 +33,7 @@ let noresp = document.getElementById("noresp");
 yesresp.addEventListener("click", respcheck);
 function respcheck(){
     resp = 1;
-    yesresp.style.backgroundColor = '#117d67';
+    yesresp.style.backgroundColor = '#0066cc';
     yesresp.style.color = 'white';
     mortalitySum++;
     yesresp.removeEventListener("click", respcheck);
@@ -44,7 +44,7 @@ function respcheck(){
 }
 function respuncheck(){
     resp = 0;
-    noresp.style.backgroundColor = '#117d67';
+    noresp.style.backgroundColor = '#0066cc';
     noresp.style.color = 'white';
     mortalitySum--;
     noresp.removeEventListener("click", respuncheck);
@@ -60,7 +60,7 @@ let nospo = document.getElementById("nospo");
 yesspo.addEventListener("click", spocheck);
 function spocheck(){
     spo = 1;
-    yesspo.style.backgroundColor = '#117d67';
+    yesspo.style.backgroundColor = '#0066cc';
     yesspo.style.color = 'white';
     mortalitySum++;
     yesspo.removeEventListener("click", spocheck);
@@ -71,7 +71,7 @@ function spocheck(){
 }
 function spouncheck(){
     spo = 0;
-    nospo.style.backgroundColor = '#117d67';
+    nospo.style.backgroundColor = '#0066cc';
     nospo.style.color = 'white';
     mortalitySum--;
     nospo.removeEventListener("click", spouncheck);
@@ -87,7 +87,7 @@ let nostroke = document.getElementById("nostroke");
 yesstroke.addEventListener("click", strokecheck);
 function strokecheck(){
     stroke = 1;
-    yesstroke.style.backgroundColor = '#117d67';
+    yesstroke.style.backgroundColor = '#0066cc';
     yesstroke.style.color = 'white';
     mortalitySum++;
     yesstroke.removeEventListener("click", strokecheck);
@@ -98,7 +98,7 @@ function strokecheck(){
 }
 function strokeuncheck(){
     stroke = 0;
-    nostroke.style.backgroundColor = '#117d67';
+    nostroke.style.backgroundColor = '#0066cc';
     nostroke.style.color = 'white';
     mortalitySum--;
     nostroke.removeEventListener("click", strokeuncheck);
@@ -114,7 +114,7 @@ let noobesity = document.getElementById("noobesity");
 yesobesity.addEventListener("click", obesitycheck);
 function obesitycheck(){
     obesity = 1;
-    yesobesity.style.backgroundColor = '#117d67';
+    yesobesity.style.backgroundColor = '#0066cc';
     yesobesity.style.color = 'white';
     mortalitySum++;
     yesobesity.removeEventListener("click", obesitycheck);
@@ -125,7 +125,7 @@ function obesitycheck(){
 }
 function obesityuncheck(){
     obesity = 0;
-    noobesity.style.backgroundColor = '#117d67';
+    noobesity.style.backgroundColor = '#0066cc';
     noobesity.style.color = 'white';
     mortalitySum--;
     noobesity.removeEventListener("click", obesityuncheck);
@@ -141,7 +141,7 @@ let nosmoker = document.getElementById("nosmoker");
 yessmoker.addEventListener("click", smokercheck);
 function smokercheck(){
     smoker = 1;
-    yessmoker.style.backgroundColor = '#117d67';
+    yessmoker.style.backgroundColor = '#0066cc';
     yessmoker.style.color = 'white';
     mortalitySum++;
     yessmoker.removeEventListener("click", smokercheck);
@@ -152,7 +152,7 @@ function smokercheck(){
 }
 function smokeruncheck(){
     obesity = 0;
-    nosmoker.style.backgroundColor = '#117d67';
+    nosmoker.style.backgroundColor = '#0066cc';
     nosmoker.style.color = 'white';
     mortalitySum--;
     nosmoker.removeEventListener("click", smokeruncheck);
@@ -168,7 +168,7 @@ let nodementia = document.getElementById("nodementia");
 yesdementia.addEventListener("click", dementiacheck);
 function dementiacheck(){
     smoker = 1;
-    yesdementia.style.backgroundColor = '#117d67';
+    yesdementia.style.backgroundColor = '#0066cc';
     yesdementia.style.color = 'white';
     mortalitySum++;
     yesdementia.removeEventListener("click", dementiacheck);
@@ -179,7 +179,7 @@ function dementiacheck(){
 }
 function dementiauncheck(){
     obesity = 0;
-    nodementia.style.backgroundColor = '#117d67';
+    nodementia.style.backgroundColor = '#0066cc';
     nodementia.style.color = 'white';
     mortalitySum--;
     nodementia.removeEventListener("click", dementiauncheck);
@@ -195,7 +195,7 @@ let nowcc = document.getElementById("nowcc");
 yeswcc.addEventListener("click", wcccheck);
 function wcccheck(){
     smoker = 1;
-    yeswcc.style.backgroundColor = '#117d67';
+    yeswcc.style.backgroundColor = '#0066cc';
     yeswcc.style.color = 'white';
     mortalitySum++;
     yeswcc.removeEventListener("click", wcccheck);
@@ -206,7 +206,7 @@ function wcccheck(){
 }
 function wccuncheck(){
     obesity = 0;
-    nowcc.style.backgroundColor = '#117d67';
+    nowcc.style.backgroundColor = '#0066cc';
     nowcc.style.color = 'white';
     mortalitySum--;
     nowcc.removeEventListener("click", wccuncheck);
@@ -222,7 +222,7 @@ let nolymph = document.getElementById("nolymph");
 yeslymph.addEventListener("click", lymphcheck);
 function lymphcheck(){
     smoker = 1;
-    yeslymph.style.backgroundColor = '#117d67';
+    yeslymph.style.backgroundColor = '#0066cc';
     yeslymph.style.color = 'white';
     mortalitySum++;
     yeslymph.removeEventListener("click", lymphcheck);
@@ -233,7 +233,7 @@ function lymphcheck(){
 }
 function lymphuncheck(){
     obesity = 0;
-    nolymph.style.backgroundColor = '#117d67';
+    nolymph.style.backgroundColor = '#0066cc';
     nolymph.style.color = 'white';
     mortalitySum--;
     nolymph.removeEventListener("click", lymphuncheck);
@@ -249,7 +249,7 @@ let nocxr = document.getElementById("nocxr");
 yescxr.addEventListener("click", cxrcheck);
 function cxrcheck(){
     smoker = 1;
-    yescxr.style.backgroundColor = '#117d67';
+    yescxr.style.backgroundColor = '#0066cc';
     yescxr.style.color = 'white';
     mortalitySum++;
     yescxr.removeEventListener("click", cxrcheck);
@@ -260,7 +260,7 @@ function cxrcheck(){
 }
 function cxruncheck(){
     obesity = 0;
-    nocxr.style.backgroundColor = '#117d67';
+    nocxr.style.backgroundColor = '#0066cc';
     nocxr.style.color = 'white';
     mortalitySum--;
     nocxr.removeEventListener("click", cxruncheck);
@@ -281,7 +281,7 @@ let agemore80 = document.getElementById("more80");
 ageless50.addEventListener("click", ageless50check);
 function ageless50check(){
     allAgeUncheck();
-    ageless50.style.backgroundColor = '#117d67';
+    ageless50.style.backgroundColor = '#0066cc';
     ageless50.style.color = 'white';
     ageless50.removeEventListener("click", ageless50check);
     ageless50.addEventListener("click", ageless50uncheck);
@@ -299,7 +299,7 @@ function ageless50uncheck(){
 age5059.addEventListener("click", age5059check);
 function age5059check(){
     allAgeUncheck();
-    age5059.style.backgroundColor = '#117d67';
+    age5059.style.backgroundColor = '#0066cc';
     age5059.style.color = 'white';
     ageSum+=1;
     age5059.removeEventListener("click", age5059check);
@@ -319,7 +319,7 @@ function age5059uncheck(){
 age6069.addEventListener("click", age6069check);
 function age6069check(){
     allAgeUncheck();
-    age6069.style.backgroundColor = '#117d67';
+    age6069.style.backgroundColor = '#0066cc';
     age6069.style.color = 'white';
     ageSum+=2;
     age6069.removeEventListener("click", age6069check);
@@ -339,7 +339,7 @@ function age6069uncheck(){
 age7079.addEventListener("click", age7079check);
 function age7079check(){
     allAgeUncheck();
-    age7079.style.backgroundColor = '#117d67';
+    age7079.style.backgroundColor = '#0066cc';
     age7079.style.color = 'white';
     ageSum+=5;
     age7079.removeEventListener("click", age7079check);
@@ -359,7 +359,7 @@ agemore80.addEventListener("click", agemore80check);
 function agemore80check(){
     allAgeUncheck();
     ageSum+=7;
-    agemore80.style.backgroundColor = '#117d67';
+    agemore80.style.backgroundColor = '#0066cc';
     agemore80.style.color = 'white';
     console.log("added 4")
     agemore80.removeEventListener("click", agemore80check);
@@ -396,7 +396,7 @@ let ckd5 = document.getElementById("ckd5");
 ckd1.addEventListener("click", ckd1check);
 function ckd1check(){
     allCkdUncheck();
-    ckd1.style.backgroundColor = '#117d67';
+    ckd1.style.backgroundColor = '#0066cc';
     ckd1.style.color = 'white';
     ckdSum+=1;
     ckd1.removeEventListener("click", ckd1check);
@@ -416,7 +416,7 @@ function ckd1uncheck(){
 ckd2.addEventListener("click", ckd2check);
 function ckd2check(){
     allCkdUncheck();
-    ckd2.style.backgroundColor = '#117d67';
+    ckd2.style.backgroundColor = '#0066cc';
     ckd2.style.color = 'white';
     ckdSum+=2;
     ckd2.removeEventListener("click", ckd2check);
@@ -436,7 +436,7 @@ function ckd2uncheck(){
 ckd3.addEventListener("click", ckd3check);
 function ckd3check(){
     allCkdUncheck();
-    ckd3.style.backgroundColor = '#117d67';
+    ckd3.style.backgroundColor = '#0066cc';
     ckd3.style.color = 'white';
     ckdSum+=3;
     ckd3.removeEventListener("click", ckd3check);
@@ -456,7 +456,7 @@ function ckd3uncheck(){
 ckd4.addEventListener("click", ckd4check);
 function ckd4check(){
     allCkdUncheck();
-    ckd4.style.backgroundColor = '#117d67';
+    ckd4.style.backgroundColor = '#0066cc';
     ckd4.style.color = 'white';
     ckdSum+=4;
     ckd4.removeEventListener("click", ckd4check);
@@ -476,7 +476,7 @@ ckd5.addEventListener("click", ckd5check);
 function ckd5check(){
     allCkdUncheck();
     ckdSum+=5;
-    ckd5.style.backgroundColor = '#117d67';
+    ckd5.style.backgroundColor = '#0066cc';
     ckd5.style.color = 'white';
     console.log("added 4")
     ckd5.removeEventListener("click", ckd5check);

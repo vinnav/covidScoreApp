@@ -64,48 +64,48 @@
 }
 
 #noresp{
-  background: #117d67;
+  background:#0066cc;
   color: white;
   flex-basis: 50%;
 }
 #nospo{
-  background: #117d67;
+  background:#0066cc;
   color: white;
   flex-basis: 50%;
 }
 #nostroke{
-  background: #117d67;
+  background:#0066cc;
   color: white;
   flex-basis: 50%;
 }
 #noobesity{
-  background: #117d67;
+  background:#0066cc;
   color: white;
   flex-basis: 50%;
 }
 
 #nosmoker{
-  background: #117d67;
+  background:#0066cc;
   color: white;
   flex-basis: 50%;
 }
 #nodementia{
-  background: #117d67;
+  background:#0066cc;
   color: white;
   flex-basis: 50%;
 }
 #nowcc{
-  background: #117d67;
+  background:#0066cc;
   color: white;
   flex-basis: 50%;
 }
 #nolymph{
-  background: #117d67;
+  background:#0066cc;
   color: white;
   flex-basis: 50%;
 }
 #nocxr{
-  background: #117d67;
+  background:#0066cc;
   color: white;
   flex-basis: 50%;
 }
@@ -243,11 +243,11 @@
 }
 
 .result{
-  background: #117d67;
+  background:#0066cc;
   height: 100%;
   color: white;
   border-radius: 5px;
-  border: 1px solid #117d67;
+  border: 1px solid#0066cc;
   margin-right: 15px;
 }
 
