@@ -53,13 +53,13 @@ lName.addEventListener('propertychange', onLNameChange);
 dob.addEventListener("change", onDobChange);
 
 yesTachypneoa.addEventListener("click", onTachypneoaCheck);
- noTachypneoa.addEventListener("click", onTachypneoaUncheck);
+noTachypneoa.addEventListener("click", onTachypneoaUncheck);
 
 yesDesaturated.addEventListener("click", onDesaturatedCheck);
- noDesaturated.addEventListener("click", onDesaturatedUncheck);
+noDesaturated.addEventListener("click", onDesaturatedUncheck);
 
 yesStroke.addEventListener("click", onStrokeCheck);
- noStroke.addEventListener("click", onSrokeUncheck);
+noStroke.addEventListener("click", onSrokeUncheck);
 
 yesObesity.addEventListener("click", onObesityCheck);
 noObesity.addEventListener("click", onObesityUncheck);
@@ -73,7 +73,8 @@ ageOver80.addEventListener("click", onAgeOver80check);
 submitButton.addEventListener('click', onSubmitButtonPress);
 
 //Model Variables
-let age = 0;
+let ageScore = 0;
+let ageYears = 0;
 let tachypneoa = false;
 let desaturated = false;
 let stroke = false;
@@ -83,7 +84,7 @@ let patientNhsNumber = 0;
 
 // Display result
 function getMortalityScore(){
-    mortalityScore = age + tachypneoa + desaturated + stroke + obesity;
+    mortalityScore = ageScore + tachypneoa + desaturated + stroke + obesity;
     resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalityScore) + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[mortalityScore] + "</p>";
 }
 
@@ -169,31 +170,41 @@ function onObesityUncheck()
 }
 
 function onAgeUnder50check(){
-    age = 0;
+    ageScore = 0;
+    ageYears = ageYears < 50 ? ageYears : 0;
+    conditionalResetDobField(!ageYears);
     setAgeButtonStyles(ageUnder50);
     getMortalityScore();
 }
 
 function onAgeBetween5059check(){
-    age = 1;
+    ageScore = 1;
+    ageYears = ageYears >= 50 && ageYears < 60 ? ageYears : 0;
+    conditionalResetDobField(!ageYears);
     setAgeButtonStyles(ageBetween5059);
     getMortalityScore();
 }
 
 function onAgeBetween6069check(){
-    age = 2;
+    ageScore = 2;
+    ageYears = ageYears >= 60 && ageYears < 70 ? ageYears : 0;
+    conditionalResetDobField(!ageYears);
     setAgeButtonStyles(ageBetween6069);
     getMortalityScore();
 }
 
 function onAgeBetween7079check(){
-     age = 5;
+     ageScore = 5;
+     ageYears = ageYears >= 70 && ageYears < 80 ? ageYears : 0;
+     conditionalResetDobField(!ageYears);
      setAgeButtonStyles(ageBetween7079);
      getMortalityScore();
 }
 
 function onAgeOver80check(){
-    age = 7;
+    ageScore = 7;
+    ageYears = ageYears >= 80 ? ageYears : 0;
+    conditionalResetDobField(!ageYears);
     setAgeButtonStyles(ageOver80);
     getMortalityScore();
 }
@@ -217,8 +228,19 @@ function onLNameChange(){
 }
 
 function onDobChange(){
-    //TODO Implement automatic age selection on DOB.
-    return true;
+    let ageMiliseconds = Date.now() - Date.parse(dob.value);
+    ageYears = Math.floor(ageMiliseconds / (3600000 * 24 *365.25));
+    if      (ageYears >= 80) {onAgeOver80check();      return true;}
+    else if (ageYears >= 70) {onAgeBetween7079check(); return true;}
+    else if (ageYears >= 60) {onAgeBetween6069check(); return true;}
+    else if (ageYears >= 50) {onAgeBetween5059check(); return true;}
+    else                    {onAgeUnder50check();     return true;}
+}
+
+function conditionalResetDobField(doResetDob){
+    if(doResetDob){
+        dob.value='';
+    }
 }
 
 function onNhsNumberChange()
@@ -289,7 +311,7 @@ function onSubmitButtonPress()
         nameData:    fName.value, 
         surnameData: lName.value, 
         dobData:     dob.value,
-        ageData:     age,
+        ageData:     ageScore,
         respData:    tachypneoa  ? 1 : 0,
         spo2Data:    desaturated ? 1 : 0,
         strokeData:  stroke   ? 1 : 0,
