@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="shortAndLong.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <title>NavTeam Covid scores</title>
+  </head>
+  <body>
+      <div class="title">
+          <div id=titleText>SOARS Covid Score</div>
+      </div>
+      <div class="container-grid">
+        <div class = "row" id=testSelection>
+          <div class = "values">
+            Regular or Long Score
+          </div>
+          <div class="yesno">
+            <div id="shortScore" class="nobtn">
+              &nbspShort Score &nbsp
+            </div>
+            <div id="longScore" class="yesbtn">
+              &nbspLong Score &nbsp
+            </div>
+          </div>
+        </div>      
+      <div class="row">
+          <div class="patientDataText">
+            NHS N.
+          </div>   
+          <div class="patientDataForm">
+            <input type="text" size="20" class="nhsdata" id="nhsnumber">  
+          </div>
+      </div>
+      <div class="row">
+        <div class="patientDataText">
+            Name
+        </div>
+        <div class="patientDataForm">
+          <input type="text" size="20" class="nhsdata" id="name">  
+        </div>
+      </div>
+      <div class="row">
+        <div class="patientDataText">
+          Surname
+        </div>
+        <div class="patientDataForm">
+          <input type="text" size="20" class="nhsdata" id="surname">  
+        </div>
+      </div>
+      <div class="row">
+        <div class="patientDataText">
+          Dob
+        </div>
+        <div class="patientDataForm">
+          <input type="date" size="20" class="nhsdata" id="dob">  
+        </div>
+      </div>
+      <div class="row">
+        <div class="agevalues">
+          Age
+        </div>
+        <div class="selectAge">
+          <div id="less50" class="multiSelect leftEnd">
+            &nbsp&lt;50 0 &nbsp
+          </div>
+          <div id="age50-59" class=multiSelect>
+            &nbsp50-59 +1&nbsp
+          </div>
+          <div id="age60-69" class=multiSelect>
+            &nbsp60-69 +2&nbsp
+          </div>
+          <div id="age70-79" class=multiSelect>
+            &nbsp70-79 +5&nbsp
+          </div>
+          <div id="more80" class="multiSelect rightEnd">
+            &nbsp&gt;80 +7&nbsp
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="resp">
+        <div class="values">
+          Respiratory rate >24/m
+        </div>
+        <div class="yesno">
+          <div id="noresp" class="nobtn">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesresp" class="yesbtn">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="spo">
+        <div class="values">
+          SpO<sub>2</sub> (<=92% on FiO<sub>2</sub>&nbsp; 0.21)
+        </div>
+        <div class="yesno">
+          <div id="nospo" class="nobtn">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesspo" class="yesbtn">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="stroke">
+        <div class="values">
+          Stroke (CVA)
+        </div>
+        <div class="yesno">
+          <div id="nostroke" class="nobtn">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesstroke" class="yesbtn">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="obesity">
+        <div class="values">
+          Obesity (BMI > 30)
+        </div>
+        <div class="yesno">
+          <div id="noobesity" class="nobtn">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesobesity" class="yesbtn">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="everSmoker">
+        <div class="values">
+          Ever Smoker
+        </div>
+        <div class="yesno">
+          <div id="neverSmoker" class="nobtn">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="everSmoker" class="yesbtn">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="dementia">
+        <div class="values">
+          Dementia
+        </div>
+        <div class="yesno">
+          <div id="noDementia" class="nobtn">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesDementia" class="yesbtn">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="leucophilia">
+        <div class="values">
+          Leucophilia
+        </div>
+        <div class="yesno">
+          <div id="noLeucophilia" class="nobtn">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesLeucophilia" class="yesbtn">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="lymphopenia">
+        <div class="values">
+          Ever Smoker
+        </div>
+        <div class="yesno">
+          <div id="noLymphopenia" class="nobtn">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesLymphopenia" class="yesbtn">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="cxrChanges">
+        <div class="values">
+          CXR Changes in >= 4 zones
+        </div>
+        <div class="yesno">
+          <div id="noCxrChanges" class="nobtn">
+            &nbspNo 0 &nbsp
+          </div>
+          <div id="yesCxrChanges" class="yesbtn">
+            &nbspYes +1
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+      </div>
+
+      <div class="row result">
+        <h2><strong>&nbspResult:</strong></h2>
+        <div id="resultText">
+        </div>
+      </div>
+      <button id="submitButton">Submit Here</button>
+    </div>
+
+  </body>
+  <script src="shortAndLong.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,110 @@
+.title{
+  font-size: 40px;
+  text-align: center;
+}
+
+.container-grid {
+  margin: 10px;
+  height: max-content;
+  background: white;
+  cursor: default;
+  display: grid;
+  grid-template-rows: 0.6fr 0.6fr 0.6fr 0.6fr 1fr 1fr 1fr 1fr 1fr 2fr;
+}
+
+.row{
+  border-top: 1px solid grey;
+  height: 40px;
+  font-size: 17px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.patientDataText {
+  /* Style for demographic labels */
+  flex-basis: 20%;
+}
+.patientDataForm {
+  /* Style for demographic form container*/
+  flex-basis: 80%;
+}
+.nhsdata {
+  /* Style for demographic form controls*/
+  border-radius: 10px;
+  border: 1px solid gray;
+  background: lightgray;
+}
+
+.agevalues {
+  /* Style for age multi-selector label*/
+  flex-basis: 20%;
+}
+
+.selectAge {
+  /* Style for age multi-selector container*/
+  flex-basis: 75%;
+  display: flex;
+  font-size: 12px;
+}
+
+.multiSelect{
+  /* Base style for age multi-selector buttons */
+  padding-left: 10px;
+  flex-basis: 20%;
+  order-right: 1px solid grey;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  color:black;
+  background: lightgrey;
+}
+
+.multiSelect.leftEnd{
+  /* sub-style for left end multi selector button */
+  border-left: 1px solid grey;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.multiSelect.rightEnd{
+  /* sub-style for right end multi selector button */
+  border-right: 1px solid grey;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.values {
+  flex-basis: 60%;
+}
+
+.yesno {
+  border: 1px solid grey;
+  flex-basis: 35%;
+  display: flex;
+  border-radius: 5px;
+}
+.nobtn {
+  background: #0066cc;
+  color: white;
+  flex-basis: 50%;
+}
+.yesbtn{
+  background: lightgrey;
+  flex-basis: 50%;
+}
+
+
+
+
+.result{
+  background: #0066cc;
+  height: 100%;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #0066cc;
+}
+
+#resultText {
+  padding-left: 20px;
+}
