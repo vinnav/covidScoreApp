@@ -172,7 +172,7 @@ function onObesityUncheck()
 function onAgeUnder50check(){
     ageScore = 0;
     ageYears = ageYears < 50 ? ageYears : 0;
-    conditionalResetDobField(!ageYears);
+    setDobFieldIsValid(ageYears);
     setAgeButtonStyles(ageUnder50);
     getMortalityScore();
 }
@@ -180,7 +180,7 @@ function onAgeUnder50check(){
 function onAgeBetween5059check(){
     ageScore = 1;
     ageYears = ageYears >= 50 && ageYears < 60 ? ageYears : 0;
-    conditionalResetDobField(!ageYears);
+    setDobFieldIsValid(ageYears);
     setAgeButtonStyles(ageBetween5059);
     getMortalityScore();
 }
@@ -188,7 +188,7 @@ function onAgeBetween5059check(){
 function onAgeBetween6069check(){
     ageScore = 2;
     ageYears = ageYears >= 60 && ageYears < 70 ? ageYears : 0;
-    conditionalResetDobField(!ageYears);
+    setDobFieldIsValid(ageYears);
     setAgeButtonStyles(ageBetween6069);
     getMortalityScore();
 }
@@ -196,7 +196,7 @@ function onAgeBetween6069check(){
 function onAgeBetween7079check(){
      ageScore = 5;
      ageYears = ageYears >= 70 && ageYears < 80 ? ageYears : 0;
-     conditionalResetDobField(!ageYears);
+     setDobFieldIsValid(ageYears);
      setAgeButtonStyles(ageBetween7079);
      getMortalityScore();
 }
@@ -204,7 +204,7 @@ function onAgeBetween7079check(){
 function onAgeOver80check(){
     ageScore = 7;
     ageYears = ageYears >= 80 ? ageYears : 0;
-    conditionalResetDobField(!ageYears);
+    setDobFieldIsValid(ageYears);
     setAgeButtonStyles(ageOver80);
     getMortalityScore();
 }
@@ -234,12 +234,16 @@ function onDobChange(){
     else if (ageYears >= 70) {onAgeBetween7079check(); return true;}
     else if (ageYears >= 60) {onAgeBetween6069check(); return true;}
     else if (ageYears >= 50) {onAgeBetween5059check(); return true;}
-    else                    {onAgeUnder50check();     return true;}
+    else                     {onAgeUnder50check();     return true;}
 }
 
-function conditionalResetDobField(doResetDob){
-    if(doResetDob){
+function setDobFieldIsValid(dobIsValid){
+    if(!dobIsValid){
         dob.value='';
+        setTextboxDefaultStyle(dob);
+    }
+    else{
+        setTextboxValidStyle(dob, true);
     }
 }
 
@@ -314,8 +318,8 @@ function onSubmitButtonPress()
         ageData:     ageScore,
         respData:    tachypneoa  ? 1 : 0,
         spo2Data:    desaturated ? 1 : 0,
-        strokeData:  stroke   ? 1 : 0,
-        obesityData: obesity ? 1 : 0,
+        strokeData:  stroke      ? 1 : 0,
+        obesityData: obesity     ? 1 : 0,
         scoreData:   mortalityScore});
 }
 
