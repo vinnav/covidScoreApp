@@ -15,8 +15,8 @@ const defaultTextboxColour = 'lightgray';
 // Assign DOM elements to variables
 
 let nhsNumber = document.getElementById("nhsnumber");
-let name = document.getElementById("name");
-let surname = document.getElementById("surname");
+let fName = document.getElementById("name");
+let lName = document.getElementById("surname");
 let dob = document.getElementById("dob");
 
 let yesresp = document.getElementById("yesresp");
@@ -42,7 +42,15 @@ let resultText = document.getElementById("resultText");
 let submitButton = document.getElementById("submitButton");
 
 // Data Update Event Listeners
-nhsNumber.addEventListener('change', onNhsNumberChange);
+nhsNumber.addEventListener('input', onNhsNumberChange);
+nhsNumber.addEventListener('propertychange', onNhsNumberChange);
+
+fName.addEventListener('input', onFNameChange);
+fName.addEventListener('propertychange', onFNameChange);
+lName.addEventListener('input', onLNameChange);
+lName.addEventListener('propertychange', onLNameChange);
+
+dob.addEventListener("change", onDobChange);
 
 yesresp.addEventListener("click", respcheck);
 noresp.addEventListener("click", respuncheck);
@@ -105,8 +113,8 @@ function setTextboxValidStyle(targetTextbox, valid){
     targetTextbox.style.color = valid ? 'white' : 'black'; 
 }
 
-function setTextboxDefaultStyle(){
-    targetTextbox.style.backgroundcolor = defaultTextboxColour;
+function setTextboxDefaultStyle(targetTextbox){
+    targetTextbox.style.backgroundColor = defaultTextboxColour;
     targetTextbox.style.color = 'black';
 }
 
@@ -260,6 +268,28 @@ function agemore80check(){
     getMortalityScore();
 }
 
+function onFNameChange(){
+    if(fName.value.length){
+        setTextboxValidStyle(fName, true);
+        }
+        else{
+            setTextboxDefaultStyle(fName);
+        }
+}
+
+function onLNameChange(){
+    if(lName.value.length){
+        setTextboxValidStyle(lName, true);
+    }
+    else{
+        setTextboxDefaultStyle(lName);
+    }
+}
+
+function onDobChange(){
+    return true;
+}
+
 function onNhsNumberChange()
 {
     //respond to changes in the NHS Number input
@@ -287,6 +317,7 @@ function isTenDigitNumber(inputNhsNumber){
 }
 
 function isNhsNumberChecksumValid(inputNhsNumber){
+    //TODO Implement Mod 11 Checksum Verification
     //Do stuff here to check the NHS Number Mod 11 check digit
     //Per https://datadictionary.nhs.uk/attributes/nhs_number.html
     //eg NHS Number 123 456 7890
@@ -315,6 +346,7 @@ function isNhsNumberRangeValid(inputNhsNumber){
 }
 
 function nhsNumberSearch(){
+    //TODO implement NHS Number Lookup
     //Do something to lookup the NHS Number
     resultText.innerHTML = "<p style=\"font-size:35px;\"> NHS number not found... " + "</p>";
 }
@@ -355,8 +387,8 @@ function submitData()
 {
     postData("http://15.161.6.195:3000/sendData", {
         nhsData:     nhsNumber.value,
-        nameData:    name.value, 
-        surnameData: surname.value, 
+        nameData:    fName.value, 
+        surnameData: lName.value, 
         dobData:     dob.value,
         ageData:     age,
         respData:    tachypneoa  ? 1 : 0,
