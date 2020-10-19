@@ -19,23 +19,23 @@ let fName = document.getElementById("name");
 let lName = document.getElementById("surname");
 let dob = document.getElementById("dob");
 
-let yesresp = document.getElementById("yesresp");
-let noresp = document.getElementById("noresp");
+let yesTachypneoa = document.getElementById("yesresp");
+let noTachypneoa = document.getElementById("noresp");
 
-let yesspo = document.getElementById("yesspo");
-let nospo = document.getElementById("nospo");
+let yesDesaturated = document.getElementById("yesspo");
+let noDesaturated  = document.getElementById("nospo");
 
-let yesstroke = document.getElementById("yesstroke");
-let nostroke = document.getElementById("nostroke");
+let yesStroke = document.getElementById("yesstroke");
+let noStroke = document.getElementById("nostroke");
 
-let yesobesity = document.getElementById("yesobesity");
-let noobesity = document.getElementById("noobesity");
+let yesObesity = document.getElementById("yesobesity");
+let noObesity = document.getElementById("noobesity");
 
-let ageless50 = document.getElementById("less50");
-let age5059 = document.getElementById("age50-59");
-let age6069 = document.getElementById("age60-69");
-let age7079 = document.getElementById("age70-79");
-let agemore80 = document.getElementById("more80");
+let ageUnder50 = document.getElementById("less50");
+let ageBetween5059 = document.getElementById("age50-59");
+let ageBetween6069 = document.getElementById("age60-69");
+let ageBetween7079 = document.getElementById("age70-79");
+let ageOver80 = document.getElementById("more80");
 
 let resultText = document.getElementById("resultText");
 
@@ -52,25 +52,25 @@ lName.addEventListener('propertychange', onLNameChange);
 
 dob.addEventListener("change", onDobChange);
 
-yesresp.addEventListener("click", respcheck);
-noresp.addEventListener("click", respuncheck);
+yesTachypneoa.addEventListener("click", onTachypneoaCheck);
+ noTachypneoa.addEventListener("click", onTachypneoaUncheck);
 
-yesspo.addEventListener("click", spocheck);
-nospo.addEventListener("click", spouncheck);
+yesDesaturated.addEventListener("click", onDesaturatedCheck);
+ noDesaturated.addEventListener("click", onDesaturatedUncheck);
 
-yesstroke.addEventListener("click", strokecheck);
-nostroke.addEventListener("click", strokeuncheck);
+yesStroke.addEventListener("click", onStrokeCheck);
+ noStroke.addEventListener("click", onSrokeUncheck);
 
-yesobesity.addEventListener("click", obesitycheck);
-noobesity.addEventListener("click", obesityuncheck);
+yesObesity.addEventListener("click", onObesityCheck);
+noObesity.addEventListener("click", onObesityUncheck);
 
-ageless50.addEventListener("click", ageless50check);
-age5059.addEventListener("click", age5059check);
-age6069.addEventListener("click", age6069check);
-age7079.addEventListener("click", age7079check);
-agemore80.addEventListener("click", agemore80check);
+ageUnder50.addEventListener("click", onAgeUnder50check);
+ageBetween5059.addEventListener("click", onAgeBetween5059check);
+ageBetween6069.addEventListener("click", onAgeBetween6069check);
+ageBetween7079.addEventListener("click", onAgeBetween7079check);
+ageOver80.addEventListener("click", onAgeOver80check);
 
-submitButton.addEventListener('click', submitData);
+submitButton.addEventListener('click', onSubmitButtonPress);
 
 //Model Variables
 let age = 0;
@@ -101,11 +101,11 @@ function toggleButtonStyles(activeButton, inactiveButton)
 
 function setAgeButtonStyles(activeAge)
 {
-    setButtonStyle(ageless50, ageless50 == activeAge);
-    setButtonStyle(age5059, age5059 == activeAge);
-    setButtonStyle(age6069, age6069 == activeAge);
-    setButtonStyle(age7079, age7079 == activeAge);
-    setButtonStyle(agemore80, agemore80 == activeAge);
+    setButtonStyle(ageUnder50, ageUnder50 == activeAge);
+    setButtonStyle(ageBetween5059, ageBetween5059 == activeAge);
+    setButtonStyle(ageBetween6069, ageBetween6069 == activeAge);
+    setButtonStyle(ageBetween7079, ageBetween7079 == activeAge);
+    setButtonStyle(ageOver80, ageOver80 == activeAge);
 }
 
 function setTextboxValidStyle(targetTextbox, valid){
@@ -118,153 +118,83 @@ function setTextboxDefaultStyle(targetTextbox){
     targetTextbox.style.color = 'black';
 }
 
-// Respiratory rate >24/m checked
-function respcheck(){
-    //Update Model
+function onTachypneoaCheck(){
     tachypneoa = true;
-
-    //update view
-    toggleButtonStyles(yesresp, noresp);
-
-    //update Controller
+    toggleButtonStyles(yesTachypneoa, noTachypneoa);
     getMortalityScore()
 }
 
-function respuncheck(){
-    //Update Model
+function onTachypneoaUncheck(){
     tachypneoa = false
-
-    //update View
-    toggleButtonStyles(noresp, yesresp);
-
-    //Update Controller
+    toggleButtonStyles(noTachypneoa, yesTachypneoa);
     getMortalityScore()
 }
 
-// SpO
-function spocheck(){
-    //Update Model
+function onDesaturatedCheck(){
     desaturated = true;
-
-    //Update View
-    toggleButtonStyles(yesspo, nospo);
-
-    //Update Controller
+    toggleButtonStyles(yesDesaturated, noDesaturated);
     getMortalityScore();
 }
 
-function spouncheck(){
-    //Update Model
+function onDesaturatedUncheck(){
     desaturated = false;
-
-    //Update View
-    toggleButtonStyles(nospo, yesspo);
-
-    //Update Controller
+    toggleButtonStyles(noDesaturated, yesDesaturated);
     getMortalityScore();
 }
 
-// Stroke
-function strokecheck(){
-    //Update Model
+function onStrokeCheck(){
     stroke = true;
-
-    //Update View
-    toggleButtonStyles(yesstroke, nostroke);
-
-    //Update Controller
+    toggleButtonStyles(yesStroke, noStroke);
     getMortalityScore();
 }
 
-function strokeuncheck(){
-    //Update Model
+function onSrokeUncheck(){
     stroke = false;
-
-    //Update View
-    toggleButtonStyles(nostroke, yesstroke);
-
-    //Update Controller
+    toggleButtonStyles(noStroke, yesStroke);
     getMortalityScore();
 }
 
-// Obesity
-function obesitycheck()
+function onObesityCheck()
 {
-    //Update Model
     obesity = true;
-
-    //Update View
-    toggleButtonStyles(yesobesity, noobesity);
-
-    //Update Controller
+    toggleButtonStyles(yesObesity, noObesity);
     getMortalityScore();
 }
 
-function obesityuncheck()
+function onObesityUncheck()
 {
-    //Update Model
     obesity = false;
-
-    //Update View
-    toggleButtonStyles(noobesity, yesobesity);
-
-    //Update Controller
+    toggleButtonStyles(noObesity, yesObesity);
     getMortalityScore();
 }
 
-// Age
-function ageless50check(){
-    //Update Model
+function onAgeUnder50check(){
     age = 0;
-
-    //Update View
-    setAgeButtonStyles(ageless50);
-
-    //Update Controller
+    setAgeButtonStyles(ageUnder50);
     getMortalityScore();
 }
 
-function age5059check(){
-    //Update Model
+function onAgeBetween5059check(){
     age = 1;
-
-    //Update View
-    setAgeButtonStyles(age5059);
-
-    //Update Controller
+    setAgeButtonStyles(ageBetween5059);
     getMortalityScore();
 }
 
-function age6069check(){
-    //Update Model
+function onAgeBetween6069check(){
     age = 2;
-
-    //Update View
-    setAgeButtonStyles(age6069);
-
-    //Update Controller
+    setAgeButtonStyles(ageBetween6069);
     getMortalityScore();
 }
 
-function age7079check(){
-     //Update Model
+function onAgeBetween7079check(){
      age = 5;
-
-     //Update View
-     setAgeButtonStyles(age7079);
- 
-     //Update Controller
+     setAgeButtonStyles(ageBetween7079);
      getMortalityScore();
 }
 
-function agemore80check(){
-    //Update Model
+function onAgeOver80check(){
     age = 7;
-
-    //Update View
-    setAgeButtonStyles(agemore80);
-
-    //Update Controller
+    setAgeButtonStyles(ageOver80);
     getMortalityScore();
 }
 
@@ -287,6 +217,7 @@ function onLNameChange(){
 }
 
 function onDobChange(){
+    //TODO Implement automatic age selection on DOB.
     return true;
 }
 
@@ -351,13 +282,27 @@ function nhsNumberSearch(){
     resultText.innerHTML = "<p style=\"font-size:35px;\"> NHS number not found... " + "</p>";
 }
 
+function onSubmitButtonPress()
+{
+    postData("http://15.161.6.195:3000/sendData", {
+        nhsData:     nhsNumber.value,
+        nameData:    fName.value, 
+        surnameData: lName.value, 
+        dobData:     dob.value,
+        ageData:     age,
+        respData:    tachypneoa  ? 1 : 0,
+        spo2Data:    desaturated ? 1 : 0,
+        strokeData:  stroke   ? 1 : 0,
+        obesityData: obesity ? 1 : 0,
+        scoreData:   mortalityScore});
+}
+
 /**
  * sends a request to the specified url from a form. this will change the window location.
  * @param {string} path the path to send the post request to
  * @param {object} params the paramiters to add to the url
  * @param {string} [method=post] the method to use on the form
  */
-
 function postData(path, params, method='post') {
 
     // The rest of this code assumes you are not using a library.
@@ -382,18 +327,3 @@ function postData(path, params, method='post') {
   }
 
 //postData("http://127.0.0.1:8080/myaction", {name: nhsNumber})
-
-function submitData()
-{
-    postData("http://15.161.6.195:3000/sendData", {
-        nhsData:     nhsNumber.value,
-        nameData:    fName.value, 
-        surnameData: lName.value, 
-        dobData:     dob.value,
-        ageData:     age,
-        respData:    tachypneoa  ? 1 : 0,
-        spo2Data:    desaturated ? 1 : 0,
-        strokeData:  stroke   ? 1 : 0,
-        obesityData: obesity ? 1 : 0,
-        scoreData:   mortalityScore});
-}
