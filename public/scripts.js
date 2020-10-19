@@ -1,12 +1,4 @@
 // MAIN VALUES
-// Starting scores
-let mortalitySum = 0;
-
-let ageSum = 0;
-let resp = 0;
-let spo = 0;
-let stroke = 0;
-let obesity = 0;
 
 // Array of mortality scores
 const mortality = ["1.4%","5.3%", "5.9%", "19.7%", "33.3%", "39.7%", "40%", "40.6%", "47.9%", "74.6%", "77.8%", ">77.8%"]
@@ -69,19 +61,17 @@ agemore80.addEventListener("click", agemore80check);
 
 submitButton.addEventListener('click', submitData);
 
-
-
 //Model Variables
 let age = 0;
 let tachypneoa = false;
 let desaturated = false;
-let _stroke = false;
-let _obesity = false;
+let stroke = false;
+let obesity = false;
 let mortalityScore = 0;
 
 // Display result
 function getMortalityScore(){
-    mortalityScore = age + tachypneoa + desaturated + _stroke + _obesity;
+    mortalityScore = age + tachypneoa + desaturated + stroke + obesity;
     resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalityScore) + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + mortality[mortalityScore] + "</p>";
 }
 
@@ -109,7 +99,6 @@ function setAgeButtonStyles(activeAge)
 // Respiratory rate >24/m checked
 function respcheck(){
     //Update Model
-    resp = 1;
     tachypneoa = true;
 
     //update view
@@ -121,7 +110,6 @@ function respcheck(){
 
 function respuncheck(){
     //Update Model
-    resp = 0;
     tachypneoa = false
 
     //update View
@@ -134,7 +122,6 @@ function respuncheck(){
 // SpO
 function spocheck(){
     //Update Model
-    spo = 1;
     desaturated = true;
 
     //Update View
@@ -146,7 +133,6 @@ function spocheck(){
 
 function spouncheck(){
     //Update Model
-    spo = 0;
     desaturated = false;
 
     //Update View
@@ -159,8 +145,7 @@ function spouncheck(){
 // Stroke
 function strokecheck(){
     //Update Model
-    stroke = 1;
-    _stroke = true;
+    stroke = true;
 
     //Update View
     toggleButtonStyles(yesstroke, nostroke);
@@ -171,8 +156,7 @@ function strokecheck(){
 
 function strokeuncheck(){
     //Update Model
-    stroke = 0;
-    _stroke = false;
+    stroke = false;
 
     //Update View
     toggleButtonStyles(nostroke, yesstroke);
@@ -185,8 +169,7 @@ function strokeuncheck(){
 function obesitycheck()
 {
     //Update Model
-    obesity = 1;
-    _obesity = true;
+    obesity = true;
 
     //Update View
     toggleButtonStyles(yesobesity, noobesity);
@@ -198,8 +181,7 @@ function obesitycheck()
 function obesityuncheck()
 {
     //Update Model
-    obesity = 0;
-    _obesity = false;
+    obesity = false;
 
     //Update View
     toggleButtonStyles(noobesity, yesobesity);
@@ -300,9 +282,17 @@ function postData(path, params, method='post') {
 
 //postData("http://127.0.0.1:8080/myaction", {name: nhsNumber})
 
-function submitData(){
-    postData("http://15.161.6.195:3000/sendData", {nhsData: nhsNumber.value,
-    nameData: name.value, surnameData: surname.value, dobData: dob.value, ageData: ageSum,
-    respData: resp, spo2Data: spo, strokeData: stroke,
-    obesityData: obesity, scoreData: mortalitySum+ageSum})
+function submitData()
+{
+    postData("http://15.161.6.195:3000/sendData", {
+        nhsData:     nhsNumber.value,
+        nameData:    name.value, 
+        surnameData: surname.value, 
+        dobData:     dob.value,
+        ageData:     age,
+        respData:    tachypneoa  ? 1 : 0,
+        spo2Data:    desaturated ? 1 : 0,
+        strokeData:  stroke   ? 1 : 0,
+        obesityData: obesity ? 1 : 0,
+        scoreData:   mortalityScore});
 }
