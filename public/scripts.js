@@ -8,6 +8,9 @@ const activeBackgroundColour = '#0066cc';       //Background colour for active b
 const activeTextColour = 'white';               //Text Colour for active buttons
 const inactiveBackroundColour = 'lightgray';    //Background colour for inactive buttons
 const inactiveTextColour = 'black';             //Text Colour for inactive buttons
+const validatedTextboxColour = 'green';
+const invalidTextboxColour = 'orange';
+const defaultTextboxColour = 'lightgray';
 
 // Assign DOM elements to variables
 
@@ -39,7 +42,7 @@ let resultText = document.getElementById("resultText");
 let submitButton = document.getElementById("submitButton");
 
 // Data Update Event Listeners
-nhsNumber.addEventListener('change', nhsNumberSearch);
+nhsNumber.addEventListener('change', onNhsNumberChange);
 
 yesresp.addEventListener("click", respcheck);
 noresp.addEventListener("click", respuncheck);
@@ -68,6 +71,7 @@ let desaturated = false;
 let stroke = false;
 let obesity = false;
 let mortalityScore = 0;
+let patientNhsNumber = 0;
 
 // Display result
 function getMortalityScore(){
@@ -94,6 +98,16 @@ function setAgeButtonStyles(activeAge)
     setButtonStyle(age6069, age6069 == activeAge);
     setButtonStyle(age7079, age7079 == activeAge);
     setButtonStyle(agemore80, agemore80 == activeAge);
+}
+
+function setTextboxValidStyle(targetTextbox, valid){
+    targetTextbox.style.backgroundColor = valid ? validatedTextboxColour : invalidTextboxColour;
+    targetTextbox.style.color = valid ? 'white' : 'black'; 
+}
+
+function setTextboxDefaultStyle(){
+    targetTextbox.style.backgroundcolor = defaultTextboxColour;
+    targetTextbox.style.color = 'black';
 }
 
 // Respiratory rate >24/m checked
@@ -246,7 +260,62 @@ function agemore80check(){
     getMortalityScore();
 }
 
+function onNhsNumberChange()
+{
+    //respond to changes in the NHS Number input
+    //if it matches the expected format (eg nnn nnn nnnn or nnnnnnnnnn), verify the checksum and then perform external lookup
+    let validNhsN = isTenDigitNumber(nhsNumber.value);
+    if(validNhsN){
+        patientNhsNumber = validNhsN;
+        setTextboxValidStyle(nhsNumber, false);
+        if(isNhsNumberChecksumValid(patientNhsNumber) && isNhsNumberRangeValid(patientNhsNumber)){
+            resultText.innerHTML = "<p style=\"font-size:35px;\"> NHS number appears to be valid..." + "</p>";
+            nhsNumberSearch();
+            setTextboxValidStyle(nhsNumber, true);
+        }
+    }
+    else{
+        setTextboxDefaultStyle(nhsNumber);
+    }
+}
+
+function isTenDigitNumber(inputNhsNumber){
+    //check the NHS Number provided matches nnn nnn nnnn or nnnnnnnnnn
+    inputNhsNumber = inputNhsNumber.replace(/\s/g, '');  //Remove whitespace
+    //Return either 0, or a 10-digit number. (NB leading zeroes _are_ included in length here)
+    return isNaN(inputNhsNumber) || inputNhsNumber < 0 || String(inputNhsNumber).length !== 10 ? 0 : inputNhsNumber;
+}
+
+function isNhsNumberChecksumValid(inputNhsNumber){
+    //Do stuff here to check the NHS Number Mod 11 check digit
+    //Per https://datadictionary.nhs.uk/attributes/nhs_number.html
+    //eg NHS Number 123 456 7890
+    //place values 10 9 8    7 6 5    4 3 2
+    //multiply each digit by its place value, sum those values, take the mod11 of that sum.
+    //If the result is 10, the NHSN is invalid. If the result is 11, the check digit is 0. Otherwise, the result is the check digit.
+    return true;
+}
+
+function isNhsNumberRangeValid(inputNhsNumber){
+    //010 101 000x to 311 299 999x is reserved for NHS Scotland CHI Numbers
+    //320 000 000x to 399 999 999x is reserved for Northern Ireland H&C Numbers
+    //Anecdotally the current range of NHS Numbers within England, Wales, and IoM are
+    //400 000 000x to 499 999 999x, and
+    //600 000 000x to 708 800 000x
+    if(inputNhsNumber < 3999999999 && inputNhsNumber > 3200000000){
+        //NI H&C Number
+        return false;
+    }
+    if(inputNhsNumber < 3112999999 && inputNhsNumber > 0101010000){
+        //Scottish CHI Number
+        return false;
+    }
+    //Not in NI or Scotland reserved range. Does not guarentee this range is active.
+    return true;
+}
+
 function nhsNumberSearch(){
+    //Do something to lookup the NHS Number
     resultText.innerHTML = "<p style=\"font-size:35px;\"> NHS number not found... " + "</p>";
 }
 
