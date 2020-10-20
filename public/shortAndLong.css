@@ -36,14 +36,15 @@
   border-radius: 10px;
   border: 1px solid gray;
   background: lightgray;
+  height: 30px;
 }
 
-.agevalues {
+.multiSelectLabel {
   /* Style for age multi-selector label*/
   flex-basis: 20%;
 }
 
-.selectAge {
+.multiSelectContainer {
   /* Style for age multi-selector container*/
   flex-basis: 75%;
   display: flex;
@@ -52,6 +53,7 @@
 
 .multiSelect{
   /* Base style for age multi-selector buttons */
+  height: 30px;
   padding-left: 10px;
   flex-basis: 20%;
   order-right: 1px solid grey;
@@ -75,27 +77,30 @@
 }
 
 .values {
+  /* Style for labels for yes/no button */
   flex-basis: 60%;
 }
 
 .yesno {
+  /* Style for yes/no button container */
   border: 1px solid grey;
   flex-basis: 35%;
   display: flex;
   border-radius: 5px;
+  height: 30px;
 }
 .nobtn {
+  /* Style for no button */
   background: #0066cc;
   color: white;
   flex-basis: 50%;
+  
 }
 .yesbtn{
+  /* Style for yes button */
   background: lightgrey;
   flex-basis: 50%;
 }
-
-
-
 
 .result{
   background: #0066cc;
