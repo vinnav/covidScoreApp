@@ -3,7 +3,8 @@
 // Array of mortality scores
 const  shortMortality = [1.4, 5.3, 5.9, 19.7, 33.3, 39.7, 40.0, 40.6, 47.9, 74.6, 77.8, 77.8]  //TODO Confirm NB final element is printed '>77.8%'
 const   longMortality = [1.4, 5.3, 5.9, 19.7, 33.3, 39.7, 40.0, 40.6, 47.9, 74.6, 77.8, 77.8]  //TODO Confirm
-const isaricMortality = [0.0, 0.3, 0.8,  2.3,  4.8,  7.5,  7.8, 11.7, 14.4, 19.2, 22.9, 26.9, 32.9, 40.1, 44.6, 51.6, 59.1, 66.1, 75.8, 77.4, 82.9, 87.5] //per isaric4c.net/risk
+const isaricMortality = [0.3, 0.3, 0.8,  2.3,  4.8,  7.5,  7.8, 11.7, 14.4, 19.2, 22.9, 26.9, 32.9, 40.1, 44.6, 51.6, 59.1, 66.1, 75.8, 77.4, 82.9, 87.5] //per isaric4c.net/risk
+//NB first element is printed '0.3%'
 
 const isaricAgeRangeScore = [0, 2, 4, 6, 7] //Scores for each age range category
 const isaricUreaRangeScore = [0, 1, 3]      //Scores for each urea range category
@@ -91,12 +92,6 @@ let ageMultiSelect = [
     document.getElementById("age70-79"),
     document.getElementById("more80")]
 
-let ageUnder50 = document.getElementById("less50");
-let ageBetween5059 = document.getElementById("age50-59");
-let ageBetween6069 = document.getElementById("age60-69");
-let ageBetween7079 = document.getElementById("age70-79");
-let ageOver80 = document.getElementById("more80");
-
 let resultText = document.getElementById("resultText");
 
 let submitButton = document.getElementById("submitButton");
@@ -154,7 +149,7 @@ function getMortalityScore(){
         case 2:
             //ISARIC score
             mortalityScore = calculateIsaricScore();
-            mortalityComment = isaricMortality[mortalityScore] + "%";
+            mortalityComment = (mortalityScore == 0 ? "<":"") +isaricMortality[mortalityScore] + "%";
             break;
     }
     //TODO: Functions to generate interpertive comment for risk band and explaination of basis of prediction
