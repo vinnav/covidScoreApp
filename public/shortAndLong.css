@@ -6,10 +6,12 @@
 .container-grid {
   margin: 10px;
   height: max-content;
+  /* min-width: 600px; */
   background: white;
   cursor: default;
   display: grid;
-  grid-template-rows: 0.6fr 0.6fr 0.6fr 0.6fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  /*grid-template-rows: 0.6fr 0.6fr 0.6fr 0.6fr 1fr 1fr 1fr 1fr 1fr 2fr;*/
+  align-items: stretch;
 }
 
 .row{
@@ -21,90 +23,78 @@
   padding-top: 5px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .patientDataText {
   /* Style for demographic labels */
-  flex-basis: 20%;
+  flex-basis: 30%;
 }
 .patientDataForm {
   /* Style for demographic form container*/
-  flex-basis: 80%;
+  flex-basis: 70%;
 }
 .nhsdata {
   /* Style for demographic form controls*/
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid gray;
   background: lightgray;
   height: 30px;
 }
 
-.multiSelectLabel {
-  /* Style for age multi-selector label*/
-  flex-basis: 20%;
+/* ----- multiButton System ----- */
+
+.multiButtonLabel {
+  /* Style for labels for yes/no button */
+  justify-self: flex-start;
+  flex-grow:2;
+  flex-basis:65%;
 }
 
-.multiSelectContainer {
-  /* Style for age multi-selector container*/
-  flex-basis: 75%;
+.multiButtonContainer{
+  /* Style for container for yes/no button*/
+  justify-self: flex-end;
   display: flex;
-  font-size: 12px;
+  height: 90%;
+  flex-grow:1;
+  flex-basis: 35%;
 }
 
-.multiSelect{
-  /* Base style for age multi-selector buttons */
-  height: 30px;
-  padding-left: 10px;
-  flex-basis: 20%;
-  order-right: 1px solid grey;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
-  color:black;
+.multiButton{
   background: lightgrey;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-shrink: 1;
+  border-top:1px solid grey;
+  border-bottom: 1px solid grey;
+  text-align: center;
+  line-height: 100%;
+  font-size: 100%;
+  padding: 5px;
 }
 
-.multiSelect.leftEnd{
-  /* sub-style for left end multi selector button */
+.multiButton.leftEnd{
   border-left: 1px solid grey;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-}
-.multiSelect.rightEnd{
-  /* sub-style for right end multi selector button */
-  border-right: 1px solid grey;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.values {
-  /* Style for labels for yes/no button */
-  flex-basis: 60%;
-}
-
-.yesno {
-  /* Style for yes/no button container */
-  border: 1px solid grey;
-  flex-basis: 35%;
-  display: flex;
-  border-radius: 5px;
-  height: 30px;
-}
-.nobtn {
-  /* Style for no button */
-  background: #0066cc;
+  justify-self: flex-start;
   color: white;
-  flex-basis: 50%;
-  
+  background: #0066cc;
 }
-.yesbtn{
-  /* Style for yes button */
-  background: lightgrey;
-  flex-basis: 50%;
+
+.multiButton.rightEnd{
+  justify-self: flex-end;
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
+  border-right: 1px solid grey;
 }
+
+/* ----- Results Section ----- */
 
 .result{
   background: #0066cc;
-  height: 100%;
+  height: 15vh;
+  align-self: flex-end;
   color: white;
   border-radius: 5px;
   border: 1px solid #0066cc;
