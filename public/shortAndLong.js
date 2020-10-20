@@ -1,9 +1,9 @@
 // MAIN VALUES
 
 // Array of mortality scores
-const shortMortality = ["1.4%","5.3%", "5.9%", "19.7%", "33.3%", "39.7%", "40%", "40.6%", "47.9%", "74.6%", "77.8%", ">77.8%"]  //TODO Confirm
-const  longMortality = ["1.4%","5.3%", "5.9%", "19.7%", "33.3%", "39.7%", "40%", "40.6%", "47.9%", "74.6%", "77.8%", ">77.8%"]  //TODO Confirm
-const isaricMortality = [0, 0.3, 0.8, 2.3, 4.8, 7.5, 7.8, 11.7, 14.4, 19.2, 22.9, 26.9, 32.9, 40.1, 44.6, 51.6, 59.1, 66.1, 75.8, 77.4, 82.9, 87.5] //per isaric4c.net/risk
+const  shortMortality = [1.4, 5.3, 5.9, 19.7, 33.3, 39.7, 40.0, 40.6, 47.9, 74.6, 77.8, 77.8]  //TODO Confirm NB final element is printed '>77.8%'
+const   longMortality = [1.4, 5.3, 5.9, 19.7, 33.3, 39.7, 40.0, 40.6, 47.9, 74.6, 77.8, 77.8]  //TODO Confirm
+const isaricMortality = [0.0, 0.3, 0.8,  2.3,  4.8,  7.5,  7.8, 11.7, 14.4, 19.2, 22.9, 26.9, 32.9, 40.1, 44.6, 51.6, 59.1, 66.1, 75.8, 77.4, 82.9, 87.5] //per isaric4c.net/risk
 
 const isaricAgeRangeScore = [0, 2, 4, 6, 7] //Scores for each age range category
 const isaricUreaRangeScore = [0, 1, 3]      //Scores for each urea range category
@@ -21,10 +21,12 @@ let ageYears = 0;
 let patientNhsNumber = 0;
 //DoB, fName, and lName are not presently stored as variables here.
 
-//Short Score Details
-let ageRange = 0;           //0- >50. 1- 50-59. 2- 60-69. 3- 70-79. 4- >=80. Not neccessarily a score.
-let tachypneoa = false;
+//Common Score Variables
 let desaturated = false;
+let ageRange = 0;           //0- >50. 1- 50-59. 2- 60-69. 3- 70-79. 4- >=80. Not neccessarily a score.
+
+//Short Score Specific Variables
+let tachypneoa = false;
 let stroke = false;
 let obesity = false;
 
@@ -32,8 +34,17 @@ let obesity = false;
 let everSmoker = false;
 let dementia = false;
 let leucophilia = false;
+let lymphopenia = false;
 let cxrChanges = false;
 let ckdStageRange = 0;      //0- CKD1. 1- CKD2. 2- CKD3. 3- CKD4. 4- CKD5. Not neccessarily a score.
+
+//ISARIC Score Specific Variables
+let gcs = false;
+let male = false;
+let comorbidRange = 0;      //0- no comorbidities. 1- 1 comorbidity. 2- 2+ comorbidities
+let tachypneoaRange = 0;    //0- RR < 20. 1- RR 20-29. 2- RR >= 30.
+let ureaRange = 0;          //0- <7. 1- 7-14. 2- >14.
+let crpRange = 0;           //0- <50. 1- 50-99. 2- >100.
 
 let mortalityScore = 0;
 let scoreType = 0; //0- short score, 1- long score, 2- isaric
@@ -48,17 +59,18 @@ const invalidTextboxColour = 'orange';          //Background colour for invalid 
 const defaultTextboxColour = 'lightgray';       //Background for sleeping textboxes
 
 // Assign DOM elements to variables
-
-let shortScore = document.getElementById("shortScore");
-let longScore = document.getElementById("longScore");
-shortScore.addEventListener('click', onSetShortScore);
-longScore.addEventListener('click', onSetLongScore);
 let titleText = document.getElementById("titleText");
 
 let nhsNumber = document.getElementById("nhsnumber");
 let fName = document.getElementById("name");
 let lName = document.getElementById("surname");
 let dob = document.getElementById("dob");
+
+let scoreMultiSelect = [
+    document.getElementById("shortScore"),
+    document.getElementById("longScore"),
+    document.getElementById("isaricScore"),
+]
 
 let yesTachypneoa = document.getElementById("yesresp");
 let noTachypneoa = document.getElementById("noresp");
@@ -72,6 +84,13 @@ let noStroke = document.getElementById("nostroke");
 let yesObesity = document.getElementById("yesobesity");
 let noObesity = document.getElementById("noobesity");
 
+let ageMultiSelect = [
+    document.getElementById("less50"),
+    document.getElementById("age50-59"),
+    document.getElementById("age60-69"),
+    document.getElementById("age70-79"),
+    document.getElementById("more80")]
+
 let ageUnder50 = document.getElementById("less50");
 let ageBetween5059 = document.getElementById("age50-59");
 let ageBetween6069 = document.getElementById("age60-69");
@@ -83,6 +102,10 @@ let resultText = document.getElementById("resultText");
 let submitButton = document.getElementById("submitButton");
 
 // Data Update Event Listeners
+scoreMultiSelect[0].addEventListener('click', onSetShortScore);
+scoreMultiSelect[1].addEventListener('click', onSetLongScore);
+scoreMultiSelect[2].addEventListener('click', onSetIsaricScore);
+
 nhsNumber.addEventListener('input', onNhsNumberChange);
 nhsNumber.addEventListener('propertychange', onNhsNumberChange);
 
@@ -100,36 +123,46 @@ yesDesaturated.addEventListener("click", onDesaturatedCheck);
 noDesaturated.addEventListener("click", onDesaturatedUncheck);
 
 yesStroke.addEventListener("click", onStrokeCheck);
-noStroke.addEventListener("click", onSrokeUncheck);
+noStroke.addEventListener("click", onStrokeUncheck);
 
 yesObesity.addEventListener("click", onObesityCheck);
 noObesity.addEventListener("click", onObesityUncheck);
 
-ageUnder50.addEventListener("click", onAgeUnder50check);
-ageBetween5059.addEventListener("click", onAgeBetween5059check);
-ageBetween6069.addEventListener("click", onAgeBetween6069check);
-ageBetween7079.addEventListener("click", onAgeBetween7079check);
-ageOver80.addEventListener("click", onAgeOver80check);
+ageMultiSelect[0].addEventListener("click", onAgeUnder50check);
+ageMultiSelect[1].addEventListener("click", onAgeBetween5059check);
+ageMultiSelect[2].addEventListener("click", onAgeBetween6069check);
+ageMultiSelect[3].addEventListener("click", onAgeBetween7079check);
+ageMultiSelect[4].addEventListener("click", onAgeOver80check);
 
 submitButton.addEventListener('click', onSubmitButtonPress);
 
+onSetShortScore();
+
 function getMortalityScore(){
+    let mortalityComment = "";
     switch (scoreType){
         case 0:
             //Short Score
             mortalityScore = calculateShortScore();
+            mortalityComment = (mortalityScore == 11 ? ">":"") + shortMortality[mortalityScore] + "%";
             break;
         case 1:
             //Long Score
             mortalityScore = calculateLongScore();
+            mortalityComment = longMortality[mortalityScore] + "%";
             break;
         case 2:
             //ISARIC score
             mortalityScore = calculateIsaricScore();
+            mortalityComment = isaricMortality[mortalityScore] + "%";
             break;
     }
     //TODO: Functions to generate interpertive comment for risk band and explaination of basis of prediction
-    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " + (mortalityScore) + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: " + shortMortality[mortalityScore] + "</p>";
+    resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " 
+    + (mortalityScore) 
+    + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: "
+    + mortalityComment 
+    + "</p>";
 }
 
 function calculateShortScore(){
@@ -151,25 +184,23 @@ function calculateIsaricScore(){
 //DOM Manipulation functions
 //----------
 
-function setButtonStyle(targetButton, isActive)
-{
+function setButtonStyle(targetButton, isActive){
     targetButton.style.backgroundColor = isActive ? activeBackgroundColour : inactiveBackroundColour;
     targetButton.style.color = isActive ? activeTextColour : inactiveTextColour;
 }
 
-function toggleButtonStyles(activeButton, inactiveButton)
-{
+function setButtonStyleInactive(targetButton){
+    setButtonStyle(targetButton, false);
+}
+
+function toggleButtonStyles(activeButton, inactiveButton){
     setButtonStyle(activeButton, true);
     setButtonStyle(inactiveButton, false);
 }
 
-function setAgeButtonStyles(activeAge)
-{
-    setButtonStyle(ageUnder50, ageUnder50 == activeAge);
-    setButtonStyle(ageBetween5059, ageBetween5059 == activeAge);
-    setButtonStyle(ageBetween6069, ageBetween6069 == activeAge);
-    setButtonStyle(ageBetween7079, ageBetween7079 == activeAge);
-    setButtonStyle(ageOver80, ageOver80 == activeAge);
+function setMultiButtonActiveStyle(multiButtonArray, activeButtonIndex){
+    multiButtonArray.forEach(setButtonStyleInactive);
+    setButtonStyle(multiButtonArray[activeButtonIndex], true);
 }
 
 function setTextboxValidStyle(targetTextbox, valid){
@@ -197,16 +228,17 @@ function showRowByElementId(elementToShow){
 function onSetShortScore(){
     scoreType = 0;
     titleText.innerHTML = "COVID-19 Short Score";
-    toggleButtonStyles(shortScore, longScore);
+    setMultiButtonActiveStyle(scoreMultiSelect, 0);
+    shortTestElements.forEach(showRowByElementId);
     longTestElements.forEach(hideRowByElementId);
     isaricTestElements.forEach(hideRowByElementId);
     getMortalityScore();
 }
 
 function onSetLongScore(){
-    scoreType = 0;
+    scoreType = 1;
     titleText.innerHTML = "COVID-19 Long Score";
-    toggleButtonStyles(longScore, shortScore);
+    setMultiButtonActiveStyle(scoreMultiSelect, 1);
     isaricTestElements.forEach(hideRowByElementId);
     shortTestElements.forEach(showRowByElementId);  //Long test is a superset of short test
     longTestElements.forEach(showRowByElementId);
@@ -215,9 +247,10 @@ function onSetLongScore(){
 
 function onSetIsaricScore(){
     //TODO implement ISARIC score
-    scoreType = 0;
+    scoreType = 2;
     titleText.innerHTML = "COVID-19 ISARIC score";
-    //Set Button logic to ISARIC
+    setMultiButtonActiveStyle(scoreMultiSelect, 2);
+    shortTestElements.forEach(hideRowByElementId);
     longTestElements.forEach(hideRowByElementId);
     isaricTestElements.forEach(showRowByElementId);
     getMortalityScore();
@@ -257,7 +290,7 @@ function onStrokeCheck(){
     getMortalityScore();
 }
 
-function onSrokeUncheck(){
+function onStrokeUncheck(){
     stroke = false;
     toggleButtonStyles(noStroke, yesStroke);
     getMortalityScore();
@@ -281,7 +314,7 @@ function onAgeUnder50check(){
     ageRange = 0;
     ageYears = ageYears < 50 ? ageYears : 0;
     setDobFieldIsValid(ageYears);
-    setAgeButtonStyles(ageUnder50);
+    setMultiButtonActiveStyle(ageMultiSelect, 0);
     getMortalityScore();
 }
 
@@ -289,7 +322,7 @@ function onAgeBetween5059check(){
     ageRange = 1;
     ageYears = ageYears >= 50 && ageYears < 60 ? ageYears : 0;
     setDobFieldIsValid(ageYears);
-    setAgeButtonStyles(ageBetween5059);
+    setMultiButtonActiveStyle(ageMultiSelect, 1);
     getMortalityScore();
 }
 
@@ -297,23 +330,23 @@ function onAgeBetween6069check(){
     ageRange = 2;
     ageYears = ageYears >= 60 && ageYears < 70 ? ageYears : 0;
     setDobFieldIsValid(ageYears);
-    setAgeButtonStyles(ageBetween6069);
+    setMultiButtonActiveStyle(ageMultiSelect, 2);
     getMortalityScore();
 }
 
 function onAgeBetween7079check(){
-     ageRange = 5;
+     ageRange = 3;
      ageYears = ageYears >= 70 && ageYears < 80 ? ageYears : 0;
      setDobFieldIsValid(ageYears);
-     setAgeButtonStyles(ageBetween7079);
+     setMultiButtonActiveStyle(ageMultiSelect, 3);
      getMortalityScore();
 }
 
 function onAgeOver80check(){
-    ageRange = 7;
+    ageRange = 4;
     ageYears = ageYears >= 80 ? ageYears : 0;
     setDobFieldIsValid(ageYears);
-    setAgeButtonStyles(ageOver80);
+    setMultiButtonActiveStyle(ageMultiSelect, 4);
     getMortalityScore();
 }
 
