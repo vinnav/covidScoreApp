@@ -15,6 +15,27 @@ const  shortTestElements = ["resp", "stroke", "obesity"]
 const   longTestElements = ["everSmoker", "dementia", "leucophilia", "lymphopenia", "cxrChanges", "ckdStageRange"]
 const isaricTestElements = ["gcs", "male", "comorbidRange", "tachypneoaRange", "ureaRange", "crpRange"]
 
+// Generate HTML for button elements
+let htmlGeneratedButtonElements = "";
+htmlGeneratedButtonElements += generateRowWithButtonHtml("testSelection", "Select Test", ["shortScore", "longScore", "isaricScore"], ["Short Score", "Long Score", "Isaric Score"], 30);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(commonTestElements[1], "Age", ["ageless50", "age50-59", "age60-69", "age70-79", "agemore80"], ["<50", "50-59", "60-69", "70-79", ">80"], 30);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(commonTestElements[0], "SpO2 < 92% on Air / 21% O2", ["nospo", "yesspo"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(shortTestElements[0], "Respiratory Rate >24/min", ["noresp", "yesresp"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(shortTestElements[1], "Stroke", ["nostroke", "yesstroke"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(shortTestElements[2], "Obesity (BMI > 30)", ["noobesity", "yesobesity"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(longTestElements[0], "Ever Smoker", ["noEverSmoker", "yesEverSmoker"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(longTestElements[1], "Dementia", ["noDementia", "yesDementia"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(longTestElements[2], "Leucophilia (>11.0)", ["noLeucophilia", "yesLeucophilia"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(longTestElements[3], "Lymphopenia (<0.7)", ["noLymphopenia", "yesLymphopenia"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(longTestElements[4], "CXR Changes (>4 zones)", ["noCxrChanges", "yesCxrChanges"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[0], "GCS < 15", ["noGcs", "yesGcs"], ["No", "Yes"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[1], "Sex at birth", ["femaleSex", "maleSex"], ["Female", "Male"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[2], "Comorbidities", ["comorbid0", "comorbid1", "comorbid2+"], ["0", "1", "2+"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[3], "Respiratory Rate", ["respRateUnder20", "respRate20-29", "respRateOver30"], ["<20", "20-30", ">30"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[4], "Urea", ["ureaUnder7", "urea7to14", "ureaOver14"], ["<7", "7-14", ">14"]);
+htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[5], "CRP", ["crpUnder50", "crp50to100", "crpOver100"], ["<50", "50-100",">100"]);
+document.getElementById("generatedHtml").innerHTML += htmlGeneratedButtonElements;
+
 //---Model Variables---
 
 //Demographic Details
@@ -86,11 +107,11 @@ let yesObesity = document.getElementById("yesobesity");
 let noObesity = document.getElementById("noobesity");
 
 let ageMultiSelect = [
-    document.getElementById("less50"),
+    document.getElementById("ageless50"),
     document.getElementById("age50-59"),
     document.getElementById("age60-69"),
     document.getElementById("age70-79"),
-    document.getElementById("more80")]
+    document.getElementById("agemore80")]
 
 let resultText = document.getElementById("resultText");
 
@@ -130,6 +151,10 @@ ageMultiSelect[3].addEventListener("click", onAgeBetween7079check);
 ageMultiSelect[4].addEventListener("click", onAgeOver80check);
 
 submitButton.addEventListener('click', onSubmitButtonPress);
+
+//--- Document Code ---
+//---  --- --- ---  ---
+//---  --- --- ---  ---
 
 onSetShortScore();
 
@@ -249,6 +274,35 @@ function onSetIsaricScore(){
     longTestElements.forEach(hideRowByElementId);
     isaricTestElements.forEach(showRowByElementId);
     getMortalityScore();
+}
+
+function generateRowWithButtonHtml(rowId, rowLabel, buttonIdArray, buttonLabelArray, labelWidth=65){
+    if(buttonIdArray.length != buttonLabelArray.length){return "";}
+    if(labelWidth < 0 || labelWidth >100){return"";}
+    let htmlLabelFlexOverride = (labelWidth == 35 ? "" : " style=\"flex-basis: " + labelWidth+ "%;\"");
+    let htmlButtonFlexOverride = (labelWidth == 35 ? "" : " style=\"flex-basis: " + (100 - labelWidth) + "%;\"");
+    let htmlOutput = 
+      "<div class=\"row\" id=\"" + rowId + "\">\n" +
+      "  <div class=\"multiButtonLabel\""+ htmlLabelFlexOverride +">\n" +
+      "    " + rowLabel + "\n" +
+      "  </div>\n" +
+      "  <div class=\"multiButtonContainer\""+ htmlButtonFlexOverride + ">\n";
+
+    for(i = 0; i < buttonIdArray.length; i++){
+      let htmlButtonClass = "multiButton";
+      if(i==0 && buttonIdArray.length == 1){ htmlButtonClass += " bothEnds";}
+      else if (i==0){ htmlButtonClass += " leftEnd";}
+      else if (i+1==buttonIdArray.length){ htmlButtonClass += " rightEnd";}
+      
+      htmlOutput += 
+      "    <div id=\"" + buttonIdArray[i] + "\" class=\""+ htmlButtonClass + "\">\n" +
+      "      " + buttonLabelArray[i] + "\n" +
+      "    </div>\n";
+    }
+    htmlOutput += 
+      "  </div>\n" +
+      "</div>\n";
+    return htmlOutput;
 }
 
 //----------
@@ -466,7 +520,6 @@ function onSubmitButtonPress()
  * @param {string} [method=post] the method to use on the form
  */
 function postData(path, params, method='post') {
-
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
     const form = document.createElement('form');
@@ -487,5 +540,3 @@ function postData(path, params, method='post') {
     document.body.appendChild(form);
     form.submit();
   }
-
-//postData("http://127.0.0.1:8080/myaction", {name: nhsNumber})
