@@ -1,0 +1,105 @@
+.title{
+  font-size: 40px;
+  text-align: center;
+}
+
+.container-grid {
+  margin: 10px;
+  height: max-content;
+  /* min-width: 600px; */
+  background: white;
+  cursor: default;
+  display: grid;
+  /*grid-template-rows: 0.6fr 0.6fr 0.6fr 0.6fr 1fr 1fr 1fr 1fr 1fr 2fr;*/
+  align-items: stretch;
+}
+
+.row{
+  border-top: 1px solid grey;
+  height: 40px;
+  font-size: 17px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.patientDataText {
+  /* Style for demographic labels */
+  flex-basis: 30%;
+}
+.patientDataForm {
+  /* Style for demographic form container*/
+  flex-basis: 70%;
+}
+.nhsdata {
+  /* Style for demographic form controls*/
+  border-radius: 5px;
+  border: 1px solid gray;
+  background: lightgray;
+  height: 30px;
+}
+
+/* ----- multiButton System ----- */
+
+.multiButtonLabel {
+  /* Style for labels for yes/no button */
+  justify-self: flex-start;
+  flex-grow:2;
+  flex-basis:65%;
+}
+
+.multiButtonContainer{
+  /* Style for container for yes/no button*/
+  justify-self: flex-end;
+  display: flex;
+  height: 90%;
+  flex-grow:1;
+  flex-basis: 35%;
+}
+
+.multiButton{
+  background: lightgrey;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-shrink: 1;
+  border-top:1px solid grey;
+  border-bottom: 1px solid grey;
+  text-align: center;
+  line-height: 100%;
+  font-size: 100%;
+  padding: 5px;
+}
+
+.multiButton.leftEnd{
+  border-left: 1px solid grey;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  justify-self: flex-start;
+  color: white;
+  background: #0066cc;
+}
+
+.multiButton.rightEnd{
+  justify-self: flex-end;
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
+  border-right: 1px solid grey;
+}
+
+/* ----- Results Section ----- */
+
+.result{
+  background: #0066cc;
+  height: 15vh;
+  align-self: flex-end;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #0066cc;
+}
+
+#resultText {
+  padding-left: 20px;
+}
