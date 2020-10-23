@@ -12,8 +12,8 @@ const invalidTextboxColour      = 'orange';     //Background colour for invalid 
 const defaultTextboxColour      = 'lightgray';  //Background for sleeping textboxes
 
 // Array of mortality scores
-const  shortMortality = [1.4, 5.3, 5.9, 23.4, 35.4, 53.9, 72.5, 78.6, 78.6]  //NB final element is printed '>78.6%'
-const   longMortality = [1.4, 5.3, 5.9, 19.7, 33.3, 39.7, 40.0, 40.6, 47.9, 74.6, 77.8, 77.8]  //TODO Confirm
+const  shortMortality = [1.4, 5.3, 5.9, 23.4, 35.4, 53.9, 72.5, 78.6, 78.6]  //Per SOARS paper NB final element is printed '>78.6%'
+const   longMortality = [0.0, 0.3, 0.6, 2, 5, 12, 15, 30, 40, 47, 56, 75, 87, 100, 100, 100]  //TODO Confirm - these are eyeballed from the SOARS paper
 const isaricMortality = [0.3, 0.3, 0.8,  2.3,  4.8,  7.5,  7.8, 11.7, 14.4, 19.2, 22.9, 26.9, 32.9, 40.1, 44.6, 51.6, 59.1, 66.1, 75.8, 77.4, 82.9, 87.5] //per isaric4c.net/risk
 //NB first element is printed '0.3%'
 
@@ -21,10 +21,6 @@ const isaricMortality = [0.3, 0.3, 0.8,  2.3,  4.8,  7.5,  7.8, 11.7, 14.4, 19.2
 const shortAgeRangeScore = [0, 1, 2, 3, 4]  //scores for each age range category
 const isaricAgeRangeScore = [0, 2, 4, 6, 7] //Scores for each age range category
 const isaricUreaRangeScore = [0, 1, 3]      //Scores for each urea range category
-
-// Test Elements
-const   longTestElements = ["everSmoker", "dementia", "leucophilia", "lymphopenia", "cxrChanges", "ckdStageRange"]
-const isaricTestElements = ["gcs", "male", "comorbidRange", "tachypneoaRange", "ureaRange", "crpRange"]
 
 //---Model Variables---
 
@@ -46,6 +42,7 @@ let crpRange = 0;           //0- <50. 1- 50-99. 2- >100.
 let mortalityScore = 0;
 let scoreType = 0; //0- short score, 1- long score, 2- isaric
 
+//Button Definitions
 let scoreSelectMSOL = {
     rowLabel:"Select Test", rowId:"testSelection", rowDom:undefined, labelWidth:30, value:0,
     buttonLabels:["Short Score", "Long Score", "Isaric Score"], buttonIds:["shortScore", "longScore", "isaricScore"], buttonDoms:[], 
@@ -85,12 +82,29 @@ let ckdStageRangeMSOL = { //0- CKD1. 1- CKD2. 2- CKD3. 3- CKD4. 4- CKD5. Not nec
     rowLabel:"Renal Function", rowId:"ckdStageRange", rowDom:undefined, labelWidth:30, value:0, buttonDoms:[],
     buttonLabels:["CKD 1", "CKD 2", "CKD 3", "CKD 4", "CKD 5"], 
     buttonIds:["ckd1", "ckd2", "ckd3", "ckd4", "ckd5"], buttonHandlers:[onCkd1Check, onCkd2Check, onCkd3Check, onCkd4Check, onCkd5Check]};
-
-//    longTestElements = ["everSmoker", "dementia", "leucophilia", "lymphopenia", "cxrChanges", "ckdStageRange"]
+let gcsMSOL = {
+    rowLabel:"GCS < 15", rowId:"gcs", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
+    buttonLabels:["No", "Yes"], buttonIds:["noGcs", "yesGcs"], buttonHandlers:[onLowGcsCheck, onNormGcsCheck]};
+let maleMSOL = {
+    rowLabel:"Sex at birth", rowId:"male", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
+    buttonLabels:["Female", "Male"], buttonIds:["femaleSex", "maleSex"], buttonHandlers:[onFemaleCheck, onMaleCheck]};
+let comorbidRangeMSOL = {
+    rowLabel:"Comorbidities", rowId:"comorbidRange", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
+    buttonLabels:["0", "1", "2+"], buttonIds:["comorbid0", "comorbid1", "comorbid2+"], buttonHandlers:[onComorbid0Check, onComorbid1Check, onComorbid2PlusCheck]};
+let tachypneoaRangeMSOL = {
+    rowLabel:"Respiratory Rate", rowId:"tachypneoaRange", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
+    buttonLabels:["<20", "20-30", ">30"], buttonIds:["respRateUnder20", "respRate20-29", "respRateOver30"], buttonHandlers:[onRrUnder20Check, onRr20to29Check, onRrOver30Check]};
+let ureaRangeMSOL = {
+    rowLabel:"Urea", rowId:"ureaRange", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
+    buttonLabels:["<7", "7-14", ">14"], buttonIds:["ureaUnder7", "urea7to14", "ureaOver14"], buttonHandlers:[onUreaUnder7Check, onUrea7to14Check, onUreaOver14Check]};
+let crpRangeMSOL = {
+    rowLabel:"CRP", rowId:"crpRange", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
+    buttonLabels:["<50", "50-100", ">100"], buttonIds:["crpUnder50", "crp50to100", "crpOver100"], buttonHandlers:[onCrpUnder50Check, onCrp50to100Check, onCrpOver100Check]};
 
 let commonButtonDescriptors = [ageRangeMSOL, satsMSOL];
 let shortButtonDescriptors =  [tachypneoaMSOL, obesityMSOL, strokeMSOL];
 let longButtonDescriptors =   [everSmokerMSOL, dementiaMSOL, leucophiliaMSOL, lymphopeniaMSOL, cxrChangesMSOL, ckdStageRangeMSOL];
+let isaricButtonDescriptors = [gcsMSOL, maleMSOL, comorbidRangeMSOL, tachypneoaRangeMSOL, ureaRangeMSOL, crpRangeMSOL];
 
 // Generate HTML for button elements
 // Needs to be run before assigning DOM elements
@@ -99,6 +113,7 @@ generateDomIdsFromButtonDescriptor(scoreSelectMSOL);
 generateDomIdsForList(commonButtonDescriptors);
 generateDomIdsForList(shortButtonDescriptors);
 generateDomIdsForList(longButtonDescriptors);
+generateDomIdsForList(isaricButtonDescriptors);
 
 // Assign DOM elements to variables
 let titleText = document.getElementById("titleText");
@@ -124,12 +139,7 @@ function generateAllButtons() {
     htmlGeneratedButtonElements += generateRowWithButtonHtmlFromList(commonButtonDescriptors);
     htmlGeneratedButtonElements += generateRowWithButtonHtmlFromList(shortButtonDescriptors);
     htmlGeneratedButtonElements += generateRowWithButtonHtmlFromList(longButtonDescriptors);
-    htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[0], "GCS < 15", ["noGcs", "yesGcs"], ["No", "Yes"]);
-    htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[1], "Sex at birth", ["femaleSex", "maleSex"], ["Female", "Male"]);
-    htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[2], "Comorbidities", ["comorbid0", "comorbid1", "comorbid2+"], ["0", "1", "2+"]);
-    htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[3], "Respiratory Rate", ["respRateUnder20", "respRate20-29", "respRateOver30"], ["<20", "20-30", ">30"]);
-    htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[4], "Urea", ["ureaUnder7", "urea7to14", "ureaOver14"], ["<7", "7-14", ">14"]);
-    htmlGeneratedButtonElements += generateRowWithButtonHtml(isaricTestElements[5], "CRP", ["crpUnder50", "crp50to100", "crpOver100"], ["<50", "50-100", ">100"]);
+    htmlGeneratedButtonElements += generateRowWithButtonHtmlFromList(isaricButtonDescriptors);
     document.getElementById("generatedHtml").innerHTML += htmlGeneratedButtonElements;
 }
 
@@ -147,6 +157,7 @@ function attachAllEventListeners() {
     generateEventListenersForList(commonButtonDescriptors);
     generateEventListenersForList(shortButtonDescriptors);
     generateEventListenersForList(longButtonDescriptors);
+    generateEventListenersForList(isaricButtonDescriptors);
 }
 
 function generateRowFromButtonDescriptor(buttonDescriptor){
@@ -257,7 +268,8 @@ function calculateLongScore(){
 }
 
 function calculateIsaricScore(){
-    return isaricAgeRangeScore[ageRangeMSOL.value] + maleBirthSex + comorbidRange + tachypneoaRange + (2*satsMSOL.value) + (2*gcsUnder15) + crpRange;
+    return isaricAgeRangeScore[ageRangeMSOL.value] + isaricUreaRangeScore[ureaRangeMSOL.value] + maleMSOL.value + 
+        comorbidRangeMSOL.value + tachypneoaRangeMSOL.value + (2*satsMSOL.value) + (2*gcsMSOL.value) + crpRangeMSOL.value;
 }
 
 function onSetShortScore(){
@@ -265,8 +277,8 @@ function onSetShortScore(){
     titleText.innerHTML = "COVID-19 Short Score";
     setMultiButtonActiveStyle(scoreSelectMSOL.buttonDoms, 0);
     shortButtonDescriptors.forEach(showRowByMSOL);
-    longTestElements.forEach(hideRowByElementId);
-    isaricTestElements.forEach(hideRowByElementId);
+    longButtonDescriptors.forEach(hideRowByMSOL);
+    isaricButtonDescriptors.forEach(hideRowByMSOL);
     getMortalityScore();
 }
 
@@ -275,8 +287,8 @@ function onSetLongScore(){
     titleText.innerHTML = "COVID-19 Long Score";
     setMultiButtonActiveStyle(scoreSelectMSOL.buttonDoms, 1);
     shortButtonDescriptors.forEach(showRowByMSOL);  //Long test is a superset of short test
-    isaricTestElements.forEach(hideRowByElementId); 
-    longTestElements.forEach(showRowByElementId);
+    isaricButtonDescriptors.forEach(hideRowByMSOL); 
+    longButtonDescriptors.forEach(showRowByMSOL);
     getMortalityScore();
 }
 
@@ -286,8 +298,8 @@ function onSetIsaricScore(){
     titleText.innerHTML = "COVID-19 ISARIC score";
     setMultiButtonActiveStyle(scoreSelectMSOL.buttonDoms, 2);
     shortButtonDescriptors.forEach(hideRowByMSOL);
-    longTestElements.forEach(hideRowByElementId);
-    isaricTestElements.forEach(showRowByElementId);
+    longButtonDescriptors.forEach(hideRowByMSOL);
+    isaricButtonDescriptors.forEach(showRowByMSOL);
     getMortalityScore();
 }
 
@@ -339,17 +351,13 @@ function setButtonStyleInactive(targetButton){
     setButtonStyle(targetButton, false);
 }
 
-function toggleButtonStyles(activeButton, inactiveButton){
-    setButtonStyle(activeButton, true);
-    setButtonStyle(inactiveButton, false);
-}
-
 function setMultiButtonActiveStyle(multiButtonArray, activeButtonIndex){
     multiButtonArray.forEach(setButtonStyleInactive);
     setButtonStyle(multiButtonArray[activeButtonIndex], true);
 }
 
 function setMSOLActiveStyle(msolElement, activeButtonIndex){
+    msolElement.value = activeButtonIndex;
     msolElement.buttonDoms.forEach(setButtonStyleInactive);
     setButtonStyle(msolElement.buttonDoms[activeButtonIndex], true);
     getMortalityScore();
@@ -397,32 +405,32 @@ function hideRowByMSOL(msolToShow){
 //------------------------
 //Event Listener Functions
 //------------------------
-function onTachypneoaUncheck(){ tachypneoaMSOL.value = 0; setMSOLActiveStyle(tachypneoaMSOL, 0);}
-function onTachypneoaCheck()  { tachypneoaMSOL.value = 1; setMSOLActiveStyle(tachypneoaMSOL, 1);}
+function onTachypneoaUncheck(){ setMSOLActiveStyle(tachypneoaMSOL, 0);}
+function onTachypneoaCheck()  { setMSOLActiveStyle(tachypneoaMSOL, 1);}
 
-function onDesaturatedUncheck(){ satsMSOL.value = 0; setMSOLActiveStyle(satsMSOL, 0);}
-function onDesaturatedCheck()  { satsMSOL.value = 1; setMSOLActiveStyle(satsMSOL, 1);}
+function onDesaturatedUncheck(){ setMSOLActiveStyle(satsMSOL, 0);}
+function onDesaturatedCheck()  { setMSOLActiveStyle(satsMSOL, 1);}
 
-function onStrokeUncheck(){ strokeMSOL.value = 0; setMSOLActiveStyle(strokeMSOL, 0);}
-function onStrokeCheck()  { strokeMSOL.value = 1; setMSOLActiveStyle(strokeMSOL, 1);}
+function onStrokeUncheck(){ setMSOLActiveStyle(strokeMSOL, 0);}
+function onStrokeCheck()  { setMSOLActiveStyle(strokeMSOL, 1);}
 
-function onObesityUncheck(){obesityMSOL.value = 0; setMSOLActiveStyle(obesityMSOL, 0);}
-function onObesityCheck()  {obesityMSOL.value = 1; setMSOLActiveStyle(obesityMSOL, 1);}
+function onObesityUncheck(){setMSOLActiveStyle(obesityMSOL, 0);}
+function onObesityCheck()  {setMSOLActiveStyle(obesityMSOL, 1);}
 
-function onEverSmokerUncheck(){everSmokerMSOL.value = 0; setMSOLActiveStyle(everSmokerMSOL, 0);}
-function onEverSmokerCheck()  {everSmokerMSOL.value = 1; setMSOLActiveStyle(everSmokerMSOL, 1);}
+function onEverSmokerUncheck(){setMSOLActiveStyle(everSmokerMSOL, 0);}
+function onEverSmokerCheck()  {setMSOLActiveStyle(everSmokerMSOL, 1);}
 
-function onDementiaUncheck(){dementiaMSOL.value = 0; setMSOLActiveStyle(dementiaMSOL, 0);}
-function onDementiaCheck()  {dementiaMSOL.value = 1; setMSOLActiveStyle(dementiaMSOL, 1);}
+function onDementiaUncheck(){setMSOLActiveStyle(dementiaMSOL, 0);}
+function onDementiaCheck()  {setMSOLActiveStyle(dementiaMSOL, 1);}
 
-function onLeucophiliaUncheck(){leucophiliaMSOL.value = 0; setMSOLActiveStyle(leucophiliaMSOL, 0);}
-function onLeucophiliaCheck()  {leucophiliaMSOL.value = 1; setMSOLActiveStyle(leucophiliaMSOL, 1);}
+function onLeucophiliaUncheck(){setMSOLActiveStyle(leucophiliaMSOL, 0);}
+function onLeucophiliaCheck()  {setMSOLActiveStyle(leucophiliaMSOL, 1);}
 
-function onLymphopeniaUncheck(){lymphopeniaMSOL.value = 0; setMSOLActiveStyle(lymphopeniaMSOL, 0);}
-function onLymphopeniaCheck()  {lymphopeniaMSOL.value = 1; setMSOLActiveStyle(lymphopeniaMSOL, 1);}
+function onLymphopeniaUncheck(){setMSOLActiveStyle(lymphopeniaMSOL, 0);}
+function onLymphopeniaCheck()  {setMSOLActiveStyle(lymphopeniaMSOL, 1);}
 
-function onCxrChangesUncheck(){ cxrChangesMSOL.value = 0; setMSOLActiveStyle(cxrChangesMSOL, 0);}
-function onCxrChangesCheck()  { cxrChangesMSOL.value = 1; setMSOLActiveStyle(cxrChangesMSOL, 1);}
+function onCxrChangesUncheck(){ setMSOLActiveStyle(cxrChangesMSOL, 0);}
+function onCxrChangesCheck()  { setMSOLActiveStyle(cxrChangesMSOL, 1);}
 
 function onAgeUnder50check()    { ageButtonBaseListener(0,  0, 50); }
 function onAgeBetween5059check(){ ageButtonBaseListener(1, 50, 60); }
@@ -430,13 +438,12 @@ function onAgeBetween6069check(){ ageButtonBaseListener(2, 60, 70); }
 function onAgeBetween7079check(){ ageButtonBaseListener(3, 70, 80); }
 function onAgeOver80check()     { ageButtonBaseListener(4, 80,  0); }
 function ageButtonBaseListener(buttonIndex, lowLimit, highLimit){
-    ageRangeMSOL.value = buttonIndex;
-    if      (lowLimit  &&  highLimit)   {demographicAgeYears = demographicAgeYears >= lowLimit && demographicAgeYears < highLimit ? demographicAgeYears : 0;}
+    setMSOLActiveStyle(ageRangeMSOL, buttonIndex);
+    if      ( lowLimit &&  highLimit)   {demographicAgeYears = demographicAgeYears >= lowLimit && demographicAgeYears < highLimit ? demographicAgeYears : 0;}
     else if ( lowLimit && !highLimit)   {demographicAgeYears = demographicAgeYears >= lowLimit ? demographicAgeYears : 0;}
     else if (!lowLimit &&  highLimit)   {demographicAgeYears = demographicAgeYears < highLimit ? demographicAgeYears : 0;}
     else if (!lowLimit && !highLimit)   {/*Always True; no action*/}
     setDobFieldValidity(demographicAgeYears);
-    setMultiButtonActiveStyle(ageRangeMSOL.buttonDoms, buttonIndex);
     getMortalityScore();
 }
 
@@ -445,10 +452,29 @@ function onCkd2Check(){ckdButtonBaseListener(1);}
 function onCkd3Check(){ckdButtonBaseListener(2);}
 function onCkd4Check(){ckdButtonBaseListener(3);}
 function onCkd5Check(){ckdButtonBaseListener(4);}
-function ckdButtonBaseListener(buttonIndex){
-    ckdStageRangeMSOL.value = buttonIndex;
-    setMSOLActiveStyle(ckdStageRangeMSOL, buttonIndex);
-}
+function ckdButtonBaseListener(buttonIndex){ setMSOLActiveStyle(ckdStageRangeMSOL, buttonIndex);}
+
+function onLowGcsCheck() { setMSOLActiveStyle(gcsMSOL, 0);}
+function onNormGcsCheck(){ setMSOLActiveStyle(gcsMSOL, 1);}
+
+function onFemaleCheck(){ setMSOLActiveStyle(maleMSOL, 0);}
+function onMaleCheck()  { setMSOLActiveStyle(maleMSOL, 1);}
+
+function onComorbid0Check()    { setMSOLActiveStyle(comorbidRangeMSOL, 0);}
+function onComorbid1Check()    { setMSOLActiveStyle(comorbidRangeMSOL, 1);}
+function onComorbid2PlusCheck(){ setMSOLActiveStyle(comorbidRangeMSOL, 2);}
+
+function onRrUnder20Check(){ setMSOLActiveStyle(tachypneoaRangeMSOL, 0);}
+function onRr20to29Check() { setMSOLActiveStyle(tachypneoaRangeMSOL, 1);}
+function onRrOver30Check() { setMSOLActiveStyle(tachypneoaRangeMSOL, 2);}
+
+function onUreaUnder7Check(){ setMSOLActiveStyle(ureaRangeMSOL, 0);}
+function onUrea7to14Check(){  setMSOLActiveStyle(ureaRangeMSOL, 1);}
+function onUreaOver14Check(){ setMSOLActiveStyle(ureaRangeMSOL, 2);}
+
+function onCrpUnder50Check(){ setMSOLActiveStyle(crpRangeMSOL, 0);}
+function onCrp50to100Check(){ setMSOLActiveStyle(crpRangeMSOL, 1);}
+function onCrpOver100Check(){ setMSOLActiveStyle(crpRangeMSOL, 2);}
 
 function onFNameChange(){
     if(fName.value.length){
