@@ -20,10 +20,10 @@
   font-size: 17px;
   margin-left: 0px;
   margin-right: 0px;
-  padding-top: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .patientDataText {
@@ -49,13 +49,14 @@
   justify-self: flex-start;
   flex-grow:2;
   flex-basis:65%;
+  align-self: flex-end;
 }
 
 .multiButtonContainer{
   /* Style for container for yes/no button*/
   justify-self: flex-end;
   display: flex;
-  height: 90%;
+  height: 80%;
   flex-grow:1;
   flex-basis: 35%;
 }
@@ -70,6 +71,7 @@
   text-align: center;
   line-height: 100%;
   font-size: 100%;
+  height:100%;
   padding: 5px;
 }
 
@@ -89,12 +91,19 @@
   border-right: 1px solid grey;
 }
 
+.multiButton.bothEnds{
+  border-radius:5px;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
 /* ----- Results Section ----- */
 
 .result{
   background: #0066cc;
   height: 15vh;
   align-self: flex-end;
+  justify-self: stretch;
   color: white;
   border-radius: 5px;
   border: 1px solid #0066cc;
