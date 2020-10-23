@@ -56,7 +56,7 @@
   /* Style for container for yes/no button*/
   justify-self: flex-end;
   display: flex;
-  height: 90%;
+  height: 80%;
   flex-grow:1;
   flex-basis: 35%;
 }
