@@ -31,14 +31,6 @@ let demograhicNhsNumber = 0;
 let demographicFName = "";
 let demographicLName = "";
 
-//ISARIC Score Specific Variables
-let gcsUnder15 = false;
-let maleBirthSex = false;
-let comorbidRange = 0;      //0- no comorbidities. 1- 1 comorbidity. 2- 2+ comorbidities
-let tachypneoaRange = 0;    //0- RR < 20. 1- RR 20-29. 2- RR >= 30.
-let ureaRange = 0;          //0- <7. 1- 7-14. 2- >14.
-let crpRange = 0;           //0- <50. 1- 50-99. 2- >100.
-
 let mortalityScore = 0;
 let scoreType = 0; //0- short score, 1- long score, 2- isaric
 
