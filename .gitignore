@@ -1,2 +1,4 @@
 nohup.out
 data.csv
+node_modules/
+.env
