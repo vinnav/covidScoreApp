@@ -57,10 +57,10 @@
         <button id="submitButton" class="btn btn-primary mb-2">Submit</button>
     </div>
     <div id="alertSuccess" class="alert alert-primary" role="alert">
-      Correct Answer
+      Correct Answer, patient is scoring 10 (SOARS = 2, smoker = 1, ckd = 4, WCC = 1, lymphocytes = 1, CXR = 1)
     </div>
     <div id="alertWarning" class="alert alert-warning" role="alert">
-      Wrong Answer
+      Wrong Answer, patient is scoring 10 (SOARS = 2, smoker = 1, ckd = 4, WCC = 1, lymphocytes = 1, CXR = 1)
     </div>
     <div class="row">
       <div class="col text-center">
@@ -73,7 +73,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>
   function soarsTest(){
-    if($('#inputCls').val() == 9){
+    if($('#inputCls').val() == 10){
       $('#alertWarning').css({"display":"none"})
       $('#alertSuccess').css({"display":"block"})
     } else {
