@@ -46,7 +46,6 @@
       </div>
     </div>
     <div class="row row justify-content-center">
-      <form class="form-inline">
         <div class="form-group mb-2">
           <label for="cls" class="sr-only">Text</label>
           <input type="text" readonly class="form-control-plaintext" id="cls" value="Enter CLS score">
@@ -55,8 +54,13 @@
           <label for="inputCls" class="sr-only">SOARS</label>
           <input type="number" class="form-control" id="inputCls" placeholder="0">
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-      </form>
+        <button id="submitButton" class="btn btn-primary mb-2">Submit</button>
+    </div>
+    <div id="alertSuccess" class="alert alert-primary" role="alert">
+      Correct Answer
+    </div>
+    <div id="alertWarning" class="alert alert-warning" role="alert">
+      Wrong Answer
     </div>
     <div class="row">
       <div class="col text-center">
@@ -67,6 +71,27 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>
+  function soarsTest(){
+    if($('#inputCls').val() == 9){
+      $('#alertWarning').css({"display":"none"})
+      $('#alertSuccess').css({"display":"block"})
+    } else {
+      $('#alertSuccess').css({"display":"none"})
+      $('#alertWarning').css({"display":"block"})
+    }
+   };
+    
+  $(document).ready(function(){
+    $('#submitButton').click(soarsTest);
+  });
+
+</script>
+<style>
+  .alert {
+    display: none;
+  }
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>
