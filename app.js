@@ -13,6 +13,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true})) 
 app.use(bodyParser.json());
 
+/*
 // ======== DATABASE CONNECTION AND REQUESTS ========
 // Comment this section out for development if there isn't a sql db running
 const connection = mysql.createConnection({
@@ -41,7 +42,7 @@ app.get('/listData', function(req, res) {
     })
   })
 });
-    
+*/
   // Add new data
   /* SQL query to initialize table:
 CREATE TABLE covidScore(
