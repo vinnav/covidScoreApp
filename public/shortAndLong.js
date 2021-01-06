@@ -36,62 +36,98 @@ let scoreType = 0; //0- short score, 1- long score, 2- isaric
 
 //Button Definitions
 let scoreSelectMSOL = {
-    rowLabel:"Select Test", rowId:"testSelection", rowDom:undefined, labelWidth:30, value:0,
-    buttonLabels:["Short Score", "Long Score", "Isaric Score"], buttonIds:["shortScore", "longScore", "isaricScore"], buttonDoms:[], 
-    buttonHandlers:[onSetShortScore, onSetLongScore, onSetIsaricScore]};
+    rowId:"testSelection", rowDom:undefined, value:0,
+    titleLabel:"Select Test", titleLabelShort:"Test", titleLabelThreshold:300, titleWidth:30, titleDom:undefined, 
+    buttonLabels:["Short Score", "Long Score", "Isaric Score"], buttonLabelsShort:["Short", "Long", "Isaric"], buttonLabelsThreshold:420,
+    buttonIds:["shortScore", "longScore", "isaricScore"], 
+    buttonDoms:[], buttonHandlers:[onSetShortScore, onSetLongScore, onSetIsaricScore]};
 let satsMSOL = {
-    rowLabel:"SpO2 < 92% on Air / 21% O2", rowId:"spo", rowDom:undefined, labelWidth:65, value:0,
+    rowId:"spo", rowDom:undefined, value:0, 
+    titleLabel:"SpO<sub>2</sub> < 92% on Air / 21% O<sub>2</sub>", titleLabelShort:"Sats < 92% RA", titleLabelThreshold:350, titleWidth:65, titleDom:undefined, 
     buttonLabels:["No", "Yes"], buttonIds:["nospo", "yesspo"], buttonDoms:[], buttonHandlers:[onDesaturatedUncheck, onDesaturatedCheck]};
 let ageRangeMSOL = { //0- >50. 1- 50-59. 2- 60-69. 3- 70-79. 4- >=80. Not neccessarily a score.
-    rowLabel:"Age", rowId:"ageRange", rowDom:undefined, labelWidth:30, value:0, buttonDoms:[],
-    buttonLabels:["<50", "50-59", "60-69", "70-79", ">80"], buttonIds:["ageless50", "age50-59", "age60-69", "age70-79", "agemore80"], 
-    buttonHandlers:[onAgeUnder50check, onAgeBetween5059check, onAgeBetween6069check, onAgeBetween7079check, onAgeOver80check]};
+    rowId:"ageRange", rowDom:undefined, value:0, 
+    titleLabel:"Age", titleWidth:30, titleDom:undefined, 
+    buttonLabels:["<50", "50-59", "60-69", "70-79", ">80"], buttonLabelsShort:["<50", "50s", "60s", "70s", ">80"], buttonLabelsThreshold:350,
+    buttonIds:["ageless50", "age50-59", "age60-69", "age70-79", "agemore80"], 
+    buttonDoms:[], buttonHandlers:[onAgeUnder50check, onAgeBetween5059check, onAgeBetween6069check, onAgeBetween7079check, onAgeOver80check]};
 let obesityMSOL = {
-    rowLabel:"Obesity (BMI > 30)", rowId:"obesity", rowDom:undefined, labelWidth:65, value:0,
-    buttonLabels:["No", "Yes"], buttonIds:["noobesity", "yesobesity"], buttonDoms:[], buttonHandlers:[onObesityUncheck, onObesityCheck]};
+    rowId:"obesity", rowDom:undefined, value:0, 
+    titleLabel:"Obesity (BMI > 30)", titleLabelShort:"Obese", titleLabelThreshold:230, titleWidth:65, titleDom:undefined, 
+    buttonLabels:["No", "Yes"], buttonIds:["noobesity", "yesobesity"], 
+    buttonDoms:[], buttonHandlers:[onObesityUncheck, onObesityCheck]};
 let strokeMSOL = {
-    rowLabel:"Stroke", rowId:"stroke", rowDom:undefined, labelWidth:65, value:0,
-    buttonLabels:["No", "Yes"], buttonIds:["nostroke", "yesstroke"], buttonDoms:[], buttonHandlers:[onStrokeUncheck, onStrokeCheck]};
+    rowId:"stroke", rowDom:undefined, value:0, 
+    titleLabel:"Stroke", titleWidth:65, titleDom:undefined, 
+    buttonLabels:["No", "Yes"], buttonIds:["nostroke", "yesstroke"], 
+    buttonDoms:[], buttonHandlers:[onStrokeUncheck, onStrokeCheck]};
 let tachypneoaMSOL = {
-    rowLabel:"Respiratory Rate >24/min", rowId:"resp", rowDom:undefined, labelWidth:65, value:0,
-    buttonLabels:["No", "Yes"], buttonIds:["noresp", "yesresp"], buttonDoms:[], buttonHandlers:[onTachypneoaUncheck, onTachypneoaCheck]};
+    rowId:"resp", rowDom:undefined, value:0, 
+    titleLabel:"Respiratory Rate >24/min", titleLabelShort:"RR > 24", titleLabelThreshold:310, titleWidth:65, titleDom:undefined, 
+    buttonLabels:["No", "Yes"], buttonIds:["noresp", "yesresp"], 
+    buttonDoms:[], buttonHandlers:[onTachypneoaUncheck, onTachypneoaCheck]};
 let everSmokerMSOL = {
-    rowLabel:"Ever Smoker", rowId:"everSmoker", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["No", "Yes"], buttonIds:["noEverSmoker", "yesEverSmoker"], buttonHandlers:[onEverSmokerUncheck, onEverSmokerCheck]};
+    rowId:"everSmoker", rowDom:undefined, value:0, 
+    titleLabel:"Ever Smoker", titleWidth:65, titleDom:undefined, 
+    buttonLabels:["No", "Yes"], buttonIds:["noEverSmoker", "yesEverSmoker"], 
+    buttonDoms:[], buttonHandlers:[onEverSmokerUncheck, onEverSmokerCheck]};
 let dementiaMSOL = {
-    rowLabel:"Dementia", rowId:"dementia", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["No", "Yes"], buttonIds:["noDementia", "yesDementia"],  buttonHandlers:[onDementiaUncheck, onDementiaCheck]};
+    rowId:"dementia", rowDom:undefined, value:0, 
+    titleLabel:"Dementia", titleWidth:65, titleDom:undefined, 
+    buttonLabels:["No", "Yes"], buttonIds:["noDementia", "yesDementia"],
+    buttonDoms:[], buttonHandlers:[onDementiaUncheck, onDementiaCheck]};
 let leucophiliaMSOL = {
-    rowLabel:"Leucophilia (WCC >11)", rowId:"leucophilia", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["No", "Yes"], buttonIds:["noLeucophilia", "yesLeucophilia"],  buttonHandlers:[onLeucophiliaUncheck, onLeucophiliaCheck]};
+    rowId:"leucophilia", rowDom:undefined, value:0,
+    titleLabel:"Leucophilia (WCC >11)", titleLabelShort:"WCC >11", titleLabelThreshold:280, titleWidth:65, titleDom:undefined, 
+    buttonLabels:["No", "Yes"], buttonIds:["noLeucophilia", "yesLeucophilia"],
+    buttonDoms:[], buttonHandlers:[onLeucophiliaUncheck, onLeucophiliaCheck]};
 let lymphopeniaMSOL = {
-    rowLabel:"Lymphopenia (Lymphocytes <0.7)", rowId:"lymphopenia", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["No", "Yes"], buttonIds:["noLymphopenia", "yesLymphopenia"],  buttonHandlers:[onLymphopeniaUncheck, onLymphopeniaCheck]};
+    rowId:"lymphopenia", rowDom:undefined, value:0, 
+    titleLabel:"Lymphopenia (Lymphocytes <0.7)", titleLabelShort:"Lymph <0.7", titleLabelThreshold:400, titleWidth:65, titleDom:undefined, 
+    buttonLabels:["No", "Yes"], buttonIds:["noLymphopenia", "yesLymphopenia"], 
+    buttonDoms:[], buttonHandlers:[onLymphopeniaUncheck, onLymphopeniaCheck]};
 let cxrChangesMSOL = {
-    rowLabel:"CXR Changes (>4 zones)", rowId:"cxrChanges", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["No", "Yes"], buttonIds:["noCxrChanges", "yesCxrChanges"], buttonHandlers:[onCxrChangesUncheck, onCxrChangesCheck]};
+    rowId:"cxrChanges", rowDom:undefined, value:0, 
+    titleLabel:"CXR Changes (>4 zones)", titleLabelShort:"CXR Changes", titleLabelThreshold:300,titleWidth:65, titleDom:undefined, 
+    buttonLabels:["No", "Yes"], buttonIds:["noCxrChanges", "yesCxrChanges"], 
+    buttonDoms:[], buttonHandlers:[onCxrChangesUncheck, onCxrChangesCheck]};
 let ckdStageRangeMSOL = { //0- CKD1. 1- CKD2. 2- CKD3. 3- CKD4. 4- CKD5. Not neccessarily a score.
-    rowLabel:"Renal Function", rowId:"ckdStageRange", rowDom:undefined, labelWidth:30, value:0, buttonDoms:[],
-    buttonLabels:["CKD 1", "CKD 2", "CKD 3", "CKD 4", "CKD 5"], 
-    buttonIds:["ckd1", "ckd2", "ckd3", "ckd4", "ckd5"], buttonHandlers:[onCkd1Check, onCkd2Check, onCkd3Check, onCkd4Check, onCkd5Check]};
+    rowId:"ckdStageRange", rowDom:undefined, value:0, 
+    titleLabel:"Renal Function", titleLabelShort:"CKD", titleLabelThreshold:380, titleWidth:30, titleDom:undefined, 
+    buttonLabels:["CKD 1", "CKD 2", "CKD 3", "CKD 4", "CKD 5"], buttonLabelsShort:["1", "2", "3", "4", "5"], buttonLabelsThreshold:420,
+    buttonIds:["ckd1", "ckd2", "ckd3", "ckd4", "ckd5"], 
+    buttonDoms:[], buttonHandlers:[onCkd1Check, onCkd2Check, onCkd3Check, onCkd4Check, onCkd5Check]};
 let gcsMSOL = {
-    rowLabel:"GCS < 15", rowId:"gcs", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["No", "Yes"], buttonIds:["noGcs", "yesGcs"], buttonHandlers:[onLowGcsCheck, onNormGcsCheck]};
+    rowId:"gcs", rowDom:undefined, value:0, 
+    titleLabel:"GCS < 15", titleWidth:65, titleDom:undefined, 
+    buttonLabels:["No", "Yes"], buttonIds:["noGcs", "yesGcs"], 
+    buttonDoms:[], buttonHandlers:[onLowGcsCheck, onNormGcsCheck]};
 let maleMSOL = {
-    rowLabel:"Sex at birth", rowId:"male", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["Female", "Male"], buttonIds:["femaleSex", "maleSex"], buttonHandlers:[onFemaleCheck, onMaleCheck]};
+    rowId:"male", rowDom:undefined, value:0, 
+    titleLabel:"Sex at birth", titleWidth:65, titleDom:undefined, 
+    buttonLabels:["Female", "Male"], buttonLabelsShort:["F", "M"], buttonLabelsThreshold:330, 
+    buttonIds:["femaleSex", "maleSex"], 
+    buttonDoms:[], buttonHandlers:[onFemaleCheck, onMaleCheck]};
 let comorbidRangeMSOL = {
-    rowLabel:"Comorbidities", rowId:"comorbidRange", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["0", "1", "2+"], buttonIds:["comorbid0", "comorbid1", "comorbid2+"], buttonHandlers:[onComorbid0Check, onComorbid1Check, onComorbid2PlusCheck]};
+    rowId:"comorbidRange", rowDom:undefined, value:0, 
+    titleLabel:"Comorbidities", titleWidth:65, titleDom:undefined, 
+    buttonLabels:["0", "1", "2+"], buttonIds:["comorbid0", "comorbid1", "comorbid2+"], 
+    buttonDoms:[], buttonHandlers:[onComorbid0Check, onComorbid1Check, onComorbid2PlusCheck]};
 let tachypneoaRangeMSOL = {
-    rowLabel:"Respiratory Rate", rowId:"tachypneoaRange", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["<20", "20-30", ">30"], buttonIds:["respRateUnder20", "respRate20-29", "respRateOver30"], buttonHandlers:[onRrUnder20Check, onRr20to29Check, onRrOver30Check]};
+    rowId:"tachypneoaRange", rowDom:undefined, value:0, 
+    titleLabel:"Respiratory Rate", titleWidth:65, titleDom:undefined, 
+    buttonLabels:["<20", "20-30", ">30"], buttonIds:["respRateUnder20", "respRate20-29", "respRateOver30"], 
+    buttonDoms:[], buttonHandlers:[onRrUnder20Check, onRr20to29Check, onRrOver30Check]};
 let ureaRangeMSOL = {
-    rowLabel:"Urea", rowId:"ureaRange", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["<7", "7-14", ">14"], buttonIds:["ureaUnder7", "urea7to14", "ureaOver14"], buttonHandlers:[onUreaUnder7Check, onUrea7to14Check, onUreaOver14Check]};
+    rowId:"ureaRange", rowDom:undefined, value:0, 
+    titleLabel:"Urea", titleWidth:65, titleDom:undefined,
+    buttonLabels:["<7", "7-14", ">14"], buttonIds:["ureaUnder7", "urea7to14", "ureaOver14"], 
+    buttonDoms:[],buttonHandlers:[onUreaUnder7Check, onUrea7to14Check, onUreaOver14Check]};
 let crpRangeMSOL = {
-    rowLabel:"CRP", rowId:"crpRange", rowDom:undefined, labelWidth:65, value:0, buttonDoms:[],
-    buttonLabels:["<50", "50-100", ">100"], buttonIds:["crpUnder50", "crp50to100", "crpOver100"], buttonHandlers:[onCrpUnder50Check, onCrp50to100Check, onCrpOver100Check]};
+    rowId:"crpRange", rowDom:undefined, value:0, 
+    titleLabel:"CRP", titleWidth:65, titleDom:undefined, 
+    buttonLabels:["<50", "50-100", ">100"], buttonIds:["crpUnder50", "crp50to100", "crpOver100"], 
+    buttonDoms:[], buttonHandlers:[onCrpUnder50Check, onCrp50to100Check, onCrpOver100Check]};
 
 let commonButtonDescriptors = [ageRangeMSOL, satsMSOL];
 let shortButtonDescriptors =  [tachypneoaMSOL, obesityMSOL, strokeMSOL];
@@ -101,7 +137,7 @@ let isaricButtonDescriptors = [gcsMSOL, maleMSOL, comorbidRangeMSOL, tachypneoaR
 // Generate HTML for button elements
 // Needs to be run before assigning DOM elements
 generateAllButtons();
-generateDomIdsFromButtonDescriptor(scoreSelectMSOL);
+generateDomIdsFromMSOL(scoreSelectMSOL);
 generateDomIdsForList(commonButtonDescriptors);
 generateDomIdsForList(shortButtonDescriptors);
 generateDomIdsForList(longButtonDescriptors);
@@ -119,6 +155,7 @@ let submitButton = document.getElementById("submitButton");
 // Finish setting up the document
 attachAllEventListeners();
 onSetShortScore();
+resizeHandler();
 
 //------------------------
 //Document Generation Code
@@ -127,7 +164,7 @@ onSetShortScore();
 function generateAllButtons() {
     //TODO implement custom row order based on MSOL.sortOrder attribute (or could manually order in a single list)
     let htmlGeneratedButtonElements = ""
-    htmlGeneratedButtonElements += generateRowFromButtonDescriptor(scoreSelectMSOL);
+    htmlGeneratedButtonElements += generateRowFromMSOL(scoreSelectMSOL);
     htmlGeneratedButtonElements += generateRowWithButtonHtmlFromList(commonButtonDescriptors);
     htmlGeneratedButtonElements += generateRowWithButtonHtmlFromList(shortButtonDescriptors);
     htmlGeneratedButtonElements += generateRowWithButtonHtmlFromList(longButtonDescriptors);
@@ -145,58 +182,88 @@ function attachAllEventListeners() {
     dob.addEventListener(                   "change",          onDobChange);
     submitButton.addEventListener(          'click',           onSubmitButtonPress);
 
-    generateEventListenerAttatchmentsFromButtonDescriptor(scoreSelectMSOL);
+    generateEventListenerAttatchmentsFromMSOL(scoreSelectMSOL);
     generateEventListenersForList(commonButtonDescriptors);
     generateEventListenersForList(shortButtonDescriptors);
     generateEventListenersForList(longButtonDescriptors);
     generateEventListenersForList(isaricButtonDescriptors);
+
+    window.addEventListener('resize', resizeHandler);
 }
 
-function generateRowFromButtonDescriptor(buttonDescriptor){
-    return(generateRowWithButtonHtml(buttonDescriptor.rowId, buttonDescriptor.rowLabel, buttonDescriptor.buttonIds, buttonDescriptor.buttonLabels, buttonDescriptor.labelWidth))
+function resizeHandler(){
+    setPreferredText(ckdStageRangeMSOL);
+    setPreferredText(scoreSelectMSOL);
+    setPreferredText(ageRangeMSOL);
+    setPreferredText(satsMSOL);
+    setPreferredText(tachypneoaMSOL);
+    setPreferredText(obesityMSOL);
+    setPreferredText(leucophiliaMSOL);
+    setPreferredText(lymphopeniaMSOL);
+    setPreferredText(cxrChangesMSOL);
+    setPreferredText(maleMSOL);
 }
 
-function generateDomIdsFromButtonDescriptor(buttonDescriptor){
-    buttonDescriptor.rowDom = document.getElementById(buttonDescriptor.rowId)
+function setPreferredText(thisMSOL){
+    var width = thisMSOL.rowDom.clientWidth;
+    var t1 = thisMSOL.titleLabelThreshold;
+    var t2 = thisMSOL.buttonLabelsThreshold;
     var i;
-    for(i = 0; i < buttonDescriptor.buttonIds.length; i++){
-        buttonDescriptor.buttonDoms.push(document.getElementById(buttonDescriptor.buttonIds[i]));
+
+    thisMSOL.titleDom.innerHTML = width < t1 ? thisMSOL.titleLabelShort : thisMSOL.titleLabel;
+
+    for(i = 0; i < thisMSOL.buttonDoms.length; i++){
+        thisMSOL.buttonDoms[i].innerHTML = width < t2 ? thisMSOL.buttonLabelsShort[i] : thisMSOL.buttonLabels[i];
+    }
+
+}
+
+function generateRowFromMSOL(thisMSOL){
+    return(generateRowWithButtonHtml(thisMSOL.rowId, thisMSOL.titleLabel, thisMSOL.buttonIds, thisMSOL.buttonLabels, thisMSOL.titleWidth))
+}
+
+function generateDomIdsFromMSOL(thisMSOL){
+    thisMSOL.rowDom = document.getElementById(thisMSOL.rowId);
+    thisMSOL.titleDom = document.getElementById(thisMSOL.rowId + "Label");
+    var i;
+    for(i = 0; i < thisMSOL.buttonIds.length; i++){
+        thisMSOL.buttonDoms.push(document.getElementById(thisMSOL.buttonIds[i]));
     }
 }
 
-function generateEventListenerAttatchmentsFromButtonDescriptor(buttonDescriptor){
+function generateEventListenerAttatchmentsFromMSOL(thisMSOL){
     var i;
-    for(i=0; i < buttonDescriptor.buttonDoms.length; i++){
-        buttonDescriptor.buttonDoms[i].addEventListener("click", buttonDescriptor.buttonHandlers[i]);
+    for(i=0; i < thisMSOL.buttonDoms.length; i++){
+        thisMSOL.buttonDoms[i].addEventListener("click", thisMSOL.buttonHandlers[i]);
     }
 }
 
-function generateDomIdsForList(buttonDescriptorList){
-    buttonDescriptorList.forEach(generateDomIdsFromButtonDescriptor);
+function generateDomIdsForList(thisMSOLList){
+    thisMSOLList.forEach(generateDomIdsFromMSOL);
 }
 
-function generateEventListenersForList(buttonDescriptorList){
-    buttonDescriptorList.forEach(generateEventListenerAttatchmentsFromButtonDescriptor);
+function generateEventListenersForList(thisMSOLList){
+    thisMSOLList.forEach(generateEventListenerAttatchmentsFromMSOL);
 }
 
-function generateRowWithButtonHtmlFromList(buttonDescriptorList){
+function generateRowWithButtonHtmlFromList(thisMSOLList){
     let htmlReturnValue = "";
     var i;
-    for(i=0;i<buttonDescriptorList.length;i++){
-        htmlReturnValue += generateRowFromButtonDescriptor(buttonDescriptorList[i]);
+    for(i=0;i<thisMSOLList.length;i++){
+        htmlReturnValue += generateRowFromMSOL(thisMSOLList[i]);
     }
     return htmlReturnValue;
 }
 
-function generateRowWithButtonHtml(rowId, rowLabel, buttonIdArray, buttonLabelArray, labelWidth=65){
+function generateRowWithButtonHtml(rowId, titleLabel, buttonIdArray, buttonLabelArray, titleWidth=65){
     if(buttonIdArray.length != buttonLabelArray.length){return "";}
-    if(labelWidth < 0 || labelWidth >100){return"";}
-    let htmlLabelFlexOverride = (labelWidth == 35 ? "" : " style=\"flex-basis: " + labelWidth+ "%;\"");
-    let htmlButtonFlexOverride = (labelWidth == 35 ? "" : " style=\"flex-basis: " + (100 - labelWidth) + "%;\"");
+    if(titleWidth < 0 || titleWidth >100){return"";}
+    let htmlLabelFlexOverride = (titleWidth == 35 ? "" : " style=\"flex-basis: " + titleWidth+ "%;\"");
+    let htmlButtonFlexOverride = (titleWidth == 35 ? "" : " style=\"flex-basis: " + (100 - titleWidth) + "%;\"");
     let htmlOutput = 
       "<div class=\"row\" id=\"" + rowId + "\">\n" +
-      "  <div class=\"multiButtonLabel\""+ htmlLabelFlexOverride +">\n" +
-      "    " + rowLabel + "\n" +
+      "  <div class=\"multiButtonLabel\" id=\""+ rowId + "Label\" " + htmlLabelFlexOverride +">\n" +
+      "    " + titleLabel + "\n" +
       "  </div>\n" +
       "  <div class=\"multiButtonContainer\""+ htmlButtonFlexOverride + ">\n";
     var i;
@@ -222,12 +289,14 @@ function generateRowWithButtonHtml(rowId, rowLabel, buttonIdArray, buttonLabelAr
 // ---------------
 
 function getMortalityScore(){
-    let mortalityComment = "";
+    var mortalityComment = "";
+    var pathwayComment = "";
     switch (scoreType){
         case 0:
             //Short Score
             mortalityScore = calculateShortScore();
             mortalityComment = (mortalityScore == 8 ? ">":"") + shortMortality[mortalityScore] + "%";
+            pathwayComment = shortMortalityComment(mortalityScore);
             break;
         case 1:
             //Long Score
@@ -243,9 +312,23 @@ function getMortalityScore(){
     //TODO: Functions to generate interpertive comment for risk band and explaination of basis of prediction
     resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " 
     + (mortalityScore) 
-    + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality rate: "
+    + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality risk: "
     + mortalityComment 
-    + "</p>";
+    + "</p><hr>"
+    + pathwayComment;
+}
+
+function shortMortalityComment(score){
+    if(score < 2){
+        comment = "<p><strong>Green Pathway</strong><br />1. Discharge to the Virtual Hospital<br />2. Provide advice pack and Pulse Oximeter<br />3. Consider calling #7854 to discuss VH Drug Trial Eligibility, and provide Patient Information Leaflet and Consent Form to read.</p>";
+    }
+    else if (score == 2){
+        comment = "<p><strong>Orange Pathway</strong><br /><span>1. Discuss with Medical Registrar / Consultant RE need for admission</span><br /><span>&nbsp; &nbsp; - If Low Risk, treat as Green Pathway</span><br /><span>2. If High Risk, Calculate SOARS Long Score</span><br /><span>&nbsp; &nbsp; - assess O</span><sub>2</sub><span>&nbsp;Requirements, Obtain bloods (FBCs, U+Es, LFTs, CRP) and CXR</span><br /><span>3. If Long Score &lt;7, consider conscious proning</span><br /><span>4. If Long Score &ge;7:</span><br /><span>&nbsp; &nbsp; - Add additional bloods: Ferritin, D-Dimer, Procalcitonin, BNP, LDH, LDH, Troponin</span><br /><span>&nbsp; &nbsp; - Consider fast-track COVID swab if MI or Stroke suspected</span><br /><span>&nbsp; &nbsp; - Consider IV Fluids</span><br /><span>&nbsp; &nbsp; - Consider Antibiotics per local antimicrobial policy and review when procalcitonin reported<br />&nbsp; &nbsp; - Consider Dexamethasone<br /></span><span>&nbsp; &nbsp; - Assess Clinical Frailty / Rockwell Score</span><br /><span>&nbsp; &nbsp; - Consider and discuss appropriate escalation and resuscitation status</span><br /><span>&nbsp; &nbsp; - Consider need for escalation of care</span></p>";
+    }
+    else if (score > 2){
+        comment = "<p><strong>Red Pathway</strong><br />1. Calculate SOARS Long Score<br />&nbsp; &nbsp; - assess O<sub>2</sub> Requirements, Obtain bloods (FBCs, U+Es, LFTs, CRP) and CXR<br />3. If Long Score &lt;7, consider conscious proning<br />4. If Long Score &ge;7,<br />&nbsp; &nbsp; - Add additional bloods: Ferritin, D-Dimer, Procalcitonin, BNP, LDH, LDH, Troponin<br />&nbsp; &nbsp; - Consider fast-track COVID swab if MI or Stroke suspected<br />&nbsp; &nbsp; - Consider IV Fluids<br />&nbsp; &nbsp; - Consider Antibiotics per local antimicrobial policy and review when procalcitonin reported<br />&nbsp; &nbsp; - Assess Clinical Frailty / Rockwell Score<br />&nbsp; &nbsp; - Consider and discuss appropriate escalation and resuscitation status<br />&nbsp; &nbsp; - Consider need for escalation of care</p>";        
+    }
+    return comment;
 }
 
 function calculateShortScore(){
@@ -266,7 +349,7 @@ function calculateIsaricScore(){
 
 function onSetShortScore(){
     scoreType = 0;
-    titleText.innerHTML = "COVID-19 Short Score";
+    titleText.innerHTML = "SOARS Short Score";
     setMultiButtonActiveStyle(scoreSelectMSOL.buttonDoms, 0);
     shortButtonDescriptors.forEach(showRowByMSOL);
     longButtonDescriptors.forEach(hideRowByMSOL);
@@ -276,7 +359,7 @@ function onSetShortScore(){
 
 function onSetLongScore(){
     scoreType = 1;
-    titleText.innerHTML = "COVID-19 Long Score";
+    titleText.innerHTML = "SOARS Long Score";
     setMultiButtonActiveStyle(scoreSelectMSOL.buttonDoms, 1);
     shortButtonDescriptors.forEach(showRowByMSOL);  //Long test is a superset of short test
     isaricButtonDescriptors.forEach(hideRowByMSOL); 
@@ -287,7 +370,7 @@ function onSetLongScore(){
 function onSetIsaricScore(){
     //TODO implement ISARIC score
     scoreType = 2;
-    titleText.innerHTML = "COVID-19 ISARIC score";
+    titleText.innerHTML = "ISARIC score";
     setMultiButtonActiveStyle(scoreSelectMSOL.buttonDoms, 2);
     shortButtonDescriptors.forEach(hideRowByMSOL);
     longButtonDescriptors.forEach(hideRowByMSOL);
@@ -320,7 +403,7 @@ function isNhsNumberRangeValid(inputNhsNumber){
     //400 000 000x to 499 999 999x, and
     //600 000 000x to 708 800 000x
     if(inputNhsNumber < 3999999999 && inputNhsNumber > 3200000000){ return false;}  //NI H&C Number
-    if(inputNhsNumber < 3112999999 && inputNhsNumber > 0101010000){ return false;}  //Scottish CHI Number
+    if(inputNhsNumber < 3112999999 && inputNhsNumber >  101010000){ return false;}  //Scottish CHI Number
     return true;     //Not in NI or Scotland reserved range. Does not guarentee this range is active.
 }
 
