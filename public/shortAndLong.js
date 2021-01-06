@@ -27,7 +27,7 @@ const isaricUreaRangeScore = [0, 1, 3]      //Scores for each urea range categor
 //Demographic Details
 let demographicDoB = "0000-01-01";  //yyyy-mm-dd date - matches format from date control.
 let demographicAgeYears = 0;
-let demograhicNhsNumber = 0;
+let demographicNhsNumber = 0;
 let demographicFName = "";
 let demographicLName = "";
 
@@ -319,6 +319,7 @@ function getMortalityScore(){
 }
 
 function shortMortalityComment(score){
+    var comment;
     if(score < 2){
         comment = "<p><strong>Green Pathway</strong><br />1. Discharge to the Virtual Hospital<br />2. Provide advice pack and Pulse Oximeter<br />3. Consider calling #7854 to discuss VH Drug Trial Eligibility, and provide Patient Information Leaflet and Consent Form to read.</p>";
     }
@@ -517,7 +518,7 @@ function ageButtonBaseListener(buttonIndex, lowLimit, highLimit){
     if      ( lowLimit &&  highLimit)   {demographicAgeYears = demographicAgeYears >= lowLimit && demographicAgeYears < highLimit ? demographicAgeYears : 0;}
     else if ( lowLimit && !highLimit)   {demographicAgeYears = demographicAgeYears >= lowLimit ? demographicAgeYears : 0;}
     else if (!lowLimit &&  highLimit)   {demographicAgeYears = demographicAgeYears < highLimit ? demographicAgeYears : 0;}
-    else if (!lowLimit && !highLimit)   {/*Always True; no action*/}
+//  else if (!lowLimit && !highLimit)   {/*Always True; no action*/}
     setDobFieldValidity(demographicAgeYears);
     getMortalityScore();
 }
@@ -564,7 +565,7 @@ function onFNameChange(){
 function onLNameChange(){
     if(lName.value.length){
         setTextboxValidStyle(lName, true);
-        demographcLName = lName;
+        demographicLName = lName;
     }
     else{
         setTextboxDefaultStyle(lName);
@@ -574,7 +575,7 @@ function onLNameChange(){
 function onDobChange(){
     let ageMiliseconds = Date.now() - Date.parse(dob.value);
     demographicAgeYears = Math.floor(ageMiliseconds / (3600000 * 24 *365.25));
-    demographicBoB = dob.value;
+    demographicDoB = dob.value;
     if      (demographicAgeYears >= 80) {onAgeOver80check();      return true;}
     else if (demographicAgeYears >= 70) {onAgeBetween7079check(); return true;}
     else if (demographicAgeYears >= 60) {onAgeBetween6069check(); return true;}
@@ -588,7 +589,7 @@ function onNhsNumberChange()
     //if it matches the expected format (eg nnn nnn nnnn or nnnnnnnnnn), verify the checksum and then perform external lookup
     let validNhsN = isTenDigitNumber(nhsNumber.value);
     if(validNhsN){
-        patientNhsNumber = validNhsN;
+        var patientNhsNumber = validNhsN;
         setTextboxValidStyle(nhsNumber, false);
         if(isNhsNumberChecksumValid(patientNhsNumber) && isNhsNumberRangeValid(patientNhsNumber)){
             resultText.innerHTML = "<p style=\"font-size:35px;\"> NHS number appears to be valid..." + "</p>";
@@ -614,18 +615,18 @@ function onSubmitButtonPress()
         dobData:     demographicDoB,
         ageData:     ageRangeMSOL.value,
         respData:    tachypneoaMSOL.value,
-        spo2Data:    desaturatedMSOL.value,
+        spo2Data:    satsMSOL.value,
         strokeData:  strokeMSOL.value,
         obesityData: obesityMSOL.value,
         scoreData:   mortalityScore});
 }
 
-/**
- * sends a request to the specified url from a form. this will change the window location.
- * @param {string} path the path to send the post request to
- * @param {object} params the paramiters to add to the url
- * @param {string} [method=post] the method to use on the form
- */
+/*
+ sends a request to the specified url from a form. this will change the window location.
+ @param {string} path the path to send the post request to
+ @param {object} params the paramiters to add to the url
+ @param {string} [method=post] the method to use on the form
+*/
 function postData(path, params, method='post') {
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
