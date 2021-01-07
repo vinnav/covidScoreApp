@@ -1,14 +1,18 @@
-.card-header{
+.card-header {
   display: flex;
   height: 60px;
 }
 
-#navItem{
+#navItem {
   margin-left: 15px;
   color: black;
 }
 
-#navItem:hover{
+#navItem:hover {
   margin-left: 15px;
-  color: #2F3E48;
+  color: #2f3e48;
+}
+
+.top-banner {
+  margin: 20px auto;
 }
