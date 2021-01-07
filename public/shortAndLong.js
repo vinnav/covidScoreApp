@@ -155,7 +155,7 @@ let submitButton = document.getElementById("submitButton");
 // Finish setting up the document
 attachAllEventListeners();
 onSetShortScore();
-resizeHandler();
+resizeHandler();            //To ensure that the correct responsive content is selected
 
 //------------------------
 //Document Generation Code
@@ -191,6 +191,34 @@ function attachAllEventListeners() {
     window.addEventListener('resize', resizeHandler);
 }
 
+function encodeSOARSResult(isLongScore){
+
+    //Two or three base32crockford characters 
+    // 0x a b c d e ... f g h i j    ...    k l m n o
+    //a - score type    f - age/ckd         k - smoker
+    //b - SpO2          g - age/ckd         l - dementia
+    //c - rr            h - age/ckd         m - wcc
+    //d - obesity       i - age/ckd         n - lympho
+    //e - stroke        j - age/ckd         o - cxr
+
+    //'c' is Age + 5* CKD
+    //'c' is decoded thus: Age = 'c' mod 5, CKD is 'c' / 5
+    
+    var alphabet = ["0", "1", "2", "3", "4", "5", "6", "7",
+                    "8", "9", "A", "B", "C", "D", "E", "F",
+                    "G", "H", "J", "K", "M", "N", "P", "Q",
+                    "R", "S", "T", "V", "W", "X", "Y", "Z"];
+    
+    var code = "";
+    code += alphabet[strokeMSOL.value + (2*obesityMSOL.value) + (4*tachypneoaMSOL.value) + (8*satsMSOL.value) + (isLongScore?16:0)];
+    code += alphabet[ageRangeMSOL.value + (5*ckdStageRangeMSOL.value)];
+    if(isLongScore){
+        code += alphabet[cxrChangesMSOL.value + (2*lymphopeniaMSOL.value) + (4*leucophiliaMSOL.value) + (8*dementiaMSOL.value) + (16*everSmokerMSOL.value)];
+    }
+    return(code);
+}
+
+//Reposition
 function resizeHandler(){
     setPreferredText(ckdStageRangeMSOL);
     setPreferredText(scoreSelectMSOL);
@@ -204,6 +232,7 @@ function resizeHandler(){
     setPreferredText(maleMSOL);
 }
 
+//Reposition 
 function setPreferredText(thisMSOL){
     var width = thisMSOL.rowDom.clientWidth;
     var t1 = thisMSOL.titleLabelThreshold;
@@ -290,17 +319,20 @@ function generateRowWithButtonHtml(rowId, titleLabel, buttonIdArray, buttonLabel
 
 function getMortalityScore(){
     var mortalityComment = "";
+    var auditCode="";
     var pathwayComment = "";
     switch (scoreType){
         case 0:
             //Short Score
             mortalityScore = calculateShortScore();
+            auditCode = " (" + encodeSOARSResult(false) + ")";
             mortalityComment = (mortalityScore == 8 ? ">":"") + shortMortality[mortalityScore] + "%";
             pathwayComment = shortMortalityComment(mortalityScore);
             break;
         case 1:
             //Long Score
             mortalityScore = calculateLongScore();
+            auditCode = " (" + encodeSOARSResult(true) + ")";
             mortalityComment = longMortality[mortalityScore] + "%";
             break;
         case 2:
@@ -311,7 +343,7 @@ function getMortalityScore(){
     }
     //TODO: Functions to generate interpertive comment for risk band and explaination of basis of prediction
     resultText.innerHTML = "<p style=\"font-size:30px;margin:0px;padding:0px;\"> Score = " 
-    + (mortalityScore) 
+    + (mortalityScore) + " " + auditCode
     + "</p> <p style=\"font-size:30px;margin:0px;padding:0px;\"> Mortality risk: "
     + mortalityComment 
     + "</p><hr>"
@@ -327,7 +359,7 @@ function shortMortalityComment(score){
         comment = "<p><strong>Orange Pathway</strong><br /><span>1. Discuss with Medical Registrar / Consultant RE need for admission</span><br /><span>&nbsp; &nbsp; - If Low Risk, treat as Green Pathway</span><br /><span>2. If High Risk, Calculate SOARS Long Score</span><br /><span>&nbsp; &nbsp; - assess O</span><sub>2</sub><span>&nbsp;Requirements, Obtain bloods (FBCs, U+Es, LFTs, CRP) and CXR</span><br /><span>3. If Long Score &lt;7, consider conscious proning</span><br /><span>4. If Long Score &ge;7:</span><br /><span>&nbsp; &nbsp; - Add additional bloods: Ferritin, D-Dimer, Procalcitonin, BNP, LDH, LDH, Troponin</span><br /><span>&nbsp; &nbsp; - Consider fast-track COVID swab if MI or Stroke suspected</span><br /><span>&nbsp; &nbsp; - Consider IV Fluids</span><br /><span>&nbsp; &nbsp; - Consider Antibiotics per local antimicrobial policy and review when procalcitonin reported<br />&nbsp; &nbsp; - Consider Dexamethasone<br /></span><span>&nbsp; &nbsp; - Assess Clinical Frailty / Rockwell Score</span><br /><span>&nbsp; &nbsp; - Consider and discuss appropriate escalation and resuscitation status</span><br /><span>&nbsp; &nbsp; - Consider need for escalation of care</span></p>";
     }
     else if (score > 2){
-        comment = "<p><strong>Red Pathway</strong><br />1. Calculate SOARS Long Score<br />&nbsp; &nbsp; - assess O<sub>2</sub> Requirements, Obtain bloods (FBCs, U+Es, LFTs, CRP) and CXR<br />3. If Long Score &lt;7, consider conscious proning<br />4. If Long Score &ge;7,<br />&nbsp; &nbsp; - Add additional bloods: Ferritin, D-Dimer, Procalcitonin, BNP, LDH, LDH, Troponin<br />&nbsp; &nbsp; - Consider fast-track COVID swab if MI or Stroke suspected<br />&nbsp; &nbsp; - Consider IV Fluids<br />&nbsp; &nbsp; - Consider Antibiotics per local antimicrobial policy and review when procalcitonin reported<br />&nbsp; &nbsp; - Assess Clinical Frailty / Rockwell Score<br />&nbsp; &nbsp; - Consider and discuss appropriate escalation and resuscitation status<br />&nbsp; &nbsp; - Consider need for escalation of care</p>";        
+        comment = "<p><strong>Red Pathway</strong><br />1. Calculate SOARS Long Score<br />&nbsp; &nbsp; - assess O<sub>2</sub> Requirements, Obtain bloods (FBCs, U+Es, LFTs, CRP) and CXR<br />2. If Long Score &lt;7, consider conscious proning<br />3. If Long Score &ge;7,<br />&nbsp; &nbsp; - Add additional bloods: Ferritin, D-Dimer, Procalcitonin, BNP, LDH, LDH, Troponin<br />&nbsp; &nbsp; - Consider fast-track COVID swab if MI or Stroke suspected<br />&nbsp; &nbsp; - Consider IV Fluids<br />&nbsp; &nbsp; - Consider Antibiotics per local antimicrobial policy and review when procalcitonin reported<br />&nbsp; &nbsp; - Assess Clinical Frailty / Rockwell Score<br />&nbsp; &nbsp; - Consider and discuss appropriate escalation and resuscitation status<br />&nbsp; &nbsp; - Consider need for escalation of care</p>";        
     }
     return comment;
 }
