@@ -1,3 +1,7 @@
+
 nohup.out
 data.csv
 .DS_Store
+node_modules/
+.env
+
