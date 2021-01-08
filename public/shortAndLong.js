@@ -426,7 +426,18 @@ function isNhsNumberChecksumValid(inputNhsNumber){
     //place values 10 9 8    7 6 5    4 3 2
     //multiply each digit by its place value, sum those values, take the mod11 of that sum.
     //If the result is 10, the NHSN is invalid. If the result is 11, the check digit is 0. Otherwise, the result is the check digit.
-    return true;
+    var nhsNumString = inputNhsNumber.replace(/\s/g, '').toString();
+    var nhsNumArray = inputNhsNumber.toString().split('');
+    var i;
+    var tot = 0;
+    var check;
+    for(i = 0; i < 9; i++){
+        tot += nhsNumArray[i] * (10-i);
+    } 
+    check = 11- (tot % 11);
+    if(check == 10){return false;}
+    if(check == 11){check = 0;}
+    return(check == nhsNumArray[9]);
 }
 
 function isNhsNumberRangeValid(inputNhsNumber){
