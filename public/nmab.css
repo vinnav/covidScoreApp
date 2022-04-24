@@ -1,0 +1,160 @@
+.container-grid {
+  margin: 10px;
+  height: 800px;
+  background: white;
+  cursor: default;
+  display: grid;
+  grid-template-rows: 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6f ;
+}
+
+.row{
+  border-top: 1px solid grey;
+  height: 60px;
+  font-size: 17px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.title{
+  font-size: 40px;
+  text-align: center;
+}
+
+.patientDataText {
+  flex-basis: 20%;
+}
+.patientDataForm {
+  flex-basis: 80%;
+}
+.nhsdata {
+  border-radius: 10px;
+  border: 1px solid gray;
+  background: lightgray;
+}
+.values {
+  flex-basis: 60%;
+}
+.agevalues {
+  flex-basis: 20%;
+}
+.yesno {
+  border: 1px solid grey;
+  flex-basis: 35%;
+  display: flex;
+  border-radius: 5px;
+}
+.selectAge {
+  flex-basis: 75%;
+  display: flex;
+  font-size: 12px;
+}
+
+.nobtn {
+  background: #0066cc;
+  color: white;
+  flex-basis: 50%;
+}
+
+
+.yesbtn{
+  background: lightgrey;
+  flex-basis: 50%;
+}
+
+
+
+.result{
+  background: #0066cc;
+  height: 100%;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #0066cc;
+  
+}
+
+#resultText {
+  padding-left: 20px;
+}
+
+#contentDown {
+  padding: 0 0px;
+  height: 60px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+#contentSolidCancer {
+  padding: 0 0px;
+  height: 200px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+#contentHaem {
+  padding: 0 0px;
+  height: 480px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+#contentRenal {
+  padding: 0 0px;
+  height: 280px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+#contentLiver {
+  padding: 0 0px;
+  height: 200px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+#contentIMID {
+  padding: 0 0px;
+  height: 220px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+#contentImmune {
+  padding: 0 0px;
+  height: 360px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+#contentHIV {
+  padding: 0 0px;
+  height: 200px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+#contentTransplant {
+  padding: 0 0px;
+  height: 60px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+#contentNeuro {
+  padding: 0 0px;
+  height: 200px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}

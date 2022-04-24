@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="nmab.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <title>nMAB app</title>
+  </head>
+  <body>
+
+    <div class="title">nMAB Eligibility App</div>
+
+    
+      <div class="container-grid">
+        <div class="row" id="row">
+          <div class="values">
+            Does the patient have any of the following?
+          </div>
+        </div>
+        
+        <div class="row" id="down">
+          <div class="values">
+            Down's syndrome
+          </div>
+          <div class="yesno">
+            <div id="noDown" class="nobtn collapsible-close">
+              &nbspNo 
+            </div>
+            <div id="yesDown" class="yesbtn collapsible-open">
+              &nbspYes
+            </div>
+          </div>
+        </div>
+
+        <div id="contentDown">
+          <div class="row">
+            <div class="values">
+              All patients with Down’s syndrome
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="row" id="solidCancer">
+          <div class="values">
+            Solid cancer
+          </div>
+          <div class="yesno">
+            <div id="noSolidCancer" class="nobtn collapsibleSolidCancer-close">
+              &nbspNo 
+            </div>
+            <div id="yesSolidCancer" class="yesbtn collapsibleSolidCancer-open">
+              &nbspYes 
+            </div>
+          </div>
+        </div>
+
+        <div id="contentSolidCancer">
+          
+          <div class="row" id="eligible">
+            <div class="values">
+              Any of the following?
+            </div>
+            <div class="yesno">
+              <div id="noEligible1" class="nobtn">
+                &nbspNo 
+              </div>
+              <div id="yesEligible1" class="yesbtn">
+                &nbspYes
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="values">
+              <ul>
+                <li>Active metastatic cancer and active solid cancers (at any stage)</li>
+                <li>All patients receiving chemotherapy within the last 3 months</li>
+                <li>Patients receiving group B or C chemotherapy 3-12 months prior (see Appendix 3)</li>
+                <li>Patients receiving radiotherapy within the last 6 months</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="haem">
+          <div class="values">
+            Haematological diseases or stem cell transplant recipient
+          </div>
+          <div class="yesno">
+            <div id="noHaem" class="nobtn collapsibleHaem-close">
+              &nbspNo 
+            </div>
+            <div id="yesHaem" class="yesbtn collapsibleHaem-open">
+              &nbspYes 
+            </div>
+          </div>
+        </div>
+
+        <div id="contentHaem">
+
+          <div class="row" id="eligible">
+            <div class="values">
+              Any of the following?
+            </div>
+            <div class="yesno">
+              <div id="noEligible2" class="nobtn">
+                &nbspNo 
+              </div>
+              <div id="yesEligible2" class="yesbtn">
+                &nbspYes
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="values">
+              <ul>
+                <li>Allogeneic haematopoietic stem cell transplant (HSCT) recipients in the last 12 months or active graft vs host disease (GVHD) regardless of time from transplant</li>
+                <li>Autologous HSCT recipients in the last 12 months</li>
+                <li>Individuals with haematological malignancies who have:
+                  <ul>
+                    <li>received chimaeric antigen receptor (CAR)-T cell therapy in the last 24 months, or</li>
+                    <li>radiotherapy in the last 6 months</li>
+                  </ul>
+                </li>
+                <li>Individuals with haematological malignancies receiving systemic anti-cancer treatment (SACT) within the last 12 months except patients with chronic phase chronic myeloid leukaemia (CML) in molecular response or first or second line tyrosine kinase inhibitors (TKI).</li>
+                <li>All patients with myeloma (excluding MGUS) or chronic B-cell lymphoproliferative disorders (e.g. chronic lymphocytic leukaemia, follicular lymphoma) or myelodysplastic syndrome (MDS) who do not fit the criteria above.</li>
+                <li>All patients with sickle cell disease.</li>
+                <li>Individuals with non-malignant haematological disorder (e.g. aplastic anaemia or paroxysmal nocturnal haemoglobinuria) receiving B-cell depleting systemic treatment (e.g. anti-CD20, anti- thymocyte globulin [ATG] and alemtzumab) within the last 12 months.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="renal">
+          <div class="values">
+            Renal disease
+          </div>
+          <div class="yesno">
+            <div id="noRenal" class="nobtn">
+              &nbspNo 
+            </div>
+            <div id="yesRenal" class="yesbtn">
+              &nbspYes 
+            </div>
+          </div>
+        </div>
+
+        <div id="contentRenal">
+
+          <div class="row" id="eligible">
+            <div class="values">
+              Any of the following?
+            </div>
+            <div class="yesno">
+              <div id="noEligible3" class="nobtn">
+                &nbspNo 
+              </div>
+              <div id="yesEligible3" class="yesbtn">
+                &nbspYes
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="values">
+              <ul>
+                <li>Renal transplant recipients (including those with failed transplants within the past 12 months), particularly those who:</li>
+                <ul>
+                  <li>Received B cell depleting therapy within the past 12 months (including alemtuzumab, rituximab [anti-CD20], anti-thymocyte globulin)</li>
+                  <li>Have an additional substantial risk factor which would in isolation make them eligible for nMABs or oral antivirals</li>
+                  <li>Not been vaccinated prior to transplantation</li>
+                </ul>
+                <li>Non-transplant patients who have received a comparable level of immunosuppression</li>
+                <li>Patients with chronic kidney stage (CKD) 4 or 5 (an eGFR less than 30 ml/min/1.73m2) without immunosuppression</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row" id="liver">
+          <div class="values">
+            Liver disease
+          </div>
+          <div class="yesno">
+            <div id="noLiver" class="nobtn">
+              &nbspNo 
+            </div>
+            <div id="yesLiver" class="yesbtn">
+              &nbspYes 
+            </div>
+          </div>
+        </div>
+
+        <div id="contentLiver">
+          <div class="row" id="eligible">
+            <div class="values">
+              Any of the following?
+            </div>
+            <div class="yesno">
+              <div id="noEligible4" class="nobtn">
+                &nbspNo 
+              </div>
+              <div id="yesEligible4" class="yesbtn">
+                &nbspYes
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="values">
+              <ul>
+                <li>Patients with cirrhosis Child’s-Pugh class B and C (decompensated liver disease).</li>
+                <li>Patients with a liver transplant</li>
+                <li>Liver patients on immune suppressive therapy (including patients with and without liver cirrhosis)</li>
+                <li>Patients with cirrhosis Child’s-Pugh class A who are not on immune suppressive therapy (compensated liver disease)</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="IMID">
+          <div class="values">
+            Immune-mediated inflammatory disorders (IMID) 
+          </div>
+          <div class="yesno">
+            <div id="noIMID" class="nobtn">
+              &nbspNo 
+            </div>
+            <div id="yesIMID" class="yesbtn">
+              &nbspYes 
+            </div>
+          </div>
+        </div>
+
+        <div id="contentIMID">
+          <div class="row" id="eligible">
+            <div class="values">
+              Any of the following?
+            </div>
+            <div class="yesno">
+              <div id="noEligible5" class="nobtn">
+                &nbspNo 
+              </div>
+              <div id="yesEligible5" class="yesbtn">
+                &nbspYes
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="values">
+              <ul>
+                <li>IMID treated with rituximab or other B cell depleting therapy in the last 12 months</li>
+                <li>IMID with active/unstable disease on corticosteroids, cyclophosphamide, tacrolimus, cyclosporin or mycophenolate.</li>
+                <li>IMID with stable disease on either corticosteroids*, cyclophosphamide, tacrolimus, cyclosporin or mycophenolate.</li>
+                <li>IMID patients with active/unstable disease including those on biological monotherapy and on combination biologicals with thiopurine or methotrexate</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="immune">
+          <div class="values">
+            Immune deficiencies
+          </div>
+          <div class="yesno">
+            <div id="noImmune" class="nobtn">
+              &nbspNo 
+            </div>
+            <div id="yesImmune" class="yesbtn">
+              &nbspYes 
+            </div>
+          </div>
+        </div>
+
+        <div id="contentImmune">
+          <div class="row" id="eligible">
+            <div class="values">
+              Any of the following?
+            </div>
+            <div class="yesno">
+              <div id="noEligible6" class="nobtn">
+                &nbspNo 
+              </div>
+              <div id="yesEligible6" class="yesbtn">
+                &nbspYes
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="values">
+              <ul>
+                <li>Common variable immunodeficiency (CVID)</li>
+                <li>Undefined primary antibody deficiency on immunoglobulin (or eligible for Ig)</li>
+                <li>Hyper-IgM syndromes</li>
+                <li>Good’s syndrome (thymoma plus B-cell deficiency)</li>
+                <li>Severe Combined Immunodeficiency (SCID)</li>
+                <li>Autoimmune polyglandular syndromes/autoimmune polyendocrinopathy, candidiasis, ectodermal dystrophy (APECED syndrome)</li>
+                <li>Primary immunodeficiency associated with impaired type I interferon signalling</li>
+                <li>X-linked agammaglobulinaemia (and other primary agammaglobulinaemias)</li>
+                <li>Any patient with a secondary immunodeficiency receiving, or eligible for, immunoglobulin replacement therapy</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="HIV">
+          <div class="values">
+            HIV/AIDS
+          </div>
+          <div class="yesno">
+            <div id="noHIV" class="nobtn">
+              &nbspNo 
+            </div>
+            <div id="yesHIV" class="yesbtn">
+              &nbspYes 
+            </div>
+          </div>
+        </div>
+
+        <div id="contentHIV">
+          <div class="row" id="eligible">
+            <div class="values">
+              Any of the following?
+            </div>
+            <div class="yesno">
+              <div id="noEligible7" class="nobtn">
+                &nbspNo 
+              </div>
+              <div id="yesEligible7" class="yesbtn">
+                &nbspYes
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="values">
+              <ul>
+                <li>Patients with high levels of immune suppression, have uncontrolled/untreated HIV (high viral load) or present acutely with an AIDS defining diagnosis</li>
+                <li>On treatment for HIV with CD4 &#60;350 cells/mm3 and stable on HIV treatment or CD4&#62;350 cells/mm3 and additional risk factors (e.g. age, diabetes, obesity, cardiovascular, liver or renal disease, homeless, those with alcohol-dependence)</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="transplant">
+          <div class="values">
+            Solid organ transplant recipient
+          </div>
+          <div class="yesno">
+            <div id="noTransplant" class="nobtn">
+              &nbspNo 
+            </div>
+            <div id="yesTransplant" class="yesbtn">
+              &nbspYes 
+            </div>
+          </div>
+        </div>
+
+        <div id="contentTransplant">
+          <div class="row">
+            <div class="values">
+              <ul>
+                <li>All recipients of solid organ transplants not otherwise specified above</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="neuro">
+          <div class="values">
+            Rare neurological condition
+          </div>
+          <div class="yesno">
+            <div id="noNeuro" class="nobtn">
+              &nbspNo 
+            </div>
+            <div id="yesNeuro" class="yesbtn">
+              &nbspYes 
+            </div>
+          </div>
+        </div>
+
+        <div id="contentNeuro">
+          <div class="row" id="eligible">
+            <div class="values">
+              Any of the following?
+            </div>
+            <div class="yesno">
+              <div id="noEligible8" class="nobtn">
+                &nbspNo 
+              </div>
+              <div id="yesEligible8" class="yesbtn">
+                &nbspYes
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="values">
+              <ul>
+                <li>Multiple sclerosis</li>
+                <li>Motor neurone disease</li>
+                <li>Myasthenia gravis</li>
+                <li>Huntington’s disease</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+      <div id="resultRow" class="row result">
+        <h2><strong>&nbsp</strong></h2>
+        <div id="resultText">
+        </div>
+      </div>
+      <button id="submitButton">Submit Here</button>
+    </div>
+
+  </body>
+  <script src="nmab.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
